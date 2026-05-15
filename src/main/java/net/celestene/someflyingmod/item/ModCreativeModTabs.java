@@ -1,6 +1,7 @@
 package net.celestene.someflyingmod.item;
 
 import net.celestene.someflyingmod.FlyingMod;
+import net.celestene.someflyingmod.block.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -23,6 +24,8 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.KITE.get());
 
                                 pOutput.accept(Items.DIAMOND);
+                                pOutput.accept(ModBlocks.FLYING_ESSENCE.get());
+                                pOutput.accept(ModBlocks.FLIGHTLESS_POWDER.get());
                             })
                             .build());
 

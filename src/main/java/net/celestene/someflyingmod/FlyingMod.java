@@ -1,6 +1,7 @@
 package net.celestene.someflyingmod;
 
 import com.mojang.logging.LogUtils;
+import net.celestene.someflyingmod.block.ModBlocks;
 import net.celestene.someflyingmod.item.ModCreativeModTabs;
 import net.celestene.someflyingmod.item.ModItems;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -31,6 +32,7 @@ public class FlyingMod
         ModCreativeModTabs.register(modEventBus);
 
         ModItems.register(modEventBus);
+        ModBlocks.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
