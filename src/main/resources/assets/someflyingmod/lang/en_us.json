@@ -1,8 +1,10 @@
 {
-  "item.someflyingmod.sapphire": "Sapphire",
+  "item.someflyingmod.sapphire": "Liquidifed Sapphire",
   "item.someflyingmod.kite": "Kite",
   "block.someflyingmod.flying_essence": "Flying Essence",
   "block.someflyingmod.flightless_powder": "Flightless Powder",
+  "item.someflyingmod.sapphire_shard": "Sapphire Shard",
+  "item.someflyingmod.flightless_dust": "Flightless Dust",
 
   "creativetab.tutorial_tab": "All Things Flying"
 }

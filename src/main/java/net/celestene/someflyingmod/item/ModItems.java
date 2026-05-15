@@ -17,6 +17,12 @@ public class ModItems {
     public static final RegistryObject<Item> KITE = ITEMS.register("kite",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> SAPPHIRE_SHARD = ITEMS.register("sapphire_shard",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> FLIGHTLESS_DUST = ITEMS.register("flightless_dust",
+            () -> new Item(new Item.Properties()));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
 

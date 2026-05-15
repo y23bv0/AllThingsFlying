@@ -21,11 +21,13 @@ public class ModCreativeModTabs {
                             .title(Component.translatable("creativetab.tutorial_tab"))
                             .displayItems((pParameters, pOutput) -> {
                                 pOutput.accept(ModItems.SAPPHIRE.get());
+                                pOutput.accept(ModItems.SAPPHIRE_SHARD.get());
                                 pOutput.accept(ModItems.KITE.get());
 
                                 pOutput.accept(Items.DIAMOND);
                                 pOutput.accept(ModBlocks.FLYING_ESSENCE.get());
                                 pOutput.accept(ModBlocks.FLIGHTLESS_POWDER.get());
+                                pOutput.accept(ModItems.FLIGHTLESS_DUST.get());
                             })
                             .build());
 

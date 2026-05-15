@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "someflyingmod:sapphire_shard"
+    }
+  },
+  "result": {
+    "item": "someflyingmod:sapphire"
+  }
+}

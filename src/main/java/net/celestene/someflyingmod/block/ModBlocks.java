@@ -22,7 +22,7 @@ public class ModBlocks {
     public static final RegistryObject<Block> FLYING_ESSENCE = registerBlock("flying_essence",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.OBSIDIAN).sound(SoundType.AMETHYST)));
 
-public static final RegistryObject<Block> FLIGHTLESS_POWDER = registerBlock("flightless_powder",
+    public static final RegistryObject<Block> FLIGHTLESS_POWDER = registerBlock("flightless_powder",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRAVEL).sound(SoundType.SAND)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
