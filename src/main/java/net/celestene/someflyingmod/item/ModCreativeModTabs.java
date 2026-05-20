@@ -22,10 +22,12 @@ public class ModCreativeModTabs {
                             .displayItems((pParameters, pOutput) -> {
                                 pOutput.accept(ModItems.SAPPHIRE.get());
                                 pOutput.accept(ModItems.SAPPHIRE_SHARD.get());
+                                pOutput.accept(ModBlocks.SAPPHIRE_ORE.get());
                                 pOutput.accept(ModItems.KITE.get());
 
                                 pOutput.accept(Items.DIAMOND);
                                 pOutput.accept(ModBlocks.FLYING_ESSENCE.get());
+                                pOutput.accept(ModBlocks.ESSENCE_ORE.get());
                                 pOutput.accept(ModBlocks.FLIGHTLESS_POWDER.get());
                                 pOutput.accept(ModItems.FLIGHTLESS_DUST.get());
                             })

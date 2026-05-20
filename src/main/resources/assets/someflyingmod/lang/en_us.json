@@ -6,5 +6,8 @@
   "item.someflyingmod.sapphire_shard": "Sapphire Shard",
   "item.someflyingmod.flightless_dust": "Flightless Dust",
 
+  "block.someflyingmod.sapphire_ore": "Sapphire Ore",
+  "block.someflyingmod.essence_ore": "Ore of Essence",
+
   "creativetab.tutorial_tab": "All Things Flying"
 }

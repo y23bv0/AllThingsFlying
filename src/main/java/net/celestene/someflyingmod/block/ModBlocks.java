@@ -29,11 +29,14 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> ESSENCE_ORE = registerBlock("essence_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)
-                    .requiresCorrectToolForDrops(), UniformInt.of(3, 6)));
+                    .requiresCorrectToolForDrops(), UniformInt.of(5, 7)));
+
     // requiresCorrectToolForDrops is inherited from stone regardless, keeping it here as a reminder!
     // UniformInt.of specifies the range of experience orbs when mining that block!
 
-    // finish the rest of this block tmrw!
+    public static final RegistryObject<Block> SAPPHIRE_ORE = registerBlock("sapphire_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f),
+                    UniformInt.of(3,6)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
