@@ -32,6 +32,8 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.FLIGHTLESS_DUST.get());
 
                                 pOutput.accept(ModItems.METAL_DETECTOR.get());
+                                pOutput.accept(ModBlocks.SOUND_BLOCK.get());
+                                pOutput.accept(ModBlocks.REFINED_ESSENCE.get());
                             })
                             .build());
 

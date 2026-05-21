@@ -1,6 +1,7 @@
 package net.celestene.someflyingmod.block;
 
 import net.celestene.someflyingmod.FlyingMod;
+import net.celestene.someflyingmod.block.custom.SoundBlock;
 import net.celestene.someflyingmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -37,6 +38,12 @@ public class ModBlocks {
     public static final RegistryObject<Block> SAPPHIRE_ORE = registerBlock("sapphire_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f),
                     UniformInt.of(3,6)));
+
+    public static final RegistryObject<Block> SOUND_BLOCK = registerBlock("sound_block",
+            () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
+
+    public static final RegistryObject<Block> REFINED_ESSENCE = registerBlock("refined_essence_block",
+            () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_AMETHYST_BUD)));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
