@@ -41,10 +41,10 @@ public class MetalDetectorItem extends Item {
                 player.sendSystemMessage(Component.literal("No iron found :/"));
             }
 
-            pContext.getItemInHand().hurtAndBreak(1, pContext.getPlayer(),
-                    player -> player.broadcastBreakEvent(player.getUsedItemHand()));
-
         }
+
+        pContext.getItemInHand().hurtAndBreak(1, pContext.getPlayer(),
+                player -> player.broadcastBreakEvent(player.getUsedItemHand()));
 
         return InteractionResult.SUCCESS; /* makes sure the right clicking
                                              has the typical animation */

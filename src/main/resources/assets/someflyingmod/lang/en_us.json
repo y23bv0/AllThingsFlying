@@ -9,5 +9,7 @@
   "block.someflyingmod.sapphire_ore": "Sapphire Ore",
   "block.someflyingmod.essence_ore": "Ore of Essence",
 
+  "item.someflyingmod.metal_detector": "Metal Detector",
+
   "creativetab.tutorial_tab": "All Things Flying"
 }

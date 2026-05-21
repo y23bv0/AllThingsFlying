@@ -30,6 +30,8 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModBlocks.ESSENCE_ORE.get());
                                 pOutput.accept(ModBlocks.FLIGHTLESS_POWDER.get());
                                 pOutput.accept(ModItems.FLIGHTLESS_DUST.get());
+
+                                pOutput.accept(ModItems.METAL_DETECTOR.get());
                             })
                             .build());
 
