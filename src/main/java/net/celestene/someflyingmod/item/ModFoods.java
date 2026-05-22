@@ -10,5 +10,4 @@ public class ModFoods {
                     .effect(() -> new MobEffectInstance(MobEffects.REGENERATION, 100), 0.7f)
                     .build();
 
-
 }

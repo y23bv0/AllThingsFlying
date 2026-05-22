@@ -39,8 +39,9 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModBlocks.SOUND_BLOCK.get());
                                 pOutput.accept(ModBlocks.REFINED_ESSENCE.get());
 
-                                // Foods
+                                // Foods and Condensed Items
                                 pOutput.accept(ModItems.CONDENSED_HONEY.get());
+                                pOutput.accept(ModItems.CONDENSED_LEAF.get());
                             })
                             .build());
 

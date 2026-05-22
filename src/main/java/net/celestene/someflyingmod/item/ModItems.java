@@ -31,6 +31,9 @@ public class ModItems {
     public static final RegistryObject<Item> CONDENSED_HONEY = ITEMS.register("condensed_honey",
             () -> new Item(new Item.Properties().food(ModFoods.CONDENSED_HONEY)));
 
+    public static final RegistryObject<Item> CONDENSED_LEAF = ITEMS.register("condensed_leaf",
+            () -> new FuelItem(new Item.Properties(), 400));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
 
