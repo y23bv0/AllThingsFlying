@@ -16,5 +16,8 @@
   "item.someflyingmod.condensed_honey": "Condensed Honey",
   "item.someflyingmod.condensed_leaf": "Condensed Leaf",
 
-  "creativetab.tutorial_tab": "All Things Flying"
+  "creativetab.tutorial_tab": "All Things Flying",
+
+  "tooltip.someflyingmod.metal_detector.tooltip": "Woah, there's metal under me!",
+  "tooltip.someflyingmod.sound_block.tooltip": "Makes an interesting sound when you click it! Try it out?"
 }
