@@ -1,4 +1,39 @@
 package net.celestene.someflyingmod.datagen;
 
-public class ModBlockTagGenerator {
+import net.celestene.someflyingmod.FlyingMod;
+import net.celestene.someflyingmod.block.ModBlocks;
+import net.celestene.someflyingmod.util.ModTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.data.BlockTagsProvider;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.CompletableFuture;
+
+public class ModBlockTagGenerator extends BlockTagsProvider {
+    public ModBlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider
+                                , @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, FlyingMod.MODID, existingFileHelper);
+    }
+
+    @Override
+    protected void addTags(HolderLookup.Provider pProvider) {
+
+        // this tag ends up located in src/main/resources/data/someflyingmod/tags/blocks/metal_detector_valuables.json
+        this.tag(ModTags.Blocks.METAL_DETECTOR_VALUABLES).add(ModBlocks.SAPPHIRE_ORE.get())
+                .addTags(Tags.Blocks.ORES);
+
+        // this file ends up located in src/main/resources/data/minecraft/tags/blocks/needs_iron_tool.json
+        this.tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.SAPPHIRE_ORE.get());
+
+        this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.FLYING_ESSENCE.get(), ModBlocks.ESSENCE_ORE.get());
+
+        // this file ends up in src/main/resources/data/minecraft/tags/blocks/mineable/pickaxe.json
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.FLYING_ESSENCE.get(),
+                        ModBlocks.SAPPHIRE_ORE.get(), ModBlocks.ESSENCE_ORE.get());
+
+    }
 }
