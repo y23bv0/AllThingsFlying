@@ -31,6 +31,8 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.FLYING_ESSENCE.get(), ModBlocks.ESSENCE_ORE.get());
 
+        // this.tag(Tags.Blocks.NEEDS_NETHERITE_TOOL).add()
+
         // this file ends up in src/main/resources/data/minecraft/tags/blocks/mineable/pickaxe.json
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.FLYING_ESSENCE.get(),
                         ModBlocks.SAPPHIRE_ORE.get(), ModBlocks.ESSENCE_ORE.get());
