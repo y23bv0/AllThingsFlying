@@ -21,25 +21,20 @@ public class ModCreativeModTabs {
                             .title(Component.translatable("creativetab.tutorial_tab"))
                             .displayItems((pParameters, pOutput) -> {
 
-                                // Basic Items
-                                pOutput.accept(ModItems.SAPPHIRE.get());
-                                pOutput.accept(ModItems.SAPPHIRE_SHARD.get());
-                                pOutput.accept(ModBlocks.SAPPHIRE_ORE.get());
-                                pOutput.accept(ModItems.KITE.get());
-
-                                // More advanced
-                                pOutput.accept(Items.DIAMOND);
                                 pOutput.accept(ModBlocks.FLYING_ESSENCE.get());
                                 pOutput.accept(ModBlocks.ESSENCE_ORE.get());
+                                pOutput.accept(ModBlocks.REFINED_ESSENCE.get());
+                                pOutput.accept(ModItems.KITE.get());
                                 pOutput.accept(ModBlocks.FLIGHTLESS_POWDER.get());
                                 pOutput.accept(ModItems.FLIGHTLESS_DUST.get());
 
-                                // Special blocks or items
+                                // Extraneous
+                                pOutput.accept(ModItems.SAPPHIRE.get());
+                                pOutput.accept(ModItems.SAPPHIRE_SHARD.get());
+                                pOutput.accept(ModBlocks.SAPPHIRE_ORE.get());
                                 pOutput.accept(ModItems.METAL_DETECTOR.get());
                                 pOutput.accept(ModBlocks.SOUND_BLOCK.get());
-                                pOutput.accept(ModBlocks.REFINED_ESSENCE.get());
 
-                                // Foods and Condensed Items
                                 pOutput.accept(ModItems.CONDENSED_HONEY.get());
                                 pOutput.accept(ModItems.CONDENSED_LEAF.get());
                             })
