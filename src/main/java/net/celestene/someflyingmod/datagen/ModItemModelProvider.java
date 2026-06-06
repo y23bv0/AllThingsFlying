@@ -23,7 +23,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.KITE);
         simpleItem(ModItems.METAL_DETECTOR);
         simpleItem(ModItems.PRIMA);
-        simpleItem(ModItems.SAPPHIRE_SHARD);
+        simpleItem(ModItems.ESSENCE_SHARD);
 
     }
 

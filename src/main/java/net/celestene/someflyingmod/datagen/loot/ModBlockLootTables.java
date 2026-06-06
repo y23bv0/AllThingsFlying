@@ -24,15 +24,14 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
     @Override
     protected void generate() {
-        this.dropSelf(ModBlocks.ESSENCE_ORE.get());
         this.dropSelf(ModBlocks.FLIGHTLESS_POWDER.get()); // fix this one!
         this.dropSelf(ModBlocks.FLYING_ESSENCE.get());
         this.dropSelf(ModBlocks.REFINED_ESSENCE.get());
         this.dropSelf(ModBlocks.SOUND_BLOCK.get());
 
 
-        this.add(ModBlocks.SAPPHIRE_ORE.get(),
-                 block -> createCopperLikeOreDrops(ModBlocks.SAPPHIRE_ORE.get(), ModItems.PRIMA.get()));
+        this.add(ModBlocks.ESSENCE_ORE.get(),
+                 block -> createCopperLikeOreDrops(ModBlocks.ESSENCE_ORE.get(), ModItems.ESSENCE_SHARD.get()));
 
         this.add(ModBlocks.FLIGHTLESS_POWDER.get(), block -> createSingleItemTable(ModItems.
                 FLIGHTLESS_DUST.get()));

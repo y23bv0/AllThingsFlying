@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class ModRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    private static final List<ItemLike> SAPPHIRE_SMELTABLES = List.of(ModItems.SAPPHIRE_SHARD.get());
+    private static final List<ItemLike> SAPPHIRE_SMELTABLES = List.of(ModItems.ESSENCE_SHARD.get());
 
     public ModRecipeProvider(PackOutput pOutput) {
         super(pOutput);
@@ -24,22 +24,22 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
         oreSmelting(pWriter, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.PRIMA.get(),
-                0.2f, 4000, "sapphire");
+                0.2f, 4000, "prima");
         oreBlasting(pWriter, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.PRIMA.get(),
-                10.7f, 500, "sapphire");
+                10.7f, 500, "prima");
 
         ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PRIMA.get())
                 .pattern("###")
                 .pattern("###")
                 .pattern("###")
-                .define('#', ModItems.SAPPHIRE_SHARD.get())
+                .define('#', ModItems.ESSENCE_SHARD.get())
                 .unlockedBy(getHasName(ModItems.PRIMA.get()), // specifies when recipe unlocked in the recipe book
                         has(ModItems.PRIMA.get()))
                 .save(pWriter);
 
         // .requires(...) is the ingredient you need to craft what you are crafting
 
-        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.SAPPHIRE_SHARD.get(), 9)
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ModItems.ESSENCE_SHARD.get(), 9)
                 .requires(ModBlocks.FLIGHTLESS_POWDER.get())
                 .unlockedBy(getHasName(ModBlocks.FLIGHTLESS_POWDER.get()), has(ModBlocks.FLIGHTLESS_POWDER.get()))
                 .save(pWriter);

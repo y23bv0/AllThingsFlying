@@ -19,7 +19,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.FLYING_ESSENCE);
         blockWithItem(ModBlocks.FLIGHTLESS_POWDER);
         blockWithItem(ModBlocks.ESSENCE_ORE);
-        blockWithItem(ModBlocks.SAPPHIRE_ORE);
 
         blockWithItem(ModBlocks.SOUND_BLOCK);
         blockWithItem(ModBlocks.REFINED_ESSENCE);

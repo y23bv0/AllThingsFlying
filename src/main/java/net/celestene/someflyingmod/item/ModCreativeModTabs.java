@@ -29,8 +29,7 @@ public class ModCreativeModTabs {
 
                                 // Extraneous
                                 pOutput.accept(ModItems.PRIMA.get());
-                                pOutput.accept(ModItems.SAPPHIRE_SHARD.get());
-                                pOutput.accept(ModBlocks.SAPPHIRE_ORE.get());
+                                pOutput.accept(ModItems.ESSENCE_SHARD.get());
                                 pOutput.accept(ModItems.METAL_DETECTOR.get());
                                 pOutput.accept(ModBlocks.SOUND_BLOCK.get());
 

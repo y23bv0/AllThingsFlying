@@ -28,15 +28,15 @@ public class ModBlocks {
     public static final RegistryObject<Block> FLIGHTLESS_POWDER = registerBlock("flightless_powder",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRAVEL).sound(SoundType.SAND)));
 
-    public static final RegistryObject<Block> ESSENCE_ORE = registerBlock("essence_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)
-                    .requiresCorrectToolForDrops(), UniformInt.of(5, 7)));
+//    public static final RegistryObject<Block> ESSENCE_ORE = registerBlock("essence_ore",
+//            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)
+//                    .requiresCorrectToolForDrops(), UniformInt.of(5, 7)));
 
     // requiresCorrectToolForDrops is inherited from stone regardless, keeping it here as a reminder!
     // UniformInt.of specifies the range of experience orbs when mining that block!
 
-    public static final RegistryObject<Block> SAPPHIRE_ORE = registerBlock("sapphire_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f),
+    public static final RegistryObject<Block> ESSENCE_ORE = registerBlock("essence_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1f),
                     UniformInt.of(3,6)));
 
     public static final RegistryObject<Block> SOUND_BLOCK = registerBlock("sound_block",

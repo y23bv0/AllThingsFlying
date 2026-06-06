@@ -18,7 +18,7 @@ public class ModItems {
     public static final RegistryObject<Item> KITE = ITEMS.register("kite",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> SAPPHIRE_SHARD = ITEMS.register("sapphire_shard",
+    public static final RegistryObject<Item> ESSENCE_SHARD = ITEMS.register("essence_shard",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> FLIGHTLESS_DUST = ITEMS.register("flightless_dust",
