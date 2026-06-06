@@ -27,7 +27,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
                 .addTags(Tags.Blocks.ORES);
 
         // this file ends up located in src/main/resources/data/minecraft/tags/blocks/needs_iron_tool.json
-        this.tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.ESSENCE_ORE.get());
+        this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.ESSENCE_ORE.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.ESSENCE_ORE.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.FANCY_BLOCK.get());
 
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.FLYING_ESSENCE.get(), ModBlocks.ESSENCE_ORE.get());
 

@@ -6,11 +6,9 @@ import net.celestene.someflyingmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -44,6 +42,32 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> REFINED_ESSENCE = registerBlock("refined_essence_block",
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_AMETHYST_BUD)));
+
+    // "Fancy Blocks"
+
+    public static final RegistryObject<Block> FANCY_BLOCK = registerBlock("fancy_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)));
+
+    public static final RegistryObject<Block> FANCY_STAIRS = registerBlock("fancy_stairs",
+            () -> new StairBlock(() -> ModBlocks.FANCY_BLOCK.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)));
+
+    public static final RegistryObject<Block> FANCY_SLAB = registerBlock("fancy_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)));
+
+    public static final RegistryObject<Block> FANCY_DOOR = registerBlock("fancy_door",
+            () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)
+                    .noOcclusion(),
+            BlockSetType.IRON));
+
+    public static final RegistryObject<Block> FANCY_BUTTON = registerBlock("fancy_button",
+            () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER),
+                    BlockSetType.IRON, 10, true));
+
+    public static final RegistryObject<Block> FANCY_TRAPDOOR = registerBlock("fancy_trapdoor",
+            () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)
+                    .noOcclusion(),
+                    BlockSetType.IRON));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

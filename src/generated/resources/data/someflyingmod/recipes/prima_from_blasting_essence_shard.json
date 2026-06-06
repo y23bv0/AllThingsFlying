@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 500,
+  "experience": 10.7,
+  "group": "prima",
+  "ingredient": {
+    "item": "someflyingmod:essence_shard"
+  },
+  "result": "someflyingmod:prima"
+}

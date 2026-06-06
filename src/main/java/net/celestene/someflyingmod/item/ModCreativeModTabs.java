@@ -26,6 +26,7 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.KITE.get());
                                 pOutput.accept(ModBlocks.FLIGHTLESS_POWDER.get());
                                 pOutput.accept(ModItems.FLIGHTLESS_DUST.get());
+                                pOutput.accept(ModBlocks.FANCY_BLOCK.get());
 
                                 // Extraneous
                                 pOutput.accept(ModItems.PRIMA.get());

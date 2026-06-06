@@ -28,6 +28,16 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.FLYING_ESSENCE.get());
         this.dropSelf(ModBlocks.REFINED_ESSENCE.get());
         this.dropSelf(ModBlocks.SOUND_BLOCK.get());
+        this.dropSelf(ModBlocks.FANCY_BLOCK.get());
+
+        this.dropSelf(ModBlocks.FANCY_TRAPDOOR.get());
+        this.dropSelf(ModBlocks.FANCY_BUTTON.get());
+        this.dropSelf(ModBlocks.FANCY_STAIRS.get());
+
+        this.add(ModBlocks.FANCY_DOOR.get(),
+                block -> createDoorTable(ModBlocks.FANCY_DOOR.get()));
+        this.add(ModBlocks.FANCY_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.FANCY_SLAB.get()));
 
 
         this.add(ModBlocks.ESSENCE_ORE.get(),

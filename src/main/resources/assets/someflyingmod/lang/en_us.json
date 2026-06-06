@@ -9,6 +9,13 @@
   "block.someflyingmod.sapphire_ore": "Sapphire Ore",
   "block.someflyingmod.essence_ore": "Ore of Essence",
 
+  "block.someflyingmod.fancy_block": "Fancy Block",
+  "block.someflyingmod.fancy_stairs": "Fancy Stairs",
+  "block.someflyingmod.fancy_slab": "Fancy Slab",
+  "block.someflyingmod.fancy_button": "Fancy Button",
+  "block.someflyingmod.fancy_door": "Fancy Door",
+  "block.someflyingmod.fancy_trapdoor": "Fancy Trapdoor",
+
   "item.someflyingmod.metal_detector": "Metal Detector",
   "block.someflyingmod.sound_block": "Sound Block",
   "block.someflyingmod.refined_essence_block": "Refined Essence",
