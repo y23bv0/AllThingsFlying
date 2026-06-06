@@ -1,0 +1,5 @@
+// 1.20.1	2026-06-05T22:44:18.2412122	Tags for minecraft:block mod id someflyingmod
+ce29bcbf9f905a219e0d992c58cbf0fb60249109 data/minecraft/tags/blocks/mineable/pickaxe.json
+4a6fdfb23861e4ce11c0dfbcd61716bbd6e5840a data/minecraft/tags/blocks/needs_diamond_tool.json
+35b7bfdd3b75304d7a4ba85dade85791e8a40ca4 data/minecraft/tags/blocks/needs_iron_tool.json
+307206be6036d0dbdc7cada77d0bfcfef9a38701 data/someflyingmod/tags/blocks/metal_detector_valuables.json

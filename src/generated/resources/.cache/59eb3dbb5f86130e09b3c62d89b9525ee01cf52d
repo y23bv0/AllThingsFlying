@@ -1,0 +1,7 @@
+// 1.20.1	2026-06-05T22:44:18.2432111	Loot Tables
+3ab1745cadb85e6dd8cd7fd58104537d79514429 data/someflyingmod/loot_tables/blocks/essence_ore.json
+3d2685731758ff431e9e1f053918fa98879c11d5 data/someflyingmod/loot_tables/blocks/flightless_powder.json
+1b9e1258d3222587b5828afab64e74168506b19e data/someflyingmod/loot_tables/blocks/flying_essence.json
+5c932649472b930b4ec141be2f8e9c2d46eb2978 data/someflyingmod/loot_tables/blocks/refined_essence_block.json
+8d5306e4ed9e6f41ee54ca663b5515b61c6dc5c4 data/someflyingmod/loot_tables/blocks/sapphire_ore.json
+0011d81a79829fcba2fac96759e87c6b1736e92a data/someflyingmod/loot_tables/blocks/sound_block.json

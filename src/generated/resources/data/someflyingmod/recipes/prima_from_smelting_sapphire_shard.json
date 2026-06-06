@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 4000,
+  "experience": 0.2,
+  "group": "sapphire",
+  "ingredient": {
+    "item": "someflyingmod:sapphire_shard"
+  },
+  "result": "someflyingmod:prima"
+}
