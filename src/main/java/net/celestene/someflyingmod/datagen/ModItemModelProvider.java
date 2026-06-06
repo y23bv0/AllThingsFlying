@@ -18,11 +18,11 @@ public class ModItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         simpleItem(ModItems.CONDENSED_HONEY);
-        simpleItem(ModItems.CONDENSED_LEAF);
+        simpleItem(ModItems.CHARRED_BONE);
         simpleItem(ModItems.FLIGHTLESS_DUST);
         simpleItem(ModItems.KITE);
         simpleItem(ModItems.METAL_DETECTOR);
-        simpleItem(ModItems.SAPPHIRE);
+        simpleItem(ModItems.PRIMA);
         simpleItem(ModItems.SAPPHIRE_SHARD);
 
     }

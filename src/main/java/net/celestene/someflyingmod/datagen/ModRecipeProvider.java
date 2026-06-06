@@ -23,18 +23,18 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-        oreSmelting(pWriter, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(),
+        oreSmelting(pWriter, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.PRIMA.get(),
                 0.2f, 4000, "sapphire");
-        oreBlasting(pWriter, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.SAPPHIRE.get(),
+        oreBlasting(pWriter, SAPPHIRE_SMELTABLES, RecipeCategory.MISC, ModItems.PRIMA.get(),
                 10.7f, 500, "sapphire");
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.SAPPHIRE.get())
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.PRIMA.get())
                 .pattern("###")
                 .pattern("###")
                 .pattern("###")
                 .define('#', ModItems.SAPPHIRE_SHARD.get())
-                .unlockedBy(getHasName(ModItems.SAPPHIRE.get()), // specifies when recipe unlocked in the recipe book
-                        has(ModItems.SAPPHIRE.get()))
+                .unlockedBy(getHasName(ModItems.PRIMA.get()), // specifies when recipe unlocked in the recipe book
+                        has(ModItems.PRIMA.get()))
                 .save(pWriter);
 
         // .requires(...) is the ingredient you need to craft what you are crafting

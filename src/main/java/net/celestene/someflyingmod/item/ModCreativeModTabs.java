@@ -6,7 +6,6 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
@@ -17,7 +16,7 @@ public class ModCreativeModTabs {
 
     public static final RegistryObject<CreativeModeTab> TUTORIAL_TAB =
             CREATIVE_MODE_TABS.register("tutorial_tab", () ->
-                    CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.SAPPHIRE.get()))
+                    CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.PRIMA.get()))
                             .title(Component.translatable("creativetab.tutorial_tab"))
                             .displayItems((pParameters, pOutput) -> {
 
@@ -29,14 +28,14 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.FLIGHTLESS_DUST.get());
 
                                 // Extraneous
-                                pOutput.accept(ModItems.SAPPHIRE.get());
+                                pOutput.accept(ModItems.PRIMA.get());
                                 pOutput.accept(ModItems.SAPPHIRE_SHARD.get());
                                 pOutput.accept(ModBlocks.SAPPHIRE_ORE.get());
                                 pOutput.accept(ModItems.METAL_DETECTOR.get());
                                 pOutput.accept(ModBlocks.SOUND_BLOCK.get());
 
                                 pOutput.accept(ModItems.CONDENSED_HONEY.get());
-                                pOutput.accept(ModItems.CONDENSED_LEAF.get());
+                                pOutput.accept(ModItems.CHARRED_BONE.get());
                             })
                             .build());
 

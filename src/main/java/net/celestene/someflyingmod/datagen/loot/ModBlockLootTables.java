@@ -3,10 +3,8 @@ package net.celestene.someflyingmod.datagen.loot;
 import net.celestene.someflyingmod.block.ModBlocks;
 import net.celestene.someflyingmod.item.ModItems;
 import net.minecraft.data.loot.BlockLootSubProvider;
-import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootTable;
@@ -34,7 +32,7 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
 
         this.add(ModBlocks.SAPPHIRE_ORE.get(),
-                 block -> createCopperLikeOreDrops(ModBlocks.SAPPHIRE_ORE.get(), ModItems.SAPPHIRE.get()));
+                 block -> createCopperLikeOreDrops(ModBlocks.SAPPHIRE_ORE.get(), ModItems.PRIMA.get()));
 
         this.add(ModBlocks.FLIGHTLESS_POWDER.get(), block -> createSingleItemTable(ModItems.
                 FLIGHTLESS_DUST.get()));

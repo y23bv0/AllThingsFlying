@@ -2,7 +2,6 @@ package net.celestene.someflyingmod.item;
 
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.item.custom.MetalDetectorItem;
-import net.minecraft.world.food.Foods;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -13,7 +12,7 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, FlyingMod.MODID);
 
-    public static final RegistryObject<Item> SAPPHIRE = ITEMS.register("sapphire",
+    public static final RegistryObject<Item> PRIMA = ITEMS.register("prima",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> KITE = ITEMS.register("kite",
@@ -31,7 +30,7 @@ public class ModItems {
     public static final RegistryObject<Item> CONDENSED_HONEY = ITEMS.register("condensed_honey",
             () -> new Item(new Item.Properties().food(ModFoods.CONDENSED_HONEY)));
 
-    public static final RegistryObject<Item> CONDENSED_LEAF = ITEMS.register("condensed_leaf",
+    public static final RegistryObject<Item> CHARRED_BONE = ITEMS.register("charred_bone",
             () -> new FuelItem(new Item.Properties(), 400));
 
     public static void register(IEventBus eventBus) {
