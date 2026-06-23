@@ -10,13 +10,8 @@
   "block.someflyingmod.essence_ore": "Ore of Essence",
 
   "item.someflyingmod.essence_staff": "Staff",
-
-  "block.someflyingmod.fancy_block": "Fancy Block",
-  "block.someflyingmod.fancy_stairs": "Fancy Stairs",
-  "block.someflyingmod.fancy_slab": "Fancy Slab",
-  "block.someflyingmod.fancy_button": "Fancy Button",
-  "block.someflyingmod.fancy_door": "Fancy Door",
-  "block.someflyingmod.fancy_trapdoor": "Fancy Trapdoor",
+  "item.someflyingmod.silk": "Silk",
+  "item.someflyingmod.silk_pickaxe": "Silk Pickaxe",
 
   "item.someflyingmod.metal_detector": "Metal Detector",
   "block.someflyingmod.sound_block": "Sound Block",
@@ -28,5 +23,15 @@
   "creativetab.tutorial_tab": "All Things Flying",
 
   "tooltip.someflyingmod.metal_detector.tooltip": "Woah, there's metal under me!",
-  "tooltip.someflyingmod.sound_block.tooltip": "Makes an interesting sound when you click it! Try it out?"
+  "tooltip.someflyingmod.sound_block.tooltip": "Makes an interesting sound when you click it! Try it out?",
+
+
+
+
+  "block.someflyingmod.fancy_block": "Fancy Block",
+  "block.someflyingmod.fancy_stairs": "Fancy Stairs",
+  "block.someflyingmod.fancy_slab": "Fancy Slab",
+  "block.someflyingmod.fancy_button": "Fancy Button",
+  "block.someflyingmod.fancy_door": "Fancy Door",
+  "block.someflyingmod.fancy_trapdoor": "Fancy Trapdoor"
 }

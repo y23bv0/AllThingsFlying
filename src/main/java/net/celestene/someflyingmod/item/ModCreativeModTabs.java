@@ -31,6 +31,8 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.ESSENCE_SHARD.get());
 
                                 pOutput.accept(ModItems.ESSENCE_STAFF.get());
+                                pOutput.accept(ModItems.SILK.get());
+                                pOutput.accept(ModItems.SILK_PICKAXE.get());
 
                                 // Extraneous
                                 pOutput.accept(ModItems.METAL_DETECTOR.get());

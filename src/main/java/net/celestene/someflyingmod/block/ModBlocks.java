@@ -21,7 +21,8 @@ public class ModBlocks {
             DeferredRegister.create(ForgeRegistries.BLOCKS, FlyingMod.MODID);
 
     public static final RegistryObject<Block> FLYING_ESSENCE = registerBlock("flying_essence",
-            () -> new Block(BlockBehaviour.Properties.copy(Blocks.DIORITE).sound(SoundType.AMETHYST)));
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)
+                    .sound(SoundType.AMETHYST)));
 
     public static final RegistryObject<Block> FLIGHTLESS_POWDER = registerBlock("flightless_powder",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRAVEL).sound(SoundType.SAND)));
@@ -41,7 +42,7 @@ public class ModBlocks {
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
 
     public static final RegistryObject<Block> REFINED_ESSENCE = registerBlock("refined_essence_block",
-            () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.SMALL_AMETHYST_BUD)));
+            () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)));
 
     // "Fancy Blocks"
 

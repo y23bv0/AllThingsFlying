@@ -28,6 +28,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.PRIMA);
         simpleItem(ModItems.ESSENCE_SHARD);
 
+        simpleItem(ModItems.SILK);
+        handheldItem(ModItems.SILK_PICKAXE);
 
         simpleBlockItem(ModBlocks.FANCY_DOOR);
         trapdoorItem(ModBlocks.FANCY_TRAPDOOR);
@@ -37,9 +39,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         evenSimplerBlockItem(ModBlocks.FANCY_SLAB);
     }
 
-    /* The following six methods are provided by Kaupenjoe because forge does not include
+    /* The following seven methods are provided by Kaupenjoe because forge does not include
     *  these methods by default:
     * */
+
+    private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/handheld")).texture("layer0",
+                new ResourceLocation(FlyingMod.MODID,"item/" + item.getId().getPath()));
+    }
 
     public void trapdoorItem(RegistryObject<Block> block) {
         this.withExistingParent(ForgeRegistries.BLOCKS.getKey(block.get()).getPath(),
