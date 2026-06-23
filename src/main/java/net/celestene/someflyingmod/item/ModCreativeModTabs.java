@@ -27,10 +27,12 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModBlocks.FLIGHTLESS_POWDER.get());
                                 pOutput.accept(ModItems.FLIGHTLESS_DUST.get());
                                 pOutput.accept(ModBlocks.FANCY_BLOCK.get());
-
-                                // Extraneous
                                 pOutput.accept(ModItems.PRIMA.get());
                                 pOutput.accept(ModItems.ESSENCE_SHARD.get());
+
+                                pOutput.accept(ModItems.ESSENCE_STAFF.get());
+
+                                // Extraneous
                                 pOutput.accept(ModItems.METAL_DETECTOR.get());
                                 pOutput.accept(ModBlocks.SOUND_BLOCK.get());
 

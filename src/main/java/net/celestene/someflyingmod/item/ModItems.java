@@ -33,6 +33,9 @@ public class ModItems {
     public static final RegistryObject<Item> CHARRED_BONE = ITEMS.register("charred_bone",
             () -> new FuelItem(new Item.Properties(), 400));
 
+    public static final RegistryObject<Item> ESSENCE_STAFF = ITEMS.register("essence_staff",
+            () -> new Item(new Item.Properties().stacksTo(1)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
 
