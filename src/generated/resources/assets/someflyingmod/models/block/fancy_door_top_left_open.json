@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/door_top_left_open",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "bottom": "someflyingmod:block/fancy_door_bottom",
+    "top": "someflyingmod:block/fancy_door_top"
+  }
+}
