@@ -29,10 +29,19 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModBlocks.FANCY_BLOCK.get());
                                 pOutput.accept(ModItems.PRIMA.get());
                                 pOutput.accept(ModItems.ESSENCE_SHARD.get());
-
                                 pOutput.accept(ModItems.ESSENCE_STAFF.get());
+
+                                // Silk Items
+
                                 pOutput.accept(ModItems.SILK.get());
                                 pOutput.accept(ModItems.SILK_PICKAXE.get());
+
+                                // Armor
+
+                                pOutput.accept(ModItems.SILK_HELMET.get());
+                                pOutput.accept(ModItems.SILK_CHESTPLATE.get());
+                                pOutput.accept(ModItems.SILK_LEGGINGS.get());
+                                pOutput.accept(ModItems.SILK_BOOTS.get());
 
                                 // Extraneous
                                 pOutput.accept(ModItems.METAL_DETECTOR.get());

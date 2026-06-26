@@ -12,6 +12,10 @@
   "item.someflyingmod.essence_staff": "Staff",
   "item.someflyingmod.silk": "Silk",
   "item.someflyingmod.silk_pickaxe": "Silk Pickaxe",
+  "item.someflyingmod.silk_helmet": "Silk Helmet",
+  "item.someflyingmod.silk_chestplate": "Silk Chestplate",
+  "item.someflyingmod.silk_leggings": "Silk Leggings",
+  "item.someflyingmod.silk_boots": "Silk Boots",
 
   "item.someflyingmod.metal_detector": "Metal Detector",
   "block.someflyingmod.sound_block": "Sound Block",

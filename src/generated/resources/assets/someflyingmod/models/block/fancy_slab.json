@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "someflyingmod:block/fancy_block",
-    "side": "someflyingmod:block/fancy_block",
-    "top": "someflyingmod:block/fancy_block"
-  }
-}
