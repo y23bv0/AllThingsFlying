@@ -43,6 +43,17 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.SILK_LEGGINGS.get());
                                 pOutput.accept(ModItems.SILK_BOOTS.get());
 
+                                // Loot
+
+                                pOutput.accept(ModItems.RED_SHARD.get());
+                                pOutput.accept(ModItems.ESSENTIAL_SHARD.get());
+                                pOutput.accept(ModItems.POSEIDONS_SHARD.get());
+                                pOutput.accept(ModItems.ENDER_SHARD.get());
+                                pOutput.accept(ModItems.RED_R_SHARD.get());
+                                pOutput.accept(ModItems.ESSENTIAL_R_SHARD.get());
+                                pOutput.accept(ModItems.POSEIDONS_R_SHARD.get());
+                                pOutput.accept(ModItems.ENDER_R_SHARD.get());
+
                                 // Extraneous
                                 pOutput.accept(ModItems.METAL_DETECTOR.get());
                                 pOutput.accept(ModBlocks.SOUND_BLOCK.get());

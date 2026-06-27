@@ -2,9 +2,11 @@ package net.celestene.someflyingmod.item;
 
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.item.custom.MetalDetectorItem;
+import net.celestene.someflyingmod.item.custom.ModArmorItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
+import net.minecraft.world.level.block.ChestBlock;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -44,13 +46,32 @@ public class ModItems {
     // ARMOR
 
     public static final RegistryObject<Item> SILK_HELMET = ITEMS.register("silk_helmet",
-            () -> new ArmorItem(ModArmorMaterials.SILK, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new ModArmorItem(ModArmorMaterials.SILK, ArmorItem.Type.HELMET, new Item.Properties()));
     public static final RegistryObject<Item> SILK_CHESTPLATE = ITEMS.register("silk_chestplate",
             () -> new ArmorItem(ModArmorMaterials.SILK, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
     public static final RegistryObject<Item> SILK_LEGGINGS = ITEMS.register("silk_leggings",
             () -> new ArmorItem(ModArmorMaterials.SILK, ArmorItem.Type.LEGGINGS, new Item.Properties()));
     public static final RegistryObject<Item> SILK_BOOTS = ITEMS.register("silk_boots",
             () -> new ArmorItem(ModArmorMaterials.SILK, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    // SHARDS
+    public static final RegistryObject<Item> RED_SHARD = ITEMS.register("red_shard",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ESSENTIAL_SHARD = ITEMS.register("essential_shard",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> POSEIDONS_SHARD = ITEMS.register("poseidons_shard",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ENDER_SHARD = ITEMS.register("ender_shard",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RED_R_SHARD = ITEMS.register("red_r_shard",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ESSENTIAL_R_SHARD = ITEMS.register("essential_r_shard",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> POSEIDONS_R_SHARD = ITEMS.register("poseidons_r_shard",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> ENDER_R_SHARD = ITEMS.register("ender_r_shard",
+            () -> new Item(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

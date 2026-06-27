@@ -66,6 +66,15 @@ public class ModItemModelProvider extends ItemModelProvider {
         trimmedArmorItem(ModItems.SILK_CHESTPLATE);
         trimmedArmorItem(ModItems.SILK_LEGGINGS);
         trimmedArmorItem(ModItems.SILK_BOOTS);
+
+        simpleItem(ModItems.RED_SHARD);
+        simpleItem(ModItems.ESSENTIAL_SHARD);
+        simpleItem(ModItems.POSEIDONS_SHARD);
+        simpleItem(ModItems.ENDER_SHARD);
+        simpleItem(ModItems.RED_R_SHARD);
+        simpleItem(ModItems.ESSENTIAL_R_SHARD);
+        simpleItem(ModItems.POSEIDONS_R_SHARD);
+        simpleItem(ModItems.ENDER_R_SHARD);
     }
 
     /* The following seven methods are provided by Kaupenjoe because forge does not include

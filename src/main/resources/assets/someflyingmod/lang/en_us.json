@@ -17,6 +17,15 @@
   "item.someflyingmod.silk_leggings": "Silk Leggings",
   "item.someflyingmod.silk_boots": "Silk Boots",
 
+  "item.someflyingmod.red_shard": "Red Shard",
+  "item.someflyingmod.essential_shard": "Essential Shard",
+  "item.someflyingmod.poseidons_shard": "Poseidon's Shard",
+  "item.someflyingmod.ender_shard": "Ender Shard",
+  "item.someflyingmod.red_r_shard": "Red Shard (Rounded)",
+  "item.someflyingmod.essential_r_shard": "Essential Shard (Rounded)",
+  "item.someflyingmod.poseidons_r_shard": "Poseidon's Shard (Rounded)",
+  "item.someflyingmod.ender_r_shard": "Ender Shard (Rounded)",
+
   "item.someflyingmod.metal_detector": "Metal Detector",
   "block.someflyingmod.sound_block": "Sound Block",
   "block.someflyingmod.refined_essence_block": "Refined Essence",
