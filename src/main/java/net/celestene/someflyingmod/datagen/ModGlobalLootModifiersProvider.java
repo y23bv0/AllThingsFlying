@@ -3,6 +3,7 @@ package net.celestene.someflyingmod.datagen;
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.loot.AddItemModifier;
+import net.celestene.someflyingmod.loot.AddSusSandItemModifier;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Blocks;
@@ -57,5 +58,10 @@ public class ModGlobalLootModifiersProvider extends GlobalLootModifierProvider {
                 new LootTableIdCondition.Builder(new ResourceLocation("chests/desert_pyramid")).build(),
                 LootItemRandomChanceCondition.randomChance(0.1f).build()
         }, ModItems.CHARRED_BONE.get()));
+
+        add("essential_shard_from_suspicious_sand", new AddSusSandItemModifier(new LootItemCondition[] {
+                new LootTableIdCondition.Builder(new ResourceLocation("archaeology/desert_pyramid")).build(),
+                LootItemRandomChanceCondition.randomChance(0.1f).build()
+        }, ModItems.ESSENTIAL_SHARD.get()));
     }
 }

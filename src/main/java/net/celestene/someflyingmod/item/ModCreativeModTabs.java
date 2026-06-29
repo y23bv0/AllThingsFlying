@@ -58,7 +58,11 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.METAL_DETECTOR.get());
                                 pOutput.accept(ModBlocks.SOUND_BLOCK.get());
 
+                                // Food-related
                                 pOutput.accept(ModItems.CONDENSED_HONEY.get());
+                                pOutput.accept(ModItems.STRAWBERRY.get());
+                                pOutput.accept(ModItems.TUTORIAL_SEEDS.get());
+
                                 pOutput.accept(ModItems.CHARRED_BONE.get());
                             })
                             .build());

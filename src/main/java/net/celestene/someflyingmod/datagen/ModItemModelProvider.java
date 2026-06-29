@@ -51,6 +51,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.METAL_DETECTOR);
         simpleItem(ModItems.PRIMA);
         simpleItem(ModItems.ESSENCE_SHARD);
+        simpleItem(ModItems.TUTORIAL_SEEDS);
+        simpleItem(ModItems.STRAWBERRY);
 
         simpleItem(ModItems.SILK);
         handheldItem(ModItems.SILK_PICKAXE);

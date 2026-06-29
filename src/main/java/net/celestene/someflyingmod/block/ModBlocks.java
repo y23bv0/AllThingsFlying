@@ -2,6 +2,7 @@ package net.celestene.someflyingmod.block;
 
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.block.custom.SoundBlock;
+import net.celestene.someflyingmod.block.custom.StrawberryCropBlock;
 import net.celestene.someflyingmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -69,6 +70,11 @@ public class ModBlocks {
             () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)
                     .noOcclusion(),
                     BlockSetType.IRON));
+
+    // Crops
+
+    public static final RegistryObject<Block> TUTORIAL_CROP = BLOCKS.register("tutorial_crop",
+            () -> new StrawberryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

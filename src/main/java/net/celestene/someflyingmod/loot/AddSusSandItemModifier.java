@@ -15,10 +15,10 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
 
-public class AddItemModifier extends LootModifier {
-    public static final Supplier<Codec<AddItemModifier>> CODEC = Suppliers.memoize(()
+public class AddSusSandItemModifier extends LootModifier {
+    public static final Supplier<Codec<AddSusSandItemModifier>> CODEC = Suppliers.memoize(()
             -> RecordCodecBuilder.create(inst -> codecStart(inst).and(ForgeRegistries.ITEMS.getCodec()
-            .fieldOf("item").forGetter(m -> m.item)).apply(inst, AddItemModifier::new)));
+            .fieldOf("item").forGetter(m -> m.item)).apply(inst, AddSusSandItemModifier::new)));
     private final Item item;
 
     /**
@@ -26,7 +26,7 @@ public class AddItemModifier extends LootModifier {
      *
      * @param conditionsIn the ILootConditions that need to be matched before the loot is modified.
      */
-    public AddItemModifier(LootItemCondition[] conditionsIn, Item item) {
+    public AddSusSandItemModifier(LootItemCondition[] conditionsIn, Item item) {
         super(conditionsIn);
         this.item = item;
     }
@@ -39,7 +39,10 @@ public class AddItemModifier extends LootModifier {
             }
         }
 
-        generatedLoot.add(new ItemStack(this.item));
+        if(context.getRandom().nextFloat() < 0.1f) {
+            generatedLoot.clear();
+            generatedLoot.add(new ItemStack(this.item));
+        }
 
         // For suspicious sand, only the first item in the generatedLoot set of stacks spawns,
         // meaning just adding a new item won't work!

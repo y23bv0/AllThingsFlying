@@ -1,10 +1,12 @@
 package net.celestene.someflyingmod.item;
 
 import net.celestene.someflyingmod.FlyingMod;
+import net.celestene.someflyingmod.block.ModBlocks;
 import net.celestene.someflyingmod.item.custom.MetalDetectorItem;
 import net.celestene.someflyingmod.item.custom.ModArmorItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.level.block.ChestBlock;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -27,8 +29,18 @@ public class ModItems {
 
     public static final RegistryObject<Item> METAL_DETECTOR = ITEMS.register("metal_detector",
             () -> new MetalDetectorItem(new Item.Properties().durability(100)));
+
+    // Food-related
+
     public static final RegistryObject<Item> CONDENSED_HONEY = ITEMS.register("condensed_honey",
             () -> new Item(new Item.Properties().food(ModFoods.CONDENSED_HONEY)));
+    public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry",
+            () -> new Item(new Item.Properties().food(ModFoods.CONDENSED_HONEY)));
+    public static final RegistryObject<Item> TUTORIAL_SEEDS = ITEMS.register("tutorial_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.TUTORIAL_CROP.get(), new Item.Properties()));
+
+    //
+
     public static final RegistryObject<Item> CHARRED_BONE = ITEMS.register("charred_bone",
             () -> new FuelItem(new Item.Properties(), 400));
 
