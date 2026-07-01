@@ -33,16 +33,16 @@ public class ModItems {
     // Food-related
 
     public static final RegistryObject<Item> CONDENSED_HONEY = ITEMS.register("condensed_honey",
-            () -> new Item(new Item.Properties().food(ModFoods.CONDENSED_HONEY)));
+            () -> new Item(new Item.Properties().food(ModFoods.CONDENSED_HONEY).stacksTo(16)));
     public static final RegistryObject<Item> STRAWBERRY = ITEMS.register("strawberry",
-            () -> new Item(new Item.Properties().food(ModFoods.CONDENSED_HONEY)));
+            () -> new Item(new Item.Properties().food(ModFoods.BASIC_FOOD).stacksTo(56)));
     public static final RegistryObject<Item> TUTORIAL_SEEDS = ITEMS.register("tutorial_seeds",
             () -> new ItemNameBlockItem(ModBlocks.TUTORIAL_CROP.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> CORN_SEEDS = ITEMS.register("corn_seeds",
             () -> new ItemNameBlockItem(ModBlocks.CORN_CROP.get(), new Item.Properties()));
     public static final RegistryObject<Item> CORN = ITEMS.register("corn",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().food(ModFoods.CORN).stacksTo(24)));
 
     //
 
