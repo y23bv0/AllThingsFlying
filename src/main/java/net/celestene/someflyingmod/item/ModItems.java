@@ -39,6 +39,11 @@ public class ModItems {
     public static final RegistryObject<Item> TUTORIAL_SEEDS = ITEMS.register("tutorial_seeds",
             () -> new ItemNameBlockItem(ModBlocks.TUTORIAL_CROP.get(), new Item.Properties()));
 
+    public static final RegistryObject<Item> CORN_SEEDS = ITEMS.register("corn_seeds",
+            () -> new ItemNameBlockItem(ModBlocks.CORN_CROP.get(), new Item.Properties()));
+    public static final RegistryObject<Item> CORN = ITEMS.register("corn",
+            () -> new Item(new Item.Properties()));
+
     //
 
     public static final RegistryObject<Item> CHARRED_BONE = ITEMS.register("charred_bone",

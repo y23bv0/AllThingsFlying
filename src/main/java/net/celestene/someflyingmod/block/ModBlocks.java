@@ -1,6 +1,7 @@
 package net.celestene.someflyingmod.block;
 
 import net.celestene.someflyingmod.FlyingMod;
+import net.celestene.someflyingmod.block.custom.CornCropBlock;
 import net.celestene.someflyingmod.block.custom.SoundBlock;
 import net.celestene.someflyingmod.block.custom.StrawberryCropBlock;
 import net.celestene.someflyingmod.item.ModItems;
@@ -24,7 +25,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> FLYING_ESSENCE = registerBlock("flying_essence",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)
                     .sound(SoundType.AMETHYST)));
-
     public static final RegistryObject<Block> FLIGHTLESS_POWDER = registerBlock("flightless_powder",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRAVEL).sound(SoundType.SAND)));
 
@@ -38,10 +38,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> ESSENCE_ORE = registerBlock("essence_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1f),
                     UniformInt.of(3,6)));
-
     public static final RegistryObject<Block> SOUND_BLOCK = registerBlock("sound_block",
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
-
     public static final RegistryObject<Block> REFINED_ESSENCE = registerBlock("refined_essence_block",
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)));
 
@@ -49,14 +47,11 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> FANCY_BLOCK = registerBlock("fancy_block",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)));
-
     public static final RegistryObject<Block> FANCY_STAIRS = registerBlock("fancy_stairs",
             () -> new StairBlock(() -> ModBlocks.FANCY_BLOCK.get().defaultBlockState(),
                     BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)));
-
     public static final RegistryObject<Block> FANCY_SLAB = registerBlock("fancy_slab",
             () -> new SlabBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)));
-
     public static final RegistryObject<Block> FANCY_DOOR = registerBlock("fancy_door",
             () -> new DoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)
                     .noOcclusion(),
@@ -65,7 +60,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> FANCY_BUTTON = registerBlock("fancy_button",
             () -> new ButtonBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER),
                     BlockSetType.IRON, 10, true));
-
     public static final RegistryObject<Block> FANCY_TRAPDOOR = registerBlock("fancy_trapdoor",
             () -> new TrapDoorBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.AMETHYST_CLUSTER)
                     .noOcclusion(),
@@ -75,6 +69,10 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> TUTORIAL_CROP = BLOCKS.register("tutorial_crop",
             () -> new StrawberryCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
+    public static final RegistryObject<Block> CORN_CROP = BLOCKS.register("corn_crop",
+            () -> new CornCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT).noOcclusion().noCollission()));
+
+    // OTHER:
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

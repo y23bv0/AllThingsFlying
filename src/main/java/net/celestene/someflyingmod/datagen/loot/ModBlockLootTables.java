@@ -1,6 +1,7 @@
 package net.celestene.someflyingmod.datagen.loot;
 
 import net.celestene.someflyingmod.block.ModBlocks;
+import net.celestene.someflyingmod.block.custom.CornCropBlock;
 import net.celestene.someflyingmod.block.custom.StrawberryCropBlock;
 import net.celestene.someflyingmod.item.ModItems;
 import net.minecraft.advancements.critereon.StatePropertiesPredicate;
@@ -54,6 +55,20 @@ public class ModBlockLootTables extends BlockLootSubProvider {
 
         this.add(ModBlocks.TUTORIAL_CROP.get(), createCropDrops(ModBlocks.TUTORIAL_CROP.get(), ModItems.STRAWBERRY.get(),
                 ModItems.TUTORIAL_SEEDS.get(), lootitemcondition$builder));
+
+//        LootItemCondition.Builder lootitemcondition$builder2 = LootItemBlockStatePropertyCondition
+//                .hasBlockStateProperties(ModBlocks.CORN_CROP.get())
+//                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CornCropBlock.AGE, 7))
+//                .or(LootItemBlockStatePropertyCondition
+//                        .hasBlockStateProperties(ModBlocks.CORN_CROP.get())
+//                        .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CornCropBlock.AGE, 8)));
+
+         LootItemCondition.Builder lootitemcondition$builder2 = LootItemBlockStatePropertyCondition
+                 .hasBlockStateProperties(ModBlocks.CORN_CROP.get())
+                 .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CornCropBlock.AGE, 8));
+
+        this.add(ModBlocks.CORN_CROP.get(), createCropDrops(ModBlocks.CORN_CROP.get(), ModItems.CORN.get(),
+                ModItems.CORN_SEEDS.get(), lootitemcondition$builder2));
     }
 
 

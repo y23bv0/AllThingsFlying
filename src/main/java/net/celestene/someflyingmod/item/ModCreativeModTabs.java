@@ -62,6 +62,8 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.CONDENSED_HONEY.get());
                                 pOutput.accept(ModItems.STRAWBERRY.get());
                                 pOutput.accept(ModItems.TUTORIAL_SEEDS.get());
+                                pOutput.accept(ModItems.CORN_SEEDS.get());
+                                pOutput.accept(ModItems.CORN.get());
 
                                 pOutput.accept(ModItems.CHARRED_BONE.get());
                             })

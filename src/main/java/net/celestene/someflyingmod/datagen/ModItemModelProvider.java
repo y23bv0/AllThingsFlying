@@ -53,6 +53,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ESSENCE_SHARD);
         simpleItem(ModItems.TUTORIAL_SEEDS);
         simpleItem(ModItems.STRAWBERRY);
+        simpleItem(ModItems.CORN_SEEDS);
+        simpleItem(ModItems.CORN);
 
         simpleItem(ModItems.SILK);
         handheldItem(ModItems.SILK_PICKAXE);
