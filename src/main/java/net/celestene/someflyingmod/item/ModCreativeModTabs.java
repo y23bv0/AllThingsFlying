@@ -66,6 +66,9 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.CORN.get());
 
                                 pOutput.accept(ModItems.CHARRED_BONE.get());
+
+                                // Floral Entries
+                                pOutput.accept(ModBlocks.CATMINT.get());
                             })
                             .build());
 

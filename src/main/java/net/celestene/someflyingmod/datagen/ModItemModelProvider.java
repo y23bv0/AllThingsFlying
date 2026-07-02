@@ -56,6 +56,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.CORN_SEEDS);
         simpleItem(ModItems.CORN);
 
+        simpleBlockItemBlockTexture(ModBlocks.CATMINT);
+
         simpleItem(ModItems.SILK);
         handheldItem(ModItems.SILK_PICKAXE);
 
@@ -81,7 +83,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ENDER_R_SHARD);
     }
 
-    /* The following seven methods are provided by Kaupenjoe because forge does not include
+    /* Some of the methods are provided by Kaupenjoe because forge does not include
     *  these methods by default:
     * */
 
@@ -123,6 +125,12 @@ public class ModItemModelProvider extends ItemModelProvider {
         return withExistingParent(item.getId().getPath(),
                 new ResourceLocation("item/generated")).texture("layer0",
                 new ResourceLocation(FlyingMod.MODID,"item/" + item.getId().getPath()));
+    }
+
+    private ItemModelBuilder simpleBlockItemBlockTexture(RegistryObject<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(FlyingMod.MODID,"block/" + item.getId().getPath()));
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
