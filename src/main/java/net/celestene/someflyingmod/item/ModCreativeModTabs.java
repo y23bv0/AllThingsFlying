@@ -69,6 +69,8 @@ public class ModCreativeModTabs {
 
                                 // Floral Entries
                                 pOutput.accept(ModBlocks.CATMINT.get());
+
+                                pOutput.accept(ModItems.AMETHYST_COMPASS.get());
                             })
                             .build());
 

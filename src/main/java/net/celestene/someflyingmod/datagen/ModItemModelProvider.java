@@ -81,7 +81,31 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ESSENTIAL_R_SHARD);
         simpleItem(ModItems.POSEIDONS_R_SHARD);
         simpleItem(ModItems.ENDER_R_SHARD);
+
+        addCompassVariants(ModItems.AMETHYST_COMPASS);
     }
+
+    private void addCompassVariants(RegistryObject<Item> item){
+        for (int i = 0; i <= 31; i++){
+            String num_representation = i < 10 ? "0" + i : "" + i;
+            addCompassFace(item, num_representation);
+        }
+    }
+
+    private ItemModelBuilder addCompassFace(RegistryObject<Item> item, String num) {
+        return withExistingParent(item.getId().getPath() + "_" + num,
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(FlyingMod.MODID,"item/" + item.getId().getPath() + "_" + num));
+    }
+
+    // the "main" custom compass json was added manually, maybe in the future i will figure out
+    // how to make it work in datagen using overrides
+
+
+//    private ItemModelBuilder.OverrideBuilder compassOverrides(){
+//        ItemModelBuilder.OverrideBuilder compassEntries =
+//                new ItemModelBuilder.OverrideBuilder();
+//    }
 
     /* Some of the methods are provided by Kaupenjoe because forge does not include
     *  these methods by default:

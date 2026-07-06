@@ -2,13 +2,13 @@ package net.celestene.someflyingmod.item;
 
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.block.ModBlocks;
+import net.celestene.someflyingmod.item.custom.CompassItem;
 import net.celestene.someflyingmod.item.custom.MetalDetectorItem;
 import net.celestene.someflyingmod.item.custom.ModArmorItem;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
 import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.level.block.ChestBlock;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -89,6 +89,10 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> ENDER_R_SHARD = ITEMS.register("ender_r_shard",
             () -> new Item(new Item.Properties()));
+
+    // CUSTOM COMPASS TEST
+    public static final RegistryObject<Item> AMETHYST_COMPASS = ITEMS.register("amethyst_compass",
+            () -> new CompassItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
