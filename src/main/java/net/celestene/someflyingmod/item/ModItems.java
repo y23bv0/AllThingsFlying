@@ -93,6 +93,10 @@ public class ModItems {
     // CUSTOM COMPASS TEST
     public static final RegistryObject<Item> AMETHYST_COMPASS = ITEMS.register("amethyst_compass",
             () -> new CompassItem(new Item.Properties()));
+    public static final RegistryObject<Item> ALCHEMY_BOOK = ITEMS.register("alchemy_book",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FIRE_SPIRIT = ITEMS.register("fire_spirit",
+            () -> new FuelItem(new Item.Properties(), 200));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -71,6 +71,8 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModBlocks.CATMINT.get());
 
                                 pOutput.accept(ModItems.AMETHYST_COMPASS.get());
+                                pOutput.accept(ModItems.ALCHEMY_BOOK.get());
+                                pOutput.accept(ModItems.FIRE_SPIRIT.get());
                             })
                             .build());
 

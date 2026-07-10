@@ -83,6 +83,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.ENDER_R_SHARD);
 
         addCompassVariants(ModItems.AMETHYST_COMPASS);
+        simpleItem(ModItems.ALCHEMY_BOOK);
+        simpleItem(ModItems.FIRE_SPIRIT);
     }
 
     private void addCompassVariants(RegistryObject<Item> item){
