@@ -6,6 +6,7 @@ import net.celestene.someflyingmod.item.ModCreativeModTabs;
 import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.loot.ModLootModifiers;
 import net.celestene.someflyingmod.util.ModItemProperties;
+import net.celestene.someflyingmod.villager.ModVillagers;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -47,6 +48,7 @@ public class FlyingMod
         // Register the item to a creative tab
         modEventBus.addListener(this::addCreative);
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
+        ModVillagers.register(modEventBus);
 
     }
 

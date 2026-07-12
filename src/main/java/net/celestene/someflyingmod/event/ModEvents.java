@@ -3,6 +3,7 @@ package net.celestene.someflyingmod.event;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.item.ModItems;
+import net.celestene.someflyingmod.villager.ModVillagers;
 import net.minecraft.world.entity.npc.VillagerData;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -87,6 +88,18 @@ public class ModEvents {
                     new ItemStack(Items.BONE_BLOCK, 4),
                     new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
                     new ItemStack(ModItems.CHARRED_BONE.get(), 29),
+                    12, 10, 0.02f));
+
+        }
+
+        if(event.getType() == ModVillagers.ALCHEMIST.get()){
+            Int2ObjectMap<List<VillagerTrades.ItemListing>> trades = event.getTrades();
+            // ItemStack enchantedBook = EnchantedBookItem.createForEnchantment(new EnchantmentInstance(Enchantments.THORNS,2 ));
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemStack(ModItems.ALCHEMY_BOOK.get(), 1),
+                    new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
+                    new ItemStack(ModItems.AMETHYST_COMPASS.get(), 1),
                     12, 10, 0.02f));
 
         }
