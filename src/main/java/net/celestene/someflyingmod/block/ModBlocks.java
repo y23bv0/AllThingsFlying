@@ -1,6 +1,7 @@
 package net.celestene.someflyingmod.block;
 
 import net.celestene.someflyingmod.FlyingMod;
+import net.celestene.someflyingmod.block.custom.BenchBlock;
 import net.celestene.someflyingmod.block.custom.CornCropBlock;
 import net.celestene.someflyingmod.block.custom.SoundBlock;
 import net.celestene.someflyingmod.block.custom.StrawberryCropBlock;
@@ -83,6 +84,11 @@ public class ModBlocks {
             BlockBehaviour.Properties.copy(Blocks.POTTED_ALLIUM).noOcclusion()));
     // using BLOCKS.register instead of registerBlock prevents an item of potted form from generated which makes
     // sense bc an item of potted form doesn't make sense
+
+    // Alchemy
+
+    public static final RegistryObject<Block> ALCHEMIST_BENCH = registerBlock("alchemist_bench",
+            () -> new BenchBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).noOcclusion()));
 
     // OTHER:
 

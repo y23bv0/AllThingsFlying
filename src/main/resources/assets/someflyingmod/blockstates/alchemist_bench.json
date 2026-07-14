@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "someflyingmod:block/alchemist_bench"
+    },
+    "facing=south": {
+      "model": "someflyingmod:block/alchemist_bench",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "someflyingmod:block/alchemist_bench",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "someflyingmod:block/alchemist_bench",
+      "y": 270
+    }
+  }
+}

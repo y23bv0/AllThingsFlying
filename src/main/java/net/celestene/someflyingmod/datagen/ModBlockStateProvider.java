@@ -2,6 +2,7 @@ package net.celestene.someflyingmod.datagen;
 
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.block.ModBlocks;
+import net.celestene.someflyingmod.block.custom.BenchBlock;
 import net.celestene.someflyingmod.block.custom.CornCropBlock;
 import net.celestene.someflyingmod.block.custom.StrawberryCropBlock;
 import net.minecraft.data.PackOutput;
@@ -10,6 +11,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
+import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -52,7 +54,23 @@ public class ModBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(ModBlocks.POTTED_CATMINT.get(), models().singleTexture("potted_catmint",
                 new ResourceLocation("flower_pot_cross"), "plant",
                 blockTexture(ModBlocks.CATMINT.get())).renderType("cutout"));
+
+//        simpleBlockWithItem(ModBlocks.ALCHEMIST_BENCH.get(), models().withExistingParent("alchemist_bench",
+//                        new ResourceLocation(FlyingMod.MODID + "assets/models/block/alchemist_bench")));
+
     }
+
+//    public void customBlockModel(Block block, String name, boolean isBench) throws Exception {
+//        if(isBench){
+//            var model = models().getBuilder(name).parent(new ModelFile.UncheckedModelFile())
+//                    .renderType("cutout");
+//        } else {
+//            throw new Exception("Method is not implemented for non-bench blocks!");
+//        }
+//
+//        // getBuilder makes a new model builder
+//
+//    }
 
     public void makeStrawberryCrop(CropBlock block, String modelName, String textureName) {
         Function<BlockState, ConfiguredModel[]> function = state -> strawberryStates(state, block, modelName, textureName);
