@@ -125,10 +125,13 @@ public class ModEvents {
         List<VillagerTrades.ItemListing> genericTrades = event.getGenericTrades();
         List<VillagerTrades.ItemListing> rareTrades = event.getRareTrades();
 
-        ItemStack ENCHANTED_EMERALD_TWO = new ItemStack(Items.EMERALD, 2);
-        ENCHANTED_EMERALD_TWO.enchant(Enchantments.POWER_ARROWS, 2);
 
         for(int i = 0; i < 5; i++){
+            ItemStack ENCHANTED_EMERALD_TWO = new ItemStack(Items.EMERALD, 2);
+            ENCHANTED_EMERALD_TWO.enchant(Enchantments.POWER_ARROWS, 2);
+            ENCHANTED_EMERALD_TWO.setHoverName(Component.translatable("item.someflyingmod.enchanted_emerald")
+                    .withStyle(ChatFormatting.LIGHT_PURPLE));
+
             genericTrades.add((pTrader, pRandom) -> new MerchantOffer(
                     ENCHANTED_EMERALD_TWO,
                     new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
@@ -141,6 +144,11 @@ public class ModEvents {
                     new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
                     new ItemStack(ModItems.FLIGHTLESS_DUST.get(), 2),
                     8, 10, 0.2f));
+
+            ItemStack ENCHANTED_EMERALD_TWO = new ItemStack(Items.EMERALD, 2);
+            ENCHANTED_EMERALD_TWO.enchant(Enchantments.POWER_ARROWS, 2);
+            ENCHANTED_EMERALD_TWO.setHoverName(Component.translatable("item.someflyingmod.enchanted_emerald")
+                    .withStyle(ChatFormatting.LIGHT_PURPLE));
 
             rareTrades.add((pTrader, pRandom) -> new MerchantOffer(
                     ENCHANTED_EMERALD_TWO,

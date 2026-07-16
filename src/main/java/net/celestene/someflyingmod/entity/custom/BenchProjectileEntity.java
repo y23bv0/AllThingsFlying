@@ -34,11 +34,17 @@ public class BenchProjectileEntity extends ThrowableItemProjectile {
 
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
-        super.onHitEntity(pResult);
-        Entity entity = pResult.getEntity();
-        Level level = entity.level();
-        DamageSource benchHit = level.damageSources().anvil(entity);
-        pResult.getEntity().hurt(benchHit, 12);
+        if(!this.level().isClientSide()){
+            super.onHitEntity(pResult);
+            Entity entity = pResult.getEntity();
+            Level level = entity.level();
+            DamageSource benchHit = level.damageSources().anvil(entity);
+            pResult.getEntity().hurt(benchHit, 12);
+            this.level().setBlock(blockPosition(),
+                    ((BenchBlock) ModBlocks.ALCHEMIST_BENCH.get()).defaultBlockState(), 3);
+            this.discard();
+        }
+
     }
 
     // entity.hurt()
