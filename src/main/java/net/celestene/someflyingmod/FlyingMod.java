@@ -2,11 +2,14 @@ package net.celestene.someflyingmod;
 
 import com.mojang.logging.LogUtils;
 import net.celestene.someflyingmod.block.ModBlocks;
+import net.celestene.someflyingmod.entity.ModEntities;
 import net.celestene.someflyingmod.item.ModCreativeModTabs;
 import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.loot.ModLootModifiers;
 import net.celestene.someflyingmod.util.ModItemProperties;
 import net.celestene.someflyingmod.villager.ModVillagers;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.FlowerPotBlock;
@@ -50,6 +53,8 @@ public class FlyingMod
         // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
         ModVillagers.register(modEventBus);
 
+        ModEntities.register(modEventBus);
+
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -81,6 +86,7 @@ public class FlyingMod
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             ModItemProperties.addCustomItemProperties();
+            EntityRenderers.register(ModEntities.BENCH_PROJECTILE.get(), ThrownItemRenderer::new);
         }
     }
 }

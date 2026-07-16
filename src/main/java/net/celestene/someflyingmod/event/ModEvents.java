@@ -2,14 +2,19 @@ package net.celestene.someflyingmod.event;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.celestene.someflyingmod.FlyingMod;
+import net.celestene.someflyingmod.block.ModBlocks;
 import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.villager.ModVillagers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerData;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -22,6 +27,8 @@ import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AnvilUpdateEvent;
+import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
@@ -121,20 +128,29 @@ public class ModEvents {
         ItemStack ENCHANTED_EMERALD_TWO = new ItemStack(Items.EMERALD, 2);
         ENCHANTED_EMERALD_TWO.enchant(Enchantments.POWER_ARROWS, 2);
 
-        genericTrades.add((pTrader, pRandom) -> new MerchantOffer(
-                ENCHANTED_EMERALD_TWO,
-                new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
-                1, 10, 0.2f)
-        ); // NOTE!! once you figure it out, make sure to require not an emerald,
-           // but an enchanted emerald (literally an emerald enchanted w/anything)
+        for(int i = 0; i < 5; i++){
+            genericTrades.add((pTrader, pRandom) -> new MerchantOffer(
+                    ENCHANTED_EMERALD_TWO,
+                    new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
+                    1, 10, 0.2f));
+        }
 
-        rareTrades.add((pTrader, pRandom) -> new MerchantOffer(
-                new ItemStack(Items.GLOWSTONE_DUST, 3),
-                new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
-                new ItemStack(ModItems.FLIGHTLESS_DUST.get(), 2),
-                8, 10, 0.2f));
+        for(int i = 0; i < 3; i++){
+            rareTrades.add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemStack(Items.GLOWSTONE_DUST, 3),
+                    new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
+                    new ItemStack(ModItems.FLIGHTLESS_DUST.get(), 2),
+                    8, 10, 0.2f));
+
+            rareTrades.add((pTrader, pRandom) -> new MerchantOffer(
+                    ENCHANTED_EMERALD_TWO,
+                    new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
+                    1, 10, 0.2f));
+        }
+
     }
 
+    @SubscribeEvent
     public static void addEmeraldEnchant(AnvilUpdateEvent event){
         ItemStack left_item = event.getLeft();
         ItemStack right_item = event.getRight();
@@ -171,4 +187,24 @@ public class ModEvents {
 
         }
     }
+
+    @SubscribeEvent
+    public static void onPlayerTick(TickEvent.PlayerTickEvent event){
+
+        Player player_a = event.player;
+        ItemStack searchItem = new ItemStack(ModItems.ALCHEMIST_BENCH_ITEM.get());
+        int bench_count = 0;
+
+        for (ItemStack stack : player_a.getInventory().items){
+            if(stack.is(searchItem.getItem())){bench_count++;}
+        }
+
+        if(player_a.getOffhandItem().is(searchItem.getItem())){
+            bench_count++;
+        }
+
+        if(bench_count > 0){player_a.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 1 + bench_count, true, true, false));}
+    }
+
+
 }
