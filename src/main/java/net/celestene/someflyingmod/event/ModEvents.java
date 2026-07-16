@@ -4,6 +4,9 @@ import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.villager.ModVillagers;
+import net.minecraft.ChatFormatting;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.npc.VillagerData;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -11,11 +14,14 @@ import net.minecraft.world.item.EnchantedBookItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
@@ -23,6 +29,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
+import java.util.Map;
 
 // YOU MUST ADD THE MOD EVENT BUS SUBSCRIBER FOR THIS METHOD!!
 
@@ -111,8 +118,11 @@ public class ModEvents {
         List<VillagerTrades.ItemListing> genericTrades = event.getGenericTrades();
         List<VillagerTrades.ItemListing> rareTrades = event.getRareTrades();
 
+        ItemStack ENCHANTED_EMERALD_TWO = new ItemStack(Items.EMERALD, 2);
+        ENCHANTED_EMERALD_TWO.enchant(Enchantments.POWER_ARROWS, 2);
+
         genericTrades.add((pTrader, pRandom) -> new MerchantOffer(
-                new ItemStack(Items.EMERALD, 2),
+                ENCHANTED_EMERALD_TWO,
                 new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
                 1, 10, 0.2f)
         ); // NOTE!! once you figure it out, make sure to require not an emerald,
@@ -123,5 +133,42 @@ public class ModEvents {
                 new ItemStack(ModItems.FIRE_SPIRIT.get(), 1),
                 new ItemStack(ModItems.FLIGHTLESS_DUST.get(), 2),
                 8, 10, 0.2f));
+    }
+
+    public static void addEmeraldEnchant(AnvilUpdateEvent event){
+        ItemStack left_item = event.getLeft();
+        ItemStack right_item = event.getRight();
+        ItemStack output = new ItemStack(Items.EMERALD);
+
+        if(left_item.getItem() == Items.EMERALD && right_item.getItem() == Items.ENCHANTED_BOOK){
+
+            Map<Enchantment, Integer> applicableEnchants = EnchantmentHelper.getEnchantments(right_item);
+            if(!applicableEnchants.isEmpty())
+            {
+                EnchantmentHelper.setEnchantments(applicableEnchants, output);
+                output.setHoverName(Component.translatable("item.someflyingmod.enchanted_emerald")
+                        .withStyle(ChatFormatting.LIGHT_PURPLE));
+                event.setOutput(output);
+                event.setCost(10);
+                event.setMaterialCost(1);
+
+            }
+
+
+        } else if (right_item.getItem() == Items.EMERALD && left_item.getItem() == Items.ENCHANTED_BOOK){
+
+            Map<Enchantment, Integer> applicableEnchants = EnchantmentHelper.getEnchantments(left_item);
+            if(!applicableEnchants.isEmpty())
+            {
+                EnchantmentHelper.setEnchantments(applicableEnchants, output);
+                output.setHoverName(Component.translatable("item.someflyingmod.enchanted_emerald")
+                        .withStyle(ChatFormatting.LIGHT_PURPLE));
+                event.setOutput(output);
+                event.setCost(10);
+                event.setMaterialCost(1);
+
+            }
+
+        }
     }
 }
