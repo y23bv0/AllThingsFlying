@@ -2,10 +2,8 @@ package net.celestene.someflyingmod.item;
 
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.block.ModBlocks;
-import net.celestene.someflyingmod.item.custom.BenchItem;
+import net.celestene.someflyingmod.item.custom.*;
 import net.celestene.someflyingmod.item.custom.CompassItem;
-import net.celestene.someflyingmod.item.custom.MetalDetectorItem;
-import net.celestene.someflyingmod.item.custom.ModArmorItem;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -100,6 +98,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> ALCHEMIST_BENCH_ITEM = ITEMS.register("alchemist_bench_item",
             () -> new BenchItem(ModBlocks.ALCHEMIST_BENCH.get(), new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> DOMAIN_HAMMER = ITEMS.register("domain_hammer",
+            () -> new FunctionItem(new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

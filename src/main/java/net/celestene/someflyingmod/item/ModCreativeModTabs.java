@@ -74,6 +74,7 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.ALCHEMY_BOOK.get());
                                 pOutput.accept(ModItems.FIRE_SPIRIT.get());
                                 pOutput.accept(ModBlocks.ALCHEMIST_BENCH.get());
+                                pOutput.accept(ModItems.DOMAIN_HAMMER.get());
                             })
                             .build());
 

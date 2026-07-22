@@ -3,6 +3,7 @@ package net.celestene.someflyingmod.event;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.block.ModBlocks;
+import net.celestene.someflyingmod.effect.FlightStunEffect;
 import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.villager.ModVillagers;
 import net.minecraft.ChatFormatting;
@@ -28,6 +29,7 @@ import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.living.MobEffectEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
@@ -214,5 +216,24 @@ public class ModEvents {
         if(bench_count > 0){player_a.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 1 + bench_count, true, true, false));}
     }
 
+//    public static void onStunApply(MobEffectEvent.Added event){
+//
+//        if (event.getEffectInstance().getEffect() instanceof FlightStunEffect){
+//            if (event.getEffectSource() instanceof Player pPlayer){
+//                double yCoord = pPlayer.getY();
+//            }
+//        }
+//
+//    }
+
+    public static void onStunEnd(MobEffectEvent.Remove event){
+
+        if (event.getEffectInstance().getEffect() instanceof FlightStunEffect){
+            if (event.living() instanceof Player pPlayer){
+                double yCoord = pPlayer.getY();
+            }
+        }
+
+    }
 
 }

@@ -45,6 +45,8 @@
   "entity.minecraft.villager.someflyingmod.alchemist": "The Alchemist",
   "block.someflyingmod.alchemist_bench": "Alchemist's Bench",
   "item.someflyingmod.enchanted_emerald": "Enchanted Emerald",
+  "item.someflyingmod.domain_hammer": "Domain Hammer",
+  "effect.someflyingmod.flight_stun": "Flight Stun",
 
   "creativetab.tutorial_tab": "All Things Flying",
 

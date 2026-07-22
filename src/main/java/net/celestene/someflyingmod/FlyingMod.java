@@ -2,6 +2,7 @@ package net.celestene.someflyingmod;
 
 import com.mojang.logging.LogUtils;
 import net.celestene.someflyingmod.block.ModBlocks;
+import net.celestene.someflyingmod.effect.ModEffects;
 import net.celestene.someflyingmod.entity.ModEntities;
 import net.celestene.someflyingmod.item.ModCreativeModTabs;
 import net.celestene.someflyingmod.item.ModItems;
@@ -54,6 +55,7 @@ public class FlyingMod
         ModVillagers.register(modEventBus);
 
         ModEntities.register(modEventBus);
+        ModEffects.register(modEventBus);
 
     }
 
