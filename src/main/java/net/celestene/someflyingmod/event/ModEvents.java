@@ -25,6 +25,7 @@ import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.trading.MerchantOffer;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AnvilUpdateEvent;
@@ -201,39 +202,25 @@ public class ModEvents {
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event){
 
+        // Alchemist Bench Slowness
         Player player_a = event.player;
         ItemStack searchItem = new ItemStack(ModItems.ALCHEMIST_BENCH_ITEM.get());
         int bench_count = 0;
-
         for (ItemStack stack : player_a.getInventory().items){
             if(stack.is(searchItem.getItem())){bench_count++;}
         }
-
         if(player_a.getOffhandItem().is(searchItem.getItem())){
             bench_count++;
         }
-
         if(bench_count > 0){player_a.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 1 + bench_count, true, true, false));}
-    }
 
-//    public static void onStunApply(MobEffectEvent.Added event){
-//
-//        if (event.getEffectInstance().getEffect() instanceof FlightStunEffect){
-//            if (event.getEffectSource() instanceof Player pPlayer){
-//                double yCoord = pPlayer.getY();
+//        // Using hammer while sneaking
+//        if(event.player.isCrouching() && event.player.isHolding(ModItems.DOMAIN_HAMMER.get())){
+//            Level level = event.player.level();
+//            if(!level.isClientSide()){
+//                level.
 //            }
 //        }
-//
-//    }
-
-    public static void onStunEnd(MobEffectEvent.Remove event){
-
-        if (event.getEffectInstance().getEffect() instanceof FlightStunEffect){
-            if (event.living() instanceof Player pPlayer){
-                double yCoord = pPlayer.getY();
-            }
-        }
-
     }
 
 }

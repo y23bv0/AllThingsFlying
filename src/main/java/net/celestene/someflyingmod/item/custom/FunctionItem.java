@@ -5,6 +5,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -16,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 
@@ -28,20 +30,10 @@ public class FunctionItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+
         pLevel.playSound((Player)null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.ANVIL_FALL, SoundSource.PLAYERS, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
 
-//        ItemStack impendingEffectofDoom = new ItemStack(Items.LINGERING_POTION);
-//        MobEffectInstance levitation = new MobEffectInstance(MobEffects.LEVITATION, 4, 10);
-//        PotionUtils.setCustomEffects(impendingEffectofDoom, List.of(levitation));
-
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
-//        if (!pLevel.isClientSide) {
-//            ThrownPotion thrownpotion = new ThrownPotion(pLevel, pPlayer);
-//            thrownpotion.setItem(impendingEffectofDoom);
-//            thrownpotion.shoot(0.0D, -1.0D, 0.0D, 4F, 0.3F);
-//            pLevel.addFreshEntity(thrownpotion);
-//        }
-
         pPlayer.awardStat(Stats.ITEM_USED.get(this));
 
         if(!pLevel.isClientSide()){
@@ -50,16 +42,22 @@ public class FunctionItem extends Item {
             List<Entity> targetEntities = pLevel.getEntities(pPlayer, impactBounds);
             for (Entity entity : targetEntities){
                 if (entity instanceof LivingEntity livingEntity) {
+                    double targetY = livingEntity.getY();
+
+                    if (livingEntity.getY() < pPlayer.getY() + 4){
+                        targetY = livingEntity.getY() + 4;
+                    }
+
+                    livingEntity.getPersistentData().putDouble("someflyingmod.target_y", targetY);
+                    // livingEntity.getPersistentData().putUUID("someflyingmod.attacker_uuid", pPlayer.getUUID());
+                    livingEntity.addEffect(new MobEffectInstance(ModEffects.FLIGHT_STUN_EFFECT.get(), 100, 1, false, false, true));
                     livingEntity.hurt(pLevel.damageSources().playerAttack(pPlayer), 6.0F);
                 }
             }
-
-            pPlayer.addTag("someflyingmod.attribute.Y: " + (pPlayer.getY()));
-            pPlayer.addEffect(new MobEffectInstance(ModEffects.FLIGHT_STUN_EFFECT.get(), 100, 1, false, false, true));
+            pPlayer.getCooldowns().addCooldown(this, 180);
         }
 
         return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());
     }
-
 
 }
