@@ -49,6 +49,8 @@
   "effect.someflyingmod.flight_stun": "Flight Stun",
 
   "creativetab.tutorial_tab": "All Things Flying",
+  "hotbarmessage_split_1.someflyingmod.hammer_cooldown": "Your Hammer is on ",
+  "hotbarmessage_split_2.someflyingmod.hammer_cooldown": " second cooldown!",
 
   "tooltip.someflyingmod.metal_detector.tooltip": "Woah, there's metal under me!",
   "tooltip.someflyingmod.sound_block.tooltip": "Makes an interesting sound when you click it! Try it out?",

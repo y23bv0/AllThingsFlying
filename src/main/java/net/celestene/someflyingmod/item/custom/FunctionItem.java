@@ -26,13 +26,15 @@ public class FunctionItem extends Item {
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
+        CompoundTag nbt = itemstack.getOrCreateTag();
 
         // Normal Item Use
         if (!pPlayer.isCrouching()){
-            pLevel.playSound((Player)null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.ANVIL_FALL, SoundSource.PLAYERS, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
-            pPlayer.awardStat(Stats.ITEM_USED.get(this));
 
-            if(!pLevel.isClientSide()){
+            if(!pLevel.isClientSide() && nbt.contains("HammerActivated") && nbt.getBoolean("HammerActivated")){
+                pLevel.playSound((Player)null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.ANVIL_FALL, SoundSource.PLAYERS, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
+                pPlayer.awardStat(Stats.ITEM_USED.get(this));
+
                 AABB impactBounds = pPlayer.getBoundingBox().inflate(8.0);
 
                 List<Entity> targetEntities = pLevel.getEntities(pPlayer, impactBounds);
@@ -50,20 +52,31 @@ public class FunctionItem extends Item {
                         livingEntity.hurt(pLevel.damageSources().playerAttack(pPlayer), 6.0F);
                     }
                 }
-                pPlayer.getCooldowns().addCooldown(this, 180);
+                nbt.putBoolean("HammerActivated", false);
+                return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());
             }
         } else { // Crouched Item Use
 
-            CompoundTag nbt = itemstack.getOrCreateTag();
             nbt.putFloat("playerRotationFloat", pPlayer.yBodyRot);
             nbt.putFloat("HammerTimer", 0);
+            if(!nbt.contains("HammerActivated")){
+                nbt.putBoolean("HammerActivated", false);
+            }
 
             nbt.putDouble("pX", pPlayer.getX());
             nbt.putDouble("pY", pPlayer.getY());
             nbt.putDouble("pZ", pPlayer.getZ());
+
+            // Getting gametime to create an item use cooldown
+            long gameTime = pLevel.getGameTime();
+            nbt.putLong("timeOfUse", gameTime);
+
+            if(!nbt.contains("nextTimeofUse")){
+                nbt.putLong("nextTimeofUse", gameTime);
+            }
         }
 
-        return InteractionResultHolder.sidedSuccess(itemstack, pLevel.isClientSide());
+        return InteractionResultHolder.pass(itemstack);
     }
 
 }

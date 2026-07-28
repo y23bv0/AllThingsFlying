@@ -6,10 +6,13 @@ import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.particle.ModParticles;
 import net.celestene.someflyingmod.villager.ModVillagers;
 import net.minecraft.ChatFormatting;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -197,11 +200,15 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event){
-
         // Background Data
         Player player = event.player;
 
-        // Alchemist Bench Slowness
+        alchemistBenchCheck(event, player);
+        hammerPowerUpCheck(event, player); // Using hammer while sneaking
+    }
+
+    public static void alchemistBenchCheck(TickEvent.PlayerTickEvent event, Player player){
+
         ItemStack searchItem = new ItemStack(ModItems.ALCHEMIST_BENCH_ITEM.get());
         int bench_count = 0;
         for (ItemStack stack : player.getInventory().items){
@@ -212,57 +219,89 @@ public class ModEvents {
         }
         if(bench_count > 0){
             player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 1 + bench_count, true, true, false));}
+    }
 
-        // Using hammer while sneaking
+    public static void removeCoordinateHammerData(CompoundTag nbt){
+        nbt.remove("playerRotationFloat");
+        nbt.remove("pX");
+        nbt.remove("pY");
+        nbt.remove("pZ");
+        nbt.remove("HammerTimer");
+    }
+
+    public static void hammerPowerUpCheck(TickEvent.PlayerTickEvent event, Player player){
+        ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
+        CompoundTag nbt = stack.getOrCreateTag();
         if(player.isCrouching() && player.isHolding(ModItems.DOMAIN_HAMMER.get())){
-
-            // Background Data
             Level level = player.level();
-            ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
 
-            // Itemstack data
-            CompoundTag nbt = stack.getOrCreateTag();
-            int hammerTimer = nbt.getInt("HammerTimer");
+            if(nbt.contains("playerRotationFloat") && nbt.contains("pX") &&
+                    nbt.contains("pY") && nbt.contains("pZ") && nbt.contains("HammerTimer")){
+                if(nbt.contains("nextTimeofUse") && (nbt.getLong("nextTimeofUse") <= level.getGameTime())){
 
-            if (hammerTimer > 200){
-                hammerTimer = 0;
-                nbt.putInt("HammerTimer", 0);
-            }
+                    // Cooldown Debug Code:
+                    // player.displayClientMessage(Component.literal("nextTimeofUse: " + nbt.getLong("nextTimeofUse")), false);
+                    // player.displayClientMessage(Component.literal("getGameTime: " + level.getGameTime()), false);
 
-            // Default Params
-            double xScatter = 0;
-            double yScatter = 0;
-            double zScatter = 0;
-            double speed = 0.0;
-
-            // Rotation
-            float rot = nbt.getFloat("playerRotationFloat") + ((hammerTimer / 40) * 60.0F);
-            double bodyRotation = Math.toRadians(rot + 90.0F);
-            double dx = Math.cos(bodyRotation);
-            double dz = Math.sin(bodyRotation);
-
-            // Offsets
-            double radius = 0.5;
-            double yOffset = 0.5;
-
-            // Initial Values
-            double pX = nbt.getDouble("pX");
-            double pY = nbt.getDouble("pY");
-            double pZ = nbt.getDouble("pZ");
-
-            // Send Particle Effects
-            if(!level.isClientSide()){
-
-                if (((double)hammerTimer % 10) == 0){
-                    ((ServerLevel) level).sendParticles(ParticleTypes.HAPPY_VILLAGER,
-                            pX + (dx * radius), (pY + yOffset), pZ + (dz * radius), 10, xScatter, yScatter, zScatter, speed);
+                    hammerPowerUp(event, player, level, stack, nbt);
+                } else {
+                    Integer second_Cooldown = (int)((nbt.getLong("nextTimeofUse") - level.getGameTime()) / 20);
+                    Component clientMessage = Component.translatable("hotbarmessage_split_1.someflyingmod.hammer_cooldown").append(second_Cooldown.toString()).append(Component.translatable("hotbarmessage_split_2.someflyingmod.hammer_cooldown"));
+                    player.displayClientMessage(clientMessage.copy().withStyle(ChatFormatting.RED), true);
                 }
             }
 
-            // Timer Loop
-            hammerTimer ++;
-            nbt.putInt("HammerTimer", hammerTimer);
+        } else { // Reset Coordinate Data
+            removeCoordinateHammerData(nbt);
         }
+    }
+
+    public static void hammerPowerUp(TickEvent.PlayerTickEvent event, Player player, Level level, ItemStack stack, CompoundTag nbt){
+        // Background Data
+        int hammerTimer = nbt.getInt("HammerTimer");
+
+        // Initial Values
+        double pX = nbt.getDouble("pX");
+        double pY = nbt.getDouble("pY");
+        double pZ = nbt.getDouble("pZ");
+
+        // Loop Timer
+        if (hammerTimer > 200){
+            nbt.putLong("nextTimeofUse", nbt.getLong("timeOfUse") + 1200);
+            hammerTimer = 0;
+            nbt.putInt("HammerTimer", 0);
+            nbt.putBoolean("HammerActivated", true);
+            level.playSound(null, pX, pY, pZ, SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.PLAYERS, 0.65F, 1.0F);
+        }
+
+        // Default Params
+        double xScatter = 0;
+        double yScatter = 0;
+        double zScatter = 0;
+        double speed = 0.0;
+
+        // Rotation
+        float rot = nbt.getFloat("playerRotationFloat") + ((hammerTimer / 40) * 60.0F);
+        double bodyRotation = Math.toRadians(rot + 90.0F);
+        double dx = Math.cos(bodyRotation);
+        double dz = Math.sin(bodyRotation);
+
+        // Offsets
+        double radius = 0.5;
+        double yOffset = 0.5;
+
+        // Send Particle Effects
+        if(!level.isClientSide()){
+            if ((((double)hammerTimer / 4) % 10) == 0){ // Only send one every 40 ticks
+                ((ServerLevel) level).sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                        pX + (dx * radius), (pY + yOffset), pZ + (dz * radius), 0, xScatter, yScatter, zScatter, speed);
+                level.playSound(null, pX, pY, pZ, SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, 0.4F, 1.0F);
+            }
+        }
+
+        // Timer Loop
+        hammerTimer ++;
+        nbt.putInt("HammerTimer", hammerTimer);
     }
 
 }
