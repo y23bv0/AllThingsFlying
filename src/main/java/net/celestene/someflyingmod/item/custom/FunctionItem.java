@@ -35,7 +35,7 @@ public class FunctionItem extends Item {
                 pLevel.playSound((Player)null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.ANVIL_FALL, SoundSource.PLAYERS, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
                 pPlayer.awardStat(Stats.ITEM_USED.get(this));
 
-                AABB impactBounds = pPlayer.getBoundingBox().inflate(8.0);
+                AABB impactBounds = pPlayer.getBoundingBox().inflate(12);
 
                 List<Entity> targetEntities = pLevel.getEntities(pPlayer, impactBounds);
                 for (Entity entity : targetEntities){
@@ -48,8 +48,8 @@ public class FunctionItem extends Item {
 
                         livingEntity.getPersistentData().putDouble("someflyingmod.target_y", targetY);
                         // livingEntity.getPersistentData().putUUID("someflyingmod.attacker_uuid", pPlayer.getUUID());
-                        livingEntity.addEffect(new MobEffectInstance(ModEffects.FLIGHT_STUN_EFFECT.get(), 100, 1, false, false, true));
-                        livingEntity.hurt(pLevel.damageSources().playerAttack(pPlayer), 6.0F);
+                        livingEntity.addEffect(new MobEffectInstance(ModEffects.FLIGHT_STUN_EFFECT.get(), 300, 1, false, false, true));
+                        livingEntity.hurt(pLevel.damageSources().playerAttack(pPlayer), 24.0F);
                     }
                 }
                 nbt.putBoolean("HammerActivated", false);

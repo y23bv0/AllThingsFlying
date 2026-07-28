@@ -9,6 +9,8 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.DoubleTag;
+import net.minecraft.nbt.ListTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -205,6 +207,7 @@ public class ModEvents {
 
         alchemistBenchCheck(event, player);
         hammerPowerUpCheck(event, player); // Using hammer while sneaking
+        recordPlayerCoords(event, player);
     }
 
     public static void alchemistBenchCheck(TickEvent.PlayerTickEvent event, Player player){
@@ -227,6 +230,15 @@ public class ModEvents {
         nbt.remove("pY");
         nbt.remove("pZ");
         nbt.remove("HammerTimer");
+    }
+
+    private static void recordPlayerCoords(TickEvent.PlayerTickEvent event, Player player) {
+        ListTag lastPos = new ListTag();
+        lastPos.add(DoubleTag.valueOf(player.getX()));
+        lastPos.add(DoubleTag.valueOf(player.getY()));
+        lastPos.add(DoubleTag.valueOf(player.getZ()));
+
+        player.getPersistentData().put("lastPlayerPos", lastPos);
     }
 
     public static void hammerPowerUpCheck(TickEvent.PlayerTickEvent event, Player player){
@@ -267,11 +279,9 @@ public class ModEvents {
 
         // Loop Timer
         if (hammerTimer > 200){
-            nbt.putLong("nextTimeofUse", nbt.getLong("timeOfUse") + 1200);
             hammerTimer = 0;
-            nbt.putInt("HammerTimer", 0);
+            resetSequence(event, level, player, nbt, pX, pY, pZ);
             nbt.putBoolean("HammerActivated", true);
-            level.playSound(null, pX, pY, pZ, SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.PLAYERS, 0.65F, 1.0F);
         }
 
         // Default Params
@@ -288,10 +298,20 @@ public class ModEvents {
 
         // Offsets
         double radius = 0.5;
-        double yOffset = 0.5;
+        double yOffset = 0.2;
 
         // Send Particle Effects
         if(!level.isClientSide()){
+
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 4, false, false));
+            player.displayClientMessage(Component.translatable("hotbarmessage.someflyingmod.hammer_avoid_moving").withStyle(ChatFormatting.RED), true);
+
+            if(playerMoves(event, player)){
+                hammerTimer = 0;
+                resetSequence(event, level, player, nbt, pX, pY, pZ);
+                nbt.putBoolean("HammerActivated", false);
+            }
+
             if ((((double)hammerTimer / 4) % 10) == 0){ // Only send one every 40 ticks
                 ((ServerLevel) level).sendParticles(ParticleTypes.HAPPY_VILLAGER,
                         pX + (dx * radius), (pY + yOffset), pZ + (dz * radius), 0, xScatter, yScatter, zScatter, speed);
@@ -302,6 +322,24 @@ public class ModEvents {
         // Timer Loop
         hammerTimer ++;
         nbt.putInt("HammerTimer", hammerTimer);
+    }
+
+    public static void resetSequence(TickEvent.PlayerTickEvent event, Level level, Player player, CompoundTag nbt,
+                                     double pX, double pY, double pZ){
+        nbt.putLong("nextTimeofUse", nbt.getLong("timeOfUse") + 1200);
+        nbt.putInt("HammerTimer", 0);
+
+        level.playSound(null, pX, pY, pZ, SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.PLAYERS, 0.65F, 1.0F);
+    }
+
+    public static boolean playerMoves(TickEvent.PlayerTickEvent event, Player player){
+        ListTag lastPos = player.getPersistentData().getList("lastPlayerPos", DoubleTag.TAG_DOUBLE);
+        double lastX = lastPos.getDouble(0);
+        double lastY = lastPos.getDouble(1);
+        double lastZ = lastPos.getDouble(2);
+        double allowedError = 0.01;
+        return (!(Math.abs(player.getX() - lastX) < allowedError && Math.abs(player.getY() - lastY) < allowedError
+                && Math.abs(player.getZ() - lastZ) < allowedError));
     }
 
 }

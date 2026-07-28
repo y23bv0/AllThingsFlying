@@ -85,7 +85,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         addCompassVariants(ModItems.AMETHYST_COMPASS);
         simpleItem(ModItems.ALCHEMY_BOOK);
         simpleItem(ModItems.FIRE_SPIRIT);
-        simpleItem(ModItems.DOMAIN_HAMMER);
+//        simpleItem(ModItems.DOMAIN_HAMMER);
 
     }
 
