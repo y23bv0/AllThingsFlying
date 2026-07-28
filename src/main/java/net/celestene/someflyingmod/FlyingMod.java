@@ -7,6 +7,7 @@ import net.celestene.someflyingmod.entity.ModEntities;
 import net.celestene.someflyingmod.item.ModCreativeModTabs;
 import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.loot.ModLootModifiers;
+import net.celestene.someflyingmod.particle.ModParticles;
 import net.celestene.someflyingmod.util.ModItemProperties;
 import net.celestene.someflyingmod.villager.ModVillagers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
@@ -56,6 +57,7 @@ public class FlyingMod
 
         ModEntities.register(modEventBus);
         ModEffects.register(modEventBus);
+        ModParticles.register(modEventBus);
 
     }
 

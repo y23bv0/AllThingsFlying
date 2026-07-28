@@ -2,27 +2,25 @@ package net.celestene.someflyingmod.event;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.celestene.someflyingmod.FlyingMod;
-import net.celestene.someflyingmod.block.ModBlocks;
-import net.celestene.someflyingmod.effect.FlightStunEffect;
 import net.celestene.someflyingmod.item.ModItems;
+import net.celestene.someflyingmod.particle.ModParticles;
 import net.celestene.someflyingmod.villager.ModVillagers;
 import net.minecraft.ChatFormatting;
-import net.minecraft.nbt.ListTag;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.npc.VillagerData;
 import net.minecraft.world.entity.npc.VillagerProfession;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.EnchantedBookItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.item.enchantment.EnchantmentInstance;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.item.trading.MerchantOffer;
 import net.minecraft.world.level.Level;
@@ -30,8 +28,6 @@ import net.minecraftforge.common.BasicItemListing;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.TickEvent;
-import net.minecraftforge.event.entity.living.MobEffectEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.event.village.VillagerTradesEvent;
 import net.minecraftforge.event.village.WandererTradesEvent;
@@ -202,25 +198,71 @@ public class ModEvents {
     @SubscribeEvent
     public static void onPlayerTick(TickEvent.PlayerTickEvent event){
 
+        // Background Data
+        Player player = event.player;
+
         // Alchemist Bench Slowness
-        Player player_a = event.player;
         ItemStack searchItem = new ItemStack(ModItems.ALCHEMIST_BENCH_ITEM.get());
         int bench_count = 0;
-        for (ItemStack stack : player_a.getInventory().items){
+        for (ItemStack stack : player.getInventory().items){
             if(stack.is(searchItem.getItem())){bench_count++;}
         }
-        if(player_a.getOffhandItem().is(searchItem.getItem())){
+        if(player.getOffhandItem().is(searchItem.getItem())){
             bench_count++;
         }
-        if(bench_count > 0){player_a.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 1 + bench_count, true, true, false));}
+        if(bench_count > 0){
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1, 1 + bench_count, true, true, false));}
 
-//        // Using hammer while sneaking
-//        if(event.player.isCrouching() && event.player.isHolding(ModItems.DOMAIN_HAMMER.get())){
-//            Level level = event.player.level();
-//            if(!level.isClientSide()){
-//                level.
-//            }
-//        }
+        // Using hammer while sneaking
+        if(player.isCrouching() && player.isHolding(ModItems.DOMAIN_HAMMER.get())){
+
+            // Background Data
+            Level level = player.level();
+            ItemStack stack = player.getItemInHand(InteractionHand.MAIN_HAND);
+
+            // Itemstack data
+            CompoundTag nbt = stack.getOrCreateTag();
+            int hammerTimer = nbt.getInt("HammerTimer");
+
+            if (hammerTimer > 200){
+                hammerTimer = 0;
+                nbt.putInt("HammerTimer", 0);
+            }
+
+            // Default Params
+            double xScatter = 0;
+            double yScatter = 0;
+            double zScatter = 0;
+            double speed = 0.0;
+
+            // Rotation
+            float rot = nbt.getFloat("playerRotationFloat") + ((hammerTimer / 40) * 60.0F);
+            double bodyRotation = Math.toRadians(rot + 90.0F);
+            double dx = Math.cos(bodyRotation);
+            double dz = Math.sin(bodyRotation);
+
+            // Offsets
+            double radius = 0.5;
+            double yOffset = 0.5;
+
+            // Initial Values
+            double pX = nbt.getDouble("pX");
+            double pY = nbt.getDouble("pY");
+            double pZ = nbt.getDouble("pZ");
+
+            // Send Particle Effects
+            if(!level.isClientSide()){
+
+                if (((double)hammerTimer % 10) == 0){
+                    ((ServerLevel) level).sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                            pX + (dx * radius), (pY + yOffset), pZ + (dz * radius), 10, xScatter, yScatter, zScatter, speed);
+                }
+            }
+
+            // Timer Loop
+            hammerTimer ++;
+            nbt.putInt("HammerTimer", hammerTimer);
+        }
     }
 
 }

@@ -4,7 +4,6 @@ import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
-import java.util.UUID;
 
 public class FlightStunEffect extends MobEffect {
     protected FlightStunEffect(MobEffectCategory pCategory, int pColor) {
@@ -25,11 +24,6 @@ public class FlightStunEffect extends MobEffect {
                 } else {
                     pLivingEntity.teleportTo(pLivingEntity.getX(), tY, pLivingEntity.getZ());
                 }
-
-//                if(pLivingEntity.getPersistentData().contains("someflyingmod.attacker_uuid")){
-//                    UUID attackerUUID = pLivingEntity.getPersistentData().getUUID("someflyingmod.attacker_uuid");
-//                    pLivingEntity.hurt()
-//                }
 
                  }
             }
