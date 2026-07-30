@@ -45,6 +45,9 @@ public class ModBlockLootTables extends BlockLootSubProvider {
                 block -> createSlabItemTable(ModBlocks.FANCY_SLAB.get()));
         this.add(ModBlocks.ESSENCE_ORE.get(),
                  block -> createCopperLikeOreDrops(ModBlocks.ESSENCE_ORE.get(), ModItems.ESSENCE_SHARD.get()));
+        this.add(ModBlocks.RUBY_ORE.get(),
+                block -> createCopperLikeOreDrops(ModBlocks.RUBY_ORE.get(), ModItems.RUBY.get()));
+        this.dropSelf(ModBlocks.RUBY_BLOCK.get());
         this.add(ModBlocks.FLIGHTLESS_POWDER.get(), block -> createSingleItemTable(ModItems.
                 FLIGHTLESS_DUST.get()));
 
@@ -74,6 +77,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.POTTED_CATMINT.get(), createPotFlowerItemTable(ModBlocks.CATMINT.get()));
 //        this.dropSelf(ModBlocks.ALCHEMIST_BENCH.get());
         this.add(ModBlocks.ALCHEMIST_BENCH.get(), createSingleItemTable(ModItems.ALCHEMIST_BENCH_ITEM.get()));
+        this.add(ModBlocks.MORTAR.get(), createSingleItemTable(ModItems.MORTAR_ITEM.get()));
+        this.dropSelf(ModBlocks.OPEN_FURNACE.get());
     }
 
 

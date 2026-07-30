@@ -17,4 +17,10 @@ public class ModToolTiers {
                     ModTags.Blocks.NEEDS_SILK_TOOL, () -> Ingredient.of(ModItems.SILK.get())),
             new ResourceLocation(FlyingMod.MODID, "silk"), List.of(Tiers.NETHERITE), List.of()
     );
+
+    public static final Tier RUBY = TierSortingRegistry.registerTier(
+            new ForgeTier(4, 1500, 4f, 4f, 15,
+                    ModTags.Blocks.NEEDS_RUBY_TOOL, () -> Ingredient.of(ModItems.RUBY.get())),
+            new ResourceLocation(FlyingMod.MODID, "ruby"), List.of(Tiers.DIAMOND), List.of()
+    );
 }

@@ -14,6 +14,11 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, FlyingMod.MODID);
 
+    // Items for Assemblage:
+    public static final RegistryObject<Item> STONE_ROD = ITEMS.register("stone_rod",
+            () -> new Item(new Item.Properties()));
+
+    // Ore-likes:
     public static final RegistryObject<Item> PRIMA = ITEMS.register("prima",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> KITE = ITEMS.register("kite",
@@ -21,6 +26,8 @@ public class ModItems {
     public static final RegistryObject<Item> ESSENCE_SHARD = ITEMS.register("essence_shard",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> FLIGHTLESS_DUST = ITEMS.register("flightless_dust",
+            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RUBY = ITEMS.register("ruby",
             () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> METAL_DETECTOR = ITEMS.register("metal_detector",
@@ -48,13 +55,36 @@ public class ModItems {
     public static final RegistryObject<Item> ESSENCE_STAFF = ITEMS.register("essence_staff",
             () -> new Item(new Item.Properties().stacksTo(1)));
 
-    // SILK ITEMS
+    // MOD ORE-TYPE ITEMS
 
     public static final RegistryObject<Item> SILK = ITEMS.register("silk",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> SILK_PICKAXE = ITEMS.register("silk_pickaxe",
             () -> new PickaxeItem(ModToolTiers.SILK, 2, 1,
                     new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_DAGGER = ITEMS.register("ruby_dagger",
+            () -> new SwordItem(ModToolTiers.RUBY, 2, 1,
+                    new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_PICKAXE = ITEMS.register("ruby_pickaxe",
+            () -> new PickaxeItem(ModToolTiers.RUBY, 2, 1,
+                    new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_AXE = ITEMS.register("ruby_axe",
+            () -> new AxeItem(ModToolTiers.RUBY, 2, 1,
+                    new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_SHOVEL = ITEMS.register("ruby_shovel",
+            () -> new ShovelItem(ModToolTiers.RUBY, 2, 1,
+                    new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_HOE = ITEMS.register("ruby_hoe",
+            () -> new HoeItem(ModToolTiers.RUBY, 2, 1,
+                    new Item.Properties()));
+
+    public static final RegistryObject<Item> DRY_CLAY = ITEMS.register("dry_clay",
+            () -> new Item(new Item.Properties()));
+
+    // CreationTypes
+
+    public static final RegistryObject<Item> PESTLE = ITEMS.register("pestle",
+            () -> new Item(new Item.Properties()));
 
     // ARMOR
 
@@ -94,10 +124,13 @@ public class ModItems {
     public static final RegistryObject<Item> FIRE_SPIRIT = ITEMS.register("fire_spirit",
             () -> new FuelItem(new Item.Properties(), 200));
 
-    // Alchemist bench
+    // Stations
 
     public static final RegistryObject<Item> ALCHEMIST_BENCH_ITEM = ITEMS.register("alchemist_bench_item",
             () -> new BenchItem(ModBlocks.ALCHEMIST_BENCH.get(), new Item.Properties().stacksTo(1)));
+
+    public static final RegistryObject<Item> MORTAR_ITEM = ITEMS.register("mortar_item",
+            () -> new BlockItem(ModBlocks.MORTAR.get(), new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> DOMAIN_HAMMER = ITEMS.register("domain_hammer",
             () -> new FunctionItem(new Item.Properties()));

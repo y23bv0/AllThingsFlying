@@ -44,6 +44,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
+        simpleItem(ModItems.STONE_ROD);
+
         simpleItem(ModItems.CONDENSED_HONEY);
         simpleItem(ModItems.CHARRED_BONE);
         simpleItem(ModItems.FLIGHTLESS_DUST);
@@ -51,6 +53,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.METAL_DETECTOR);
         simpleItem(ModItems.PRIMA);
         simpleItem(ModItems.ESSENCE_SHARD);
+        simpleItem(ModItems.RUBY);
         simpleItem(ModItems.TUTORIAL_SEEDS);
         simpleItem(ModItems.STRAWBERRY);
         simpleItem(ModItems.CORN_SEEDS);
@@ -60,6 +63,13 @@ public class ModItemModelProvider extends ItemModelProvider {
 
         simpleItem(ModItems.SILK);
         handheldItem(ModItems.SILK_PICKAXE);
+        handheldItem(ModItems.RUBY_DAGGER);
+        handheldItem(ModItems.RUBY_PICKAXE);
+        handheldItem(ModItems.RUBY_AXE);
+        handheldItem(ModItems.RUBY_SHOVEL);
+        handheldItem(ModItems.RUBY_HOE);
+        simpleItem(ModItems.DRY_CLAY);
+        simpleItem(ModItems.PESTLE);
 
         simpleBlockItem(ModBlocks.FANCY_DOOR);
         trapdoorItem(ModBlocks.FANCY_TRAPDOOR);

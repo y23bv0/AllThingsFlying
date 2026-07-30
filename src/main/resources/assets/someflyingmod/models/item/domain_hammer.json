@@ -49,5 +49,22 @@
 			}
 		}
 	],
-	"display": {}
+	"display": {
+		"ground": {
+			"rotation": [90, 0, 0]
+		},
+		"gui": {
+			"rotation": [44, 60, -23],
+			"translation": [0, -0.75, 0],
+			"scale": [0.8, 0.8, 0.9]
+		},
+		"head": {
+			"rotation": [0, 0, -90],
+			"translation": [0, 7.5, 0],
+			"scale": [1.2, 1.2, 1.2]
+		},
+		"fixed": {
+			"rotation": [0, 90, 0]
+		}
+	}
 }

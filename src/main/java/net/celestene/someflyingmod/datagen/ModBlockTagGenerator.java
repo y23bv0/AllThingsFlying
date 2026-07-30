@@ -29,11 +29,18 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         // this file ends up located in src/main/resources/data/minecraft/tags/blocks/needs_iron_tool.json
         // this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.ESSENCE_ORE.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.ESSENCE_ORE.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.RUBY_ORE.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.RUBY_BLOCK.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.FANCY_BLOCK.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.REFINED_ESSENCE.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.FLYING_ESSENCE.get());
         this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.ALCHEMIST_BENCH.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.MORTAR.get());
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.OPEN_FURNACE.get());
+        this.tag(BlockTags.NEEDS_STONE_TOOL).add(ModBlocks.MORTAR.get());
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.ALCHEMIST_BENCH.get());
+        this.tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.RUBY_ORE.get());
+        this.tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.RUBY_BLOCK.get());
 
         // this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.FLYING_ESSENCE.get(), ModBlocks.ESSENCE_ORE.get());
 

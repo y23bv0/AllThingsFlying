@@ -5,10 +5,14 @@ import net.celestene.someflyingmod.block.ModBlocks;
 import net.celestene.someflyingmod.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.AbstractCookingRecipe;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 
 import java.util.List;
@@ -35,6 +39,116 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('#', ModItems.ESSENCE_SHARD.get())
                 .unlockedBy(getHasName(ModItems.PRIMA.get()), // specifies when recipe unlocked in the recipe book
                         has(ModItems.PRIMA.get()))
+                .save(pWriter);
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.STONE_ROD.get())
+                .pattern("#")
+                .pattern("#")
+                .define('#', Items.STONE)
+                .unlockedBy(getHasName(Items.STONE),
+                        has(ModItems.SILK.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SILK_PICKAXE.get())
+                .pattern("@@@")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', ModItems.STONE_ROD.get())
+                .define('@', ModItems.SILK.get())
+                .unlockedBy(getHasName(ModItems.SILK.get()),
+                        has(ModItems.SILK.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_DAGGER.get())
+                .pattern(" @ ")
+                .pattern(" @ ")
+                .pattern(" # ")
+                .define('#', ModItems.STONE_ROD.get())
+                .define('@', ModItems.RUBY.get())
+                .unlockedBy(getHasName(ModItems.RUBY.get()),
+                        has(ModItems.RUBY.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_PICKAXE.get())
+                .pattern("@@@")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', ModItems.STONE_ROD.get())
+                .define('@', ModItems.RUBY.get())
+                .unlockedBy(getHasName(ModItems.RUBY.get()),
+                        has(ModItems.RUBY.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_AXE.get())
+                .pattern(" @@")
+                .pattern(" #@")
+                .pattern(" # ")
+                .define('#', ModItems.STONE_ROD.get())
+                .define('@', ModItems.RUBY.get())
+                .unlockedBy(getHasName(ModItems.RUBY.get()),
+                        has(ModItems.RUBY.get()))
+                .save(pWriter, new ResourceLocation(FlyingMod.MODID, "ruby_axe_recipe_1"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_AXE.get())
+                .pattern("@@ ")
+                .pattern("@# ")
+                .pattern(" # ")
+                .define('#', ModItems.STONE_ROD.get())
+                .define('@', ModItems.RUBY.get())
+                .unlockedBy(getHasName(ModItems.RUBY.get()),
+                        has(ModItems.RUBY.get()))
+                .save(pWriter, new ResourceLocation(FlyingMod.MODID, "ruby_axe_recipe_2"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_SHOVEL.get())
+                .pattern(" @ ")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', ModItems.STONE_ROD.get())
+                .define('@', ModItems.RUBY.get())
+                .unlockedBy(getHasName(ModItems.RUBY.get()),
+                        has(ModItems.RUBY.get()))
+                .save(pWriter);
+
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_HOE.get())
+                .pattern(" @@")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', ModItems.STONE_ROD.get())
+                .define('@', ModItems.RUBY.get())
+                .unlockedBy(getHasName(ModItems.RUBY.get()),
+                        has(ModItems.RUBY.get()))
+                .save(pWriter, new ResourceLocation(FlyingMod.MODID, "ruby_hoe_recipe_1"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RUBY_HOE.get())
+                .pattern("@@ ")
+                .pattern(" # ")
+                .pattern(" # ")
+                .define('#', ModItems.STONE_ROD.get())
+                .define('@', ModItems.RUBY.get())
+                .unlockedBy(getHasName(ModItems.RUBY.get()),
+                        has(ModItems.RUBY.get()))
+                .save(pWriter, new ResourceLocation(FlyingMod.MODID, "ruby_hoe_recipe_2"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.RUBY_BLOCK.get())
+                .pattern("###")
+                .pattern("###")
+                .pattern("###")
+                .define('#', ModItems.RUBY.get())
+                .unlockedBy(getHasName(ModItems.RUBY.get()), // specifies when recipe unlocked in the recipe book
+                        has(ModItems.RUBY.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, Blocks.FURNACE, 1)
+                .requires(Blocks.STONE)
+                .requires(ModBlocks.OPEN_FURNACE.get())
+                .unlockedBy(getHasName(Blocks.FURNACE), has(ModBlocks.OPEN_FURNACE.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModBlocks.OPEN_FURNACE.get(), 1)
+                .requires(Blocks.FURNACE)
+                .unlockedBy(getHasName(Blocks.FURNACE), has(Blocks.FURNACE))
                 .save(pWriter);
 
         // .requires(...) is the ingredient you need to craft what you are crafting

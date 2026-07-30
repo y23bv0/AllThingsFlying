@@ -28,6 +28,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.FLYING_ESSENCE);
         blockWithItem(ModBlocks.FLIGHTLESS_POWDER);
         blockWithItem(ModBlocks.ESSENCE_ORE);
+        blockWithItem(ModBlocks.RUBY_ORE);
+        blockWithItem(ModBlocks.RUBY_BLOCK);
         blockWithItem(ModBlocks.FANCY_BLOCK);
 
         blockWithItem(ModBlocks.SOUND_BLOCK);

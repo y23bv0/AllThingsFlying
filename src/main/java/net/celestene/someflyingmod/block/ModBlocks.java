@@ -1,10 +1,7 @@
 package net.celestene.someflyingmod.block;
 
 import net.celestene.someflyingmod.FlyingMod;
-import net.celestene.someflyingmod.block.custom.BenchBlock;
-import net.celestene.someflyingmod.block.custom.CornCropBlock;
-import net.celestene.someflyingmod.block.custom.SoundBlock;
-import net.celestene.someflyingmod.block.custom.StrawberryCropBlock;
+import net.celestene.someflyingmod.block.custom.*;
 import net.celestene.someflyingmod.item.ModItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.effect.MobEffects;
@@ -12,27 +9,29 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, FlyingMod.MODID);
 
+    // Ore-likes:
     public static final RegistryObject<Block> FLYING_ESSENCE = registerBlock("flying_essence",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)
                     .sound(SoundType.AMETHYST)));
     public static final RegistryObject<Block> FLIGHTLESS_POWDER = registerBlock("flightless_powder",
             () -> new Block(BlockBehaviour.Properties.copy(Blocks.GRAVEL).sound(SoundType.SAND)));
-
-//    public static final RegistryObject<Block> ESSENCE_ORE = registerBlock("essence_ore",
-//            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)
-//                    .requiresCorrectToolForDrops(), UniformInt.of(5, 7)));
 
     // requiresCorrectToolForDrops is inherited from stone regardless, keeping it here as a reminder!
     // UniformInt.of specifies the range of experience orbs when mining that block!
@@ -44,6 +43,11 @@ public class ModBlocks {
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> REFINED_ESSENCE = registerBlock("refined_essence_block",
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)));
+    public static final RegistryObject<Block> RUBY_ORE = registerBlock("ruby_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1f),
+                    UniformInt.of(1,2)));
+    public static final RegistryObject<Block> RUBY_BLOCK = registerBlock("ruby_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.EMERALD_BLOCK).sound(SoundType.STONE)));
 
     // "Fancy Blocks"
 
@@ -85,10 +89,16 @@ public class ModBlocks {
     // using BLOCKS.register instead of registerBlock prevents an item of potted form from generated which makes
     // sense bc an item of potted form doesn't make sense
 
-    // Alchemy
+    // Stations
 
     public static final RegistryObject<Block> ALCHEMIST_BENCH = registerBlock("alchemist_bench",
             () -> new BenchBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).noOcclusion()));
+    public static final RegistryObject<Block> MORTAR = registerBlock("mortar",
+            () -> new MortarBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).noOcclusion()));
+
+    public static final RegistryObject<Block> OPEN_FURNACE = registerBlock("open_furnace",
+            () -> new OpenFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(litBlockEmission(13)).noOcclusion()));
+
 
     // OTHER:
 
@@ -105,5 +115,13 @@ public class ModBlocks {
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
+    }
+
+    // Imported Methods
+
+    private static ToIntFunction<BlockState> litBlockEmission(int pLightValue) {
+        return (p_50763_) -> {
+            return p_50763_.getValue(BlockStateProperties.LIT) ? pLightValue : 0;
+        };
     }
 }

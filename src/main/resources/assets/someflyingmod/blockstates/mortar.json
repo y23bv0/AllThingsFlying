@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "someflyingmod:block/mortar"
+    },
+    "facing=south": {
+      "model": "someflyingmod:block/mortar",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "someflyingmod:block/mortar",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "someflyingmod:block/mortar",
+      "y": 270
+    }
+  }
+}

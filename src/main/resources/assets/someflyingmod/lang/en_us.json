@@ -1,4 +1,6 @@
 {
+  "item.someflyingmod.stone_rod": "Stone Rod",
+
   "item.someflyingmod.prima": "Prima Gradus",
   "item.someflyingmod.kite": "Kite",
   "block.someflyingmod.flying_essence": "Flying Essence",
@@ -6,8 +8,21 @@
   "item.someflyingmod.essence_shard": "Shard of Essential Ore",
   "item.someflyingmod.flightless_dust": "Flightless Dust",
 
-  "block.someflyingmod.sapphire_ore": "Sapphire Ore",
   "block.someflyingmod.essence_ore": "Ore of Essence",
+  "item.someflyingmod.ruby": "Ruby",
+  "item.someflyingmod.ruby_dagger": "Ruby Dagger",
+  "item.someflyingmod.ruby_pickaxe": "Ruby Pickaxe",
+  "item.someflyingmod.ruby_axe": "Ruby Axe",
+  "item.someflyingmod.ruby_shovel": "Ruby Shovel",
+  "item.someflyingmod.ruby_hoe": "Ruby Hoe",
+  "block.someflyingmod.ruby_ore": "Ruby Ore",
+  "block.someflyingmod.ruby_block": "Block of Ruby",
+  "block.someflyingmod.open_furnace": "Open Furnace",
+  "container.someflyingmod.open_furnace": "Open Furnace",
+  "item.someflyingmod.dry_clay": "Dry Clay",
+  "item.someflyingmod.mortar_item": "Mortar",
+  "block.someflyingmod.mortar": "Mortar",
+  "item.someflyingmod.pestle": "Pestle",
 
   "item.someflyingmod.essence_staff": "Staff",
   "item.someflyingmod.silk": "Silk",

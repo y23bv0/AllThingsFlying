@@ -11,8 +11,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class BenchBlock extends HorizontalDirectionalBlock {
-    public BenchBlock(Properties pProperties) {
+public class MortarBlock extends HorizontalDirectionalBlock {
+    public MortarBlock(Properties pProperties) {
         super(pProperties);
     }
 
@@ -28,6 +28,6 @@ public class BenchBlock extends HorizontalDirectionalBlock {
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return Block.box(0.0D, 0.0D, 0.0D, 16.0D, 14.0D, 16.0D);
+        return Block.box(4.0D, 0.0D, 4.0D, 12.0D, 5.0D, 12.0D);
     }
 }
