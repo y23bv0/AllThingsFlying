@@ -41,8 +41,6 @@
   "item.someflyingmod.poseidons_r_shard": "Poseidon's Shard (Rounded)",
   "item.someflyingmod.ender_r_shard": "Ender Shard (Rounded)",
 
-  "item.someflyingmod.metal_detector": "Metal Detector",
-  "block.someflyingmod.sound_block": "Sound Block",
   "block.someflyingmod.refined_essence_block": "Refined Essence",
 
   "item.someflyingmod.condensed_honey": "Condensed Honey",
@@ -69,9 +67,7 @@
   "hotbarmessage.someflyingmod.hammer_avoid_moving": "Moving will break your power up sequence!",
 
   "tooltip.someflyingmod.metal_detector.tooltip": "Woah, there's metal under me!",
-  "tooltip.someflyingmod.sound_block.tooltip": "Makes an interesting sound when you click it! Try it out?",
-
-
+  "tooltip.someflyingmod.refined_essence.tooltip": "Makes an interesting sound when you click it! Try it out?",
 
 
   "block.someflyingmod.fancy_block": "Fancy Block",

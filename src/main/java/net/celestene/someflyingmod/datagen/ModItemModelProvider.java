@@ -50,7 +50,6 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.CHARRED_BONE);
         simpleItem(ModItems.FLIGHTLESS_DUST);
         simpleItem(ModItems.KITE);
-        simpleItem(ModItems.METAL_DETECTOR);
         simpleItem(ModItems.PRIMA);
         simpleItem(ModItems.ESSENCE_SHARD);
         simpleItem(ModItems.RUBY);

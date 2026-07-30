@@ -32,7 +32,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.RUBY_BLOCK);
         blockWithItem(ModBlocks.FANCY_BLOCK);
 
-        blockWithItem(ModBlocks.SOUND_BLOCK);
         blockWithItem(ModBlocks.REFINED_ESSENCE);
 
 

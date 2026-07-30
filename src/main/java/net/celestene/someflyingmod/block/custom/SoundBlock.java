@@ -37,9 +37,8 @@ public class SoundBlock extends Block {
     @Override
     public void appendHoverText(ItemStack pStack, @Nullable BlockGetter pLevel, List<Component> pTooltip, TooltipFlag pFlag) {
 
-        pTooltip.add(Component.translatable("tooltip.someflyingmod.sound_block.tooltip"));
+        pTooltip.add(Component.translatable("tooltip.someflyingmod.refined_essence.tooltip"));
 
         super.appendHoverText(pStack, pLevel, pTooltip, pFlag);
     }
 }
-//SoundEvents.NOTE_BLOCK_DIDGERIDOO.get()

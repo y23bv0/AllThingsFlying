@@ -30,9 +30,6 @@ public class ModItems {
     public static final RegistryObject<Item> RUBY = ITEMS.register("ruby",
             () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> METAL_DETECTOR = ITEMS.register("metal_detector",
-            () -> new MetalDetectorItem(new Item.Properties().durability(100)));
-
     // Food-related
 
     public static final RegistryObject<Item> CONDENSED_HONEY = ITEMS.register("condensed_honey",
@@ -133,7 +130,7 @@ public class ModItems {
             () -> new BlockItem(ModBlocks.MORTAR.get(), new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> DOMAIN_HAMMER = ITEMS.register("domain_hammer",
-            () -> new FunctionItem(new Item.Properties()));
+            () -> new FunctionItem(new Item.Properties().stacksTo(1)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

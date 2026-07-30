@@ -32,7 +32,6 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.FLIGHTLESS_POWDER.get()); // fix this one!
         this.dropSelf(ModBlocks.FLYING_ESSENCE.get());
         this.dropSelf(ModBlocks.REFINED_ESSENCE.get());
-        this.dropSelf(ModBlocks.SOUND_BLOCK.get());
         this.dropSelf(ModBlocks.FANCY_BLOCK.get());
 
         this.dropSelf(ModBlocks.FANCY_TRAPDOOR.get());

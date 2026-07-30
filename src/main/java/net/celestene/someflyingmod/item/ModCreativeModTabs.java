@@ -95,10 +95,6 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.AMETHYST_COMPASS.get());
                                 pOutput.accept(ModBlocks.ALCHEMIST_BENCH.get());
                                 pOutput.accept(ModItems.DOMAIN_HAMMER.get());
-
-                                // Extraneous
-                                pOutput.accept(ModItems.METAL_DETECTOR.get());
-                                pOutput.accept(ModBlocks.SOUND_BLOCK.get());
                             })
                             .build());
 

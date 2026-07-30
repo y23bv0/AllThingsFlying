@@ -39,8 +39,6 @@ public class ModBlocks {
     public static final RegistryObject<Block> ESSENCE_ORE = registerBlock("essence_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(1f),
                     UniformInt.of(3,6)));
-    public static final RegistryObject<Block> SOUND_BLOCK = registerBlock("sound_block",
-            () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK)));
     public static final RegistryObject<Block> REFINED_ESSENCE = registerBlock("refined_essence_block",
             () -> new SoundBlock(BlockBehaviour.Properties.copy(Blocks.STONE).strength(2f)));
     public static final RegistryObject<Block> RUBY_ORE = registerBlock("ruby_ore",
