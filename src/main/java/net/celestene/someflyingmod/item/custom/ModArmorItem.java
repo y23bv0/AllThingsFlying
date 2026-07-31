@@ -15,7 +15,7 @@ import java.util.Map;
 public class ModArmorItem extends ArmorItem {
     private static final Map<ArmorMaterial, MobEffectInstance> MATERIAL_TO_EFFECT_MAP =
             (new ImmutableMap.Builder<ArmorMaterial, MobEffectInstance>())
-                    .put(ModArmorMaterials.SILK, new MobEffectInstance(MobEffects.SLOW_FALLING, 2, 0,
+                    .put(ModArmorMaterials.SILK, new MobEffectInstance(MobEffects.SLOW_FALLING, 200, 0,
                             false, false, false)).build();
 
     // pShowIcon determines if people can see the potion effect as an icon in their inventory
@@ -52,9 +52,9 @@ public class ModArmorItem extends ArmorItem {
     // Step 5
     private void addStatusEffectForMaterial(Player player, ArmorMaterial mapArmorMaterial,
                                             MobEffectInstance mapStatusEffect) {
-        boolean hasPlayerEffect = player.hasEffect(mapStatusEffect.getEffect());
+        MobEffectInstance currentEffect = player.getEffect(mapStatusEffect.getEffect());
 
-        if(hasCorrectArmorOn(mapArmorMaterial, player) && !hasPlayerEffect) {
+        if(hasCorrectArmorOn(mapArmorMaterial, player) && (currentEffect == null || currentEffect.getDuration() <= 20)) {
             player.addEffect(new MobEffectInstance(mapStatusEffect));
         }            // you have to ^^ make a NEW MEI here
                      // otherwise the instance will only be applied once forever
