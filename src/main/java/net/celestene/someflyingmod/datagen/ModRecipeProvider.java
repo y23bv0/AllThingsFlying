@@ -158,6 +158,44 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.FLIGHTLESS_POWDER.get()), has(ModBlocks.FLIGHTLESS_POWDER.get()))
                 .save(pWriter);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FAIR_WOOD.get(), 3)
+                .pattern("##")
+                .pattern("##")
+                .define('#', ModBlocks.FAIR_LOG.get())
+                .unlockedBy(getHasName(ModBlocks.FAIR_LOG.get()), // specifies when recipe unlocked in the recipe book
+                        has(ModBlocks.FAIR_LOG.get()))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, ModBlocks.STRIPPED_FAIR_WOOD.get(), 3)
+                .pattern("##")
+                .pattern("##")
+                .define('#', ModBlocks.STRIPPED_FAIR_LOG.get())
+                .unlockedBy(getHasName(ModBlocks.FAIR_LOG.get()), // specifies when recipe unlocked in the recipe book
+                        has(ModBlocks.FAIR_LOG.get()))
+                .save(pWriter);
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FAIR_PLANKS.get(), 4)
+                .requires(ModBlocks.FAIR_LOG.get())
+                .unlockedBy(getHasName(ModBlocks.FAIR_LOG.get()), has(ModBlocks.FAIR_LOG.get()))
+                .save(pWriter, new ResourceLocation(FlyingMod.MODID, "fair_planks_recipe_1"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FAIR_PLANKS.get(), 4)
+                .requires(ModBlocks.STRIPPED_FAIR_LOG.get())
+                .unlockedBy(getHasName(ModBlocks.STRIPPED_FAIR_LOG.get()), has(ModBlocks.STRIPPED_FAIR_LOG.get()))
+                .save(pWriter, new ResourceLocation(FlyingMod.MODID, "fair_planks_recipe_2"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FAIR_PLANKS.get(), 4)
+                .requires(ModBlocks.FAIR_WOOD.get())
+                .unlockedBy(getHasName(ModBlocks.FAIR_LOG.get()), has(ModBlocks.FAIR_LOG.get()))
+                .save(pWriter, new ResourceLocation(FlyingMod.MODID, "fair_planks_recipe_3"));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, ModBlocks.FAIR_PLANKS.get(), 4)
+                .requires(ModBlocks.STRIPPED_FAIR_WOOD.get())
+                .unlockedBy(getHasName(ModBlocks.STRIPPED_FAIR_LOG.get()), has(ModBlocks.STRIPPED_FAIR_LOG.get()))
+                .save(pWriter, new ResourceLocation(FlyingMod.MODID, "fair_planks_recipe_4"));
+
+
+
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients,

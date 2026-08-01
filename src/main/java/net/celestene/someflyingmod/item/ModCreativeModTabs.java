@@ -40,6 +40,16 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.DRY_CLAY.get());
                                 pOutput.accept(ModItems.PESTLE.get());
 
+                                // TreeTypes
+
+                                pOutput.accept(ModBlocks.FAIR_LOG.get());
+                                pOutput.accept(ModBlocks.FAIR_WOOD.get());
+                                pOutput.accept(ModBlocks.STRIPPED_FAIR_LOG.get());
+                                pOutput.accept(ModBlocks.STRIPPED_FAIR_WOOD.get());
+                                pOutput.accept(ModBlocks.FAIR_PLANKS.get());
+                                pOutput.accept(ModBlocks.FAIR_LEAVES.get());
+                                pOutput.accept(ModBlocks.FAIR_TREE_SAPLING.get());
+
                                 // Essential
                                 pOutput.accept(ModItems.PRIMA.get());
                                 pOutput.accept(ModItems.ESSENCE_SHARD.get());

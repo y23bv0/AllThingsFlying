@@ -24,6 +24,14 @@
   "block.someflyingmod.mortar": "Mortar",
   "item.someflyingmod.pestle": "Pestle",
 
+  "block.someflyingmod.fair_log": "Fair Log",
+  "block.someflyingmod.fair_planks": "Fair Planks",
+  "block.someflyingmod.fair_wood": "Fair Wood",
+  "block.someflyingmod.stripped_fair_log": "Stripped Fair Log",
+  "block.someflyingmod.stripped_fair_wood": "Stripped Fair Wood",
+  "block.someflyingmod.fair_leaves": "Fair Leaves",
+  "block.someflyingmod.fair_tree_sapling": "Fair Tree Sapling",
+
   "item.someflyingmod.essence_staff": "Staff",
   "item.someflyingmod.silk": "Silk",
   "item.someflyingmod.silk_pickaxe": "Silk Pickaxe",

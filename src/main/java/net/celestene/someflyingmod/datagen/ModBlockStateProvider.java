@@ -13,6 +13,7 @@ import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.client.model.generators.ConfiguredModel;
 import net.minecraftforge.client.model.generators.ModelFile;
 import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Function;
@@ -25,6 +26,26 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
+
+        // TreeType:
+        blockItem(ModBlocks.FAIR_LOG);
+        blockItem(ModBlocks.FAIR_WOOD);
+        blockItem(ModBlocks.STRIPPED_FAIR_LOG);
+        blockItem(ModBlocks.STRIPPED_FAIR_WOOD);
+        blockWithItem(ModBlocks.FAIR_PLANKS);
+        saplingBlock(ModBlocks.FAIR_TREE_SAPLING);
+
+        logBlock(((RotatedPillarBlock) ModBlocks.FAIR_LOG.get()));
+        axisBlock(((RotatedPillarBlock) ModBlocks.FAIR_WOOD.get()), blockTexture(ModBlocks.FAIR_LOG.get()), blockTexture(ModBlocks.FAIR_LOG.get()));
+
+        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_FAIR_LOG.get()), blockTexture(ModBlocks.STRIPPED_FAIR_LOG.get()),
+                new ResourceLocation(FlyingMod.MODID, "block/stripped_fair_log_top"));
+        axisBlock(((RotatedPillarBlock) ModBlocks.STRIPPED_FAIR_WOOD.get()), blockTexture(ModBlocks.STRIPPED_FAIR_LOG.get()),
+                blockTexture(ModBlocks.STRIPPED_FAIR_LOG.get()));
+
+        leavesBlock(ModBlocks.FAIR_LEAVES);
+
+        // EssenceType:
         blockWithItem(ModBlocks.FLYING_ESSENCE);
         blockWithItem(ModBlocks.FLIGHTLESS_POWDER);
         blockWithItem(ModBlocks.ESSENCE_ORE);
@@ -56,6 +77,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
                 new ResourceLocation("flower_pot_cross"), "plant",
                 blockTexture(ModBlocks.CATMINT.get())).renderType("cutout"));
 
+
 //        simpleBlockWithItem(ModBlocks.ALCHEMIST_BENCH.get(), models().withExistingParent("alchemist_bench",
 //                        new ResourceLocation(FlyingMod.MODID + "assets/models/block/alchemist_bench")));
 
@@ -72,6 +94,17 @@ public class ModBlockStateProvider extends BlockStateProvider {
 //        // getBuilder makes a new model builder
 //
 //    }
+
+    private void saplingBlock(RegistryObject<Block> blockRegistryObject) {
+        simpleBlock(blockRegistryObject.get(),
+                models().cross(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), blockTexture(blockRegistryObject.get())).renderType("cutout"));
+    }
+
+    private void leavesBlock(RegistryObject<Block> blockRegistryObject) {
+        simpleBlockWithItem(blockRegistryObject.get(),
+                models().singleTexture(ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath(), new ResourceLocation("minecraft:block/leaves"),
+                        "all", blockTexture(blockRegistryObject.get())).renderType("cutout"));
+    }
 
     public void makeStrawberryCrop(CropBlock block, String modelName, String textureName) {
         Function<BlockState, ConfiguredModel[]> function = state -> strawberryStates(state, block, modelName, textureName);
@@ -103,5 +136,10 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {
         simpleBlockWithItem(blockRegistryObject.get(), cubeAll(blockRegistryObject.get()));
+    }
+
+    private void blockItem(RegistryObject<Block> blockRegistryObject) {
+        simpleBlockItem(blockRegistryObject.get(), new ModelFile.UncheckedModelFile(FlyingMod.MODID +
+                ":block/" + ForgeRegistries.BLOCKS.getKey(blockRegistryObject.get()).getPath()));
     }
 }

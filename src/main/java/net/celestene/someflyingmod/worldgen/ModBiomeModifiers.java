@@ -16,7 +16,7 @@ public class ModBiomeModifiers {
     public static final ResourceKey<BiomeModifier> ADD_RUBY_ORE = registerKey("add_ruby_ore");
 
     public static void bootstrap(BootstapContext<BiomeModifier> context) {
-        var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
+         var placedFeatures = context.lookup(Registries.PLACED_FEATURE);
          var biomes = context.lookup(Registries.BIOME);
 
          context.register(ADD_RUBY_ORE, new ForgeBiomeModifiers.AddFeaturesBiomeModifier(

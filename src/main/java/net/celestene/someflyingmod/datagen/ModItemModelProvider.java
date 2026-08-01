@@ -70,6 +70,8 @@ public class ModItemModelProvider extends ItemModelProvider {
         simpleItem(ModItems.DRY_CLAY);
         simpleItem(ModItems.PESTLE);
 
+        saplingItem(ModBlocks.FAIR_TREE_SAPLING);
+
         simpleBlockItem(ModBlocks.FANCY_DOOR);
         trapdoorItem(ModBlocks.FANCY_TRAPDOOR);
         buttonItem(ModBlocks.FANCY_BUTTON, ModBlocks.FANCY_BLOCK);
@@ -194,6 +196,12 @@ public class ModItemModelProvider extends ItemModelProvider {
             For .texture() -- this is doing a key:value pair, where "layer0" is the key. .texture()
             creates a HashMap that will probably be called later when assembling the game
          */
+    }
+
+    private ItemModelBuilder saplingItem(RegistryObject<Block> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/generated")).texture("layer0",
+                new ResourceLocation(FlyingMod.MODID,"block/" + item.getId().getPath()));
     }
 
     // Shoutout to El_Redstoniano for making this, Via KaupenJoe tutorial video

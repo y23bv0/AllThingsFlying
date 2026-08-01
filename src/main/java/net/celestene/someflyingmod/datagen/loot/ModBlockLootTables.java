@@ -58,6 +58,16 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.TUTORIAL_CROP.get(), createCropDrops(ModBlocks.TUTORIAL_CROP.get(), ModItems.STRAWBERRY.get(),
                 ModItems.TUTORIAL_SEEDS.get(), lootitemcondition$builder));
 
+        // TreeType
+
+        this.dropSelf(ModBlocks.FAIR_LOG.get());
+        this.dropSelf(ModBlocks.FAIR_WOOD.get());
+        this.dropSelf(ModBlocks.FAIR_PLANKS.get());
+        this.dropSelf(ModBlocks.STRIPPED_FAIR_LOG.get());
+        this.dropSelf(ModBlocks.STRIPPED_FAIR_WOOD.get());
+        this.add(ModBlocks.FAIR_LEAVES.get(), block -> createLeavesDrops(block, ModBlocks.FAIR_TREE_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        this.dropSelf(ModBlocks.FAIR_TREE_SAPLING.get());
+
 //        LootItemCondition.Builder lootitemcondition$builder2 = LootItemBlockStatePropertyCondition
 //                .hasBlockStateProperties(ModBlocks.CORN_CROP.get())
 //                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CornCropBlock.AGE, 7))
