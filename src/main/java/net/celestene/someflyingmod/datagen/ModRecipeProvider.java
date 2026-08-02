@@ -194,6 +194,14 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .unlockedBy(getHasName(ModBlocks.STRIPPED_FAIR_LOG.get()), has(ModBlocks.STRIPPED_FAIR_LOG.get()))
                 .save(pWriter, new ResourceLocation(FlyingMod.MODID, "fair_planks_recipe_4"));
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, Items.STICK, 4)
+                .pattern("#")
+                .pattern("#")
+                .define('#', ModBlocks.FAIR_PLANKS.get())
+                .unlockedBy(getHasName(ModBlocks.FAIR_PLANKS.get()),
+                        has(ModBlocks.FAIR_PLANKS.get()))
+                .save(pWriter);
+
 
 
     }
