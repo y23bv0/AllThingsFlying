@@ -118,6 +118,17 @@ public class ModBlocks {
                 }
             });
 
+    public static final RegistryObject<Block> FAIR_STAIRS = registerBlock("fair_stairs",
+            () -> new StairBlock(() -> ModBlocks.FAIR_PLANKS.get().defaultBlockState(),
+                    BlockBehaviour.Properties.copy(ModBlocks.FAIR_PLANKS.get()).sound(SoundType.WOOD)));
+    public static final RegistryObject<Block> FAIR_SLAB = registerBlock("fair_slab",
+            () -> new SlabBlock(BlockBehaviour.Properties.copy(ModBlocks.FAIR_PLANKS.get()).sound(SoundType.WOOD)));
+
+    public static final RegistryObject<Block> FAIR_BUTTON = registerBlock("fair_button",
+            () -> new ButtonBlock(BlockBehaviour.Properties.copy(ModBlocks.FAIR_PLANKS.get()).sound(SoundType.WOOD),
+                    BlockSetType.IRON, 10, true));
+
+
     public static RegistryObject<Block> FAIR_TREE_SAPLING = registerBlock("fair_tree_sapling",
             () -> new SaplingBlock(new FairTreeGrower(), BlockBehaviour.Properties.copy(Blocks.OAK_SAPLING)));
 

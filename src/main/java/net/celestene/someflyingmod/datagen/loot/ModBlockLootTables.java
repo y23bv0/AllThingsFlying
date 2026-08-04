@@ -38,6 +38,11 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.FANCY_BUTTON.get());
         this.dropSelf(ModBlocks.FANCY_STAIRS.get());
 
+        this.add(ModBlocks.FAIR_SLAB.get(),
+                block -> createSlabItemTable(ModBlocks.FAIR_SLAB.get()));
+        this.dropSelf(ModBlocks.FAIR_BUTTON.get());
+        this.dropSelf(ModBlocks.FAIR_STAIRS.get());
+
         this.add(ModBlocks.FANCY_DOOR.get(),
                 block -> createDoorTable(ModBlocks.FANCY_DOOR.get()));
         this.add(ModBlocks.FANCY_SLAB.get(),

@@ -35,6 +35,12 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.FAIR_PLANKS);
         saplingBlock(ModBlocks.FAIR_TREE_SAPLING);
 
+        stairsBlock(((StairBlock) ModBlocks.FAIR_STAIRS.get()), blockTexture(ModBlocks.FAIR_PLANKS.get()));
+        slabBlock(((SlabBlock) ModBlocks.FAIR_SLAB.get()), blockTexture(ModBlocks.FAIR_PLANKS.get()),
+                blockTexture(ModBlocks.FAIR_PLANKS.get()));
+
+        buttonBlock(((ButtonBlock) ModBlocks.FAIR_BUTTON.get()), blockTexture(ModBlocks.FAIR_PLANKS.get()));
+
         logBlock(((RotatedPillarBlock) ModBlocks.FAIR_LOG.get()));
         axisBlock(((RotatedPillarBlock) ModBlocks.FAIR_WOOD.get()), blockTexture(ModBlocks.FAIR_LOG.get()), blockTexture(ModBlocks.FAIR_LOG.get()));
 

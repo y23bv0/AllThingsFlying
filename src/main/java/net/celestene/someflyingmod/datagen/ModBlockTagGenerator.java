@@ -41,6 +41,14 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.ALCHEMIST_BENCH.get());
         this.tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.RUBY_ORE.get());
         this.tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.RUBY_BLOCK.get());
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.FAIR_PLANKS.get());
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.FAIR_SLAB.get());
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.FAIR_STAIRS.get());
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.FAIR_BUTTON.get());
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.FAIR_LOG.get());
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.FAIR_WOOD.get());
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.STRIPPED_FAIR_LOG.get());
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.STRIPPED_FAIR_WOOD.get());
 
         // this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.FLYING_ESSENCE.get(), ModBlocks.ESSENCE_ORE.get());
 

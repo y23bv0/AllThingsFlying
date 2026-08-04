@@ -79,6 +79,10 @@ public class ModItemModelProvider extends ItemModelProvider {
         evenSimplerBlockItem(ModBlocks.FANCY_STAIRS);
         evenSimplerBlockItem(ModBlocks.FANCY_SLAB);
 
+        evenSimplerBlockItem(ModBlocks.FAIR_STAIRS);
+        evenSimplerBlockItem(ModBlocks.FAIR_SLAB);
+        buttonItem(ModBlocks.FAIR_BUTTON, ModBlocks.FAIR_PLANKS);
+
         trimmedArmorItem(ModItems.SILK_HELMET);
         trimmedArmorItem(ModItems.SILK_CHESTPLATE);
         trimmedArmorItem(ModItems.SILK_LEGGINGS);

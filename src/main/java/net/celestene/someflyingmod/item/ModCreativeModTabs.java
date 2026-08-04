@@ -47,6 +47,9 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModBlocks.STRIPPED_FAIR_LOG.get());
                                 pOutput.accept(ModBlocks.STRIPPED_FAIR_WOOD.get());
                                 pOutput.accept(ModBlocks.FAIR_PLANKS.get());
+                                pOutput.accept(ModBlocks.FAIR_STAIRS.get());
+                                pOutput.accept(ModBlocks.FAIR_SLAB.get());
+                                pOutput.accept(ModBlocks.FAIR_BUTTON.get());
                                 pOutput.accept(ModBlocks.FAIR_LEAVES.get());
                                 pOutput.accept(ModBlocks.FAIR_TREE_SAPLING.get());
 
