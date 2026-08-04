@@ -1,7 +1,6 @@
 package net.celestene.someflyingmod.item.custom;
 
 import net.celestene.someflyingmod.util.ModTags;
-import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionResult;
@@ -67,8 +66,8 @@ public class MetalDetectorItem extends Item {
     }
 
     private void outputMetalCoords(BlockPos blockPos, Player player, Block blockType) {
-        player.sendSystemMessage(Component.literal("Found " + I18n.get(blockType.getDescriptionId()
-        + " at " + "(" + blockPos.getX() + ", " + blockPos.getY() + ", " + blockPos.getZ() + ")")));
+        player.sendSystemMessage(Component.literal("Found ").append(Component.translatable(blockType.getDescriptionId()))
+                .append(" at (" + blockPos.getX() + ", " + blockPos.getY() + ", " + blockPos.getZ() + ")"));
     }
 
     // I18n is under net.minecraft.client.resources.language and gets the name of a block
