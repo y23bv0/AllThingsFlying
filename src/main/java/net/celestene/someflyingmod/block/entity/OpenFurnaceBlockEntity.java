@@ -2,7 +2,11 @@ package net.celestene.someflyingmod.block.entity;
 
 import net.celestene.someflyingmod.item.ModItems;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -21,11 +25,23 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.items.ItemStackHandler;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
 
 public class OpenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implements MenuProvider {
-    private ItemStack topItem = ItemStack.EMPTY;
+    private ItemStackHandler topItem = new ItemStackHandler(1) {
+        @Override
+        protected void onContentsChanged(int slot) {
+            setChanged();
+
+            if(!level.isClientSide){
+                level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+            }
+        }
+    };
+//    private ItemStack topItem = ItemStack.EMPTY;
     private int COOK_PROGRESS = 0;
     private final int COOK_TIME = 200;
 
@@ -33,20 +49,33 @@ public class OpenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implement
         super(ModBlockEntities.OPEN_FURANCE_BE.get(), pPos, pBlockState, RecipeType.SMELTING);
     }
 
+    public ItemStack getTopItem(){
+        return topItem.getStackInSlot(0);
+    }
+
+    public boolean isItemEmpty(){
+        return topItem.getStackInSlot(0).isEmpty();
+    }
+
+    public void clearItems(){
+        for(int i = 0; i < topItem.getSlots(); i++){
+            topItem.setStackInSlot(i, ItemStack.EMPTY);
+        }
+    }
 
     public static void myServerTick(Level pLevel, BlockPos pPos, BlockState pState, OpenFurnaceBlockEntity pBlockEntity) {
         AbstractFurnaceBlockEntity.serverTick(pLevel, pPos, pState, pBlockEntity);
 
-        if (!pLevel.isClientSide() && !pBlockEntity.topItem.isEmpty()) {
+        if (!pLevel.isClientSide() && !pBlockEntity.isItemEmpty()) {
 
             if (pBlockEntity.COOK_PROGRESS < pBlockEntity.COOK_TIME) {
                 // Cookable items:
-                if (pBlockEntity.topItem.is(Items.CLAY_BALL)) {
+                if (pBlockEntity.getTopItem().is(Items.CLAY_BALL)) {
                     pBlockEntity.COOK_PROGRESS += 20;
                 }
             } else {
-                if (pBlockEntity.topItem.is(Items.CLAY_BALL)) {
-                    pBlockEntity.topItem = new ItemStack(ModItems.DRY_CLAY.get());
+                if (pBlockEntity.getTopItem().is(Items.CLAY_BALL)) {
+                    pBlockEntity.topItem.setStackInSlot(0, new ItemStack(ModItems.DRY_CLAY.get(), 1));
                     pBlockEntity.COOK_PROGRESS = 0;
                 }
             }
@@ -55,24 +84,24 @@ public class OpenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implement
     }
 
     public void handleTopClick(Level pLevel, BlockPos pPos, Player pPlayer, OpenFurnaceBlockEntity pBlockEntity){
-        if (topItem.isEmpty() && !pPlayer.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
+        if (isItemEmpty() && !pPlayer.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
 
             ItemStack playerStack = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
-            topItem = pPlayer.getMainHandItem().copyWithCount(1);
+            topItem.setStackInSlot(0, pPlayer.getMainHandItem().copyWithCount(1));
             if (!pPlayer.getAbilities().instabuild) {
                 playerStack.shrink(1);
             }
             COOK_PROGRESS = 0;
-        } else if (!topItem.isEmpty()){
+        } else if (!isItemEmpty()){
 
             double posX = pPos.getX() + 0.5;
             double posY = pPos.getY() + 1.125;
             double posZ = pPos.getZ() + 0.5;
 
-            ItemEntity topItem_dropped = new ItemEntity(pLevel, posX, posY, posZ, topItem);
+            ItemEntity topItem_dropped = new ItemEntity(pLevel, posX, posY, posZ, getTopItem());
             pLevel.addFreshEntity(topItem_dropped);
             pLevel.playSound(null, posX, posY, posZ, SoundEvents.ITEM_PICKUP, SoundSource.PLAYERS, 1.0F, 1.0F);
-            topItem = ItemStack.EMPTY;
+            clearItems();
             COOK_PROGRESS = 0;
 
         }
@@ -95,4 +124,13 @@ public class OpenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implement
         return new FurnaceMenu(pId, pPlayer, this, this.dataAccess);
     }
 
+    @Override
+    public @Nullable Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
 }
