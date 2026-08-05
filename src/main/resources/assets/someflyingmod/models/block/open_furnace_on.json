@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/orientable",
   "textures": {
-    "front": "someflyingmod:block/open_furnace_front",
+    "front": "someflyingmod:block/open_furnace_front_on",
     "side": "someflyingmod:block/open_furnace_side",
     "top": "someflyingmod:block/open_furnace_top"
   }

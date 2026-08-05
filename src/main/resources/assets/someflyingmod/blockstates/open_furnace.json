@@ -1,33 +1,33 @@
 {
   "variants": {
     "facing=east,lit=false": {
-      "model": "minecraft:block/open_furnace",
+      "model": "someflyingmod:block/open_furnace",
       "y": 90
     },
     "facing=east,lit=true": {
-      "model": "minecraft:block/open_furnace_on",
+      "model": "someflyingmod:block/open_furnace_on",
       "y": 90
     },
     "facing=north,lit=false": {
-      "model": "minecraft:block/open_furnace"
+      "model": "someflyingmod:block/open_furnace"
     },
     "facing=north,lit=true": {
-      "model": "minecraft:block/open_furnace_on"
+      "model": "someflyingmod:block/open_furnace_on"
     },
     "facing=south,lit=false": {
-      "model": "minecraft:block/open_furnace",
+      "model": "someflyingmod:block/open_furnace",
       "y": 180
     },
     "facing=south,lit=true": {
-      "model": "minecraft:block/open_furnace_on",
+      "model": "someflyingmod:block/open_furnace_on",
       "y": 180
     },
     "facing=west,lit=false": {
-      "model": "minecraft:block/open_furnace",
+      "model": "someflyingmod:block/open_furnace",
       "y": 270
     },
     "facing=west,lit=true": {
-      "model": "minecraft:block/open_furnace_on",
+      "model": "someflyingmod:block/open_furnace_on",
       "y": 270
     }
   }
