@@ -17,6 +17,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(OpenFurnaceBlockEntity::new,
                             ModBlocks.OPEN_FURNACE.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<MortarBlockEntity>> MORTAR_BE =
+            BLOCK_ENTITIES.register("mortar_be", () ->
+                    BlockEntityType.Builder.of(MortarBlockEntity::new,
+                            ModBlocks.MORTAR.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

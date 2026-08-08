@@ -36,7 +36,7 @@ public class OpenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implement
         protected void onContentsChanged(int slot) {
             setChanged();
 
-            if(!level.isClientSide){
+            if (level != null) {
                 level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
             }
         }
