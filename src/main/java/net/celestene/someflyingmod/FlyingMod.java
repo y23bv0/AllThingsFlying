@@ -9,8 +9,11 @@ import net.celestene.someflyingmod.item.ModCreativeModTabs;
 import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.loot.ModLootModifiers;
 import net.celestene.someflyingmod.particle.ModParticles;
+import net.celestene.someflyingmod.screen.ModMenuTypes;
+import net.celestene.someflyingmod.screen.MortarScreen;
 import net.celestene.someflyingmod.util.ModItemProperties;
 import net.celestene.someflyingmod.villager.ModVillagers;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -59,6 +62,9 @@ public class FlyingMod
         ModEntities.register(modEventBus);
         ModEffects.register(modEventBus);
         ModParticles.register(modEventBus);
+
+        ModMenuTypes.register(modEventBus);
+
         ModBlockEntities.register(modEventBus);
 
     }
@@ -93,6 +99,8 @@ public class FlyingMod
         public static void onClientSetup(FMLClientSetupEvent event) {
             ModItemProperties.addCustomItemProperties();
             EntityRenderers.register(ModEntities.BENCH_PROJECTILE.get(), ThrownItemRenderer::new);
+
+            MenuScreens.register(ModMenuTypes.MORTAR_MENU.get(), MortarScreen::new);
         }
     }
 }

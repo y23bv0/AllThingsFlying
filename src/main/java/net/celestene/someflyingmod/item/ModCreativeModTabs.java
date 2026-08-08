@@ -31,6 +31,7 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.RUBY_AXE.get());
                                 pOutput.accept(ModItems.RUBY_SHOVEL.get());
                                 pOutput.accept(ModItems.RUBY_HOE.get());
+                                pOutput.accept(ModItems.RUBY_POWDER.get());
 
                                 // Pre-CreationTypes
                                 pOutput.accept(ModBlocks.OPEN_FURNACE.get());

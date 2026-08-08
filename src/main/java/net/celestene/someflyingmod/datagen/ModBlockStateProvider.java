@@ -60,6 +60,7 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.FANCY_BLOCK);
 
         blockWithItem(ModBlocks.REFINED_ESSENCE);
+//        simpleBlockWithItem(ModBlocks.MORTAR.get(), new ModelFile.UncheckedModelFile(modLoc("block/mortar")));
 
 
         stairsBlock(((StairBlock) ModBlocks.FANCY_STAIRS.get()), blockTexture(ModBlocks.FANCY_BLOCK.get()));

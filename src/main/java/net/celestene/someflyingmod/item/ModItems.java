@@ -29,6 +29,8 @@ public class ModItems {
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RUBY = ITEMS.register("ruby",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RUBY_POWDER = ITEMS.register("ruby_powder",
+            () -> new Item(new Item.Properties()));
 
     // Food-related
 

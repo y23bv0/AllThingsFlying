@@ -67,6 +67,7 @@ public class ModItemModelProvider extends ItemModelProvider {
         handheldItem(ModItems.RUBY_AXE);
         handheldItem(ModItems.RUBY_SHOVEL);
         handheldItem(ModItems.RUBY_HOE);
+        simpleItem(ModItems.RUBY_POWDER);
         simpleItem(ModItems.DRY_CLAY);
         simpleItem(ModItems.PESTLE);
 

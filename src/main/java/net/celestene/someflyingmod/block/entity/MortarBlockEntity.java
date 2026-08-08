@@ -1,6 +1,7 @@
 package net.celestene.someflyingmod.block.entity;
 
 import net.celestene.someflyingmod.item.ModItems;
+import net.celestene.someflyingmod.screen.MortarMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -110,7 +111,7 @@ public class MortarBlockEntity extends BlockEntity implements MenuProvider {
 
     @Override
     public @Nullable AbstractContainerMenu createMenu(int pContainerId, Inventory pPlayerInventory, Player pPlayer) {
-        return
+        return new MortarMenu(pContainerId, pPlayerInventory, this, this.data);
     }
 
     @Override
@@ -153,7 +154,7 @@ public class MortarBlockEntity extends BlockEntity implements MenuProvider {
             setChanged(pLevel, pPos, pState);
 
             if(progressFinished()){
-                craftItem();
+                craftItem(this.itemHandler.getStackInSlot(INPUT_SLOT));
                 resetProgress();
             }
         } else {
@@ -165,7 +166,16 @@ public class MortarBlockEntity extends BlockEntity implements MenuProvider {
         progress = 0;
     }
 
-    private void craftItem() {
+    private void craftItem(ItemStack stack) {
+        if(stack.is(ModItems.RUBY.get())){
+            ItemStack result = new ItemStack(ModItems.RUBY_POWDER.get(), 1);
+            this.itemHandler.extractItem(INPUT_SLOT, 1, false);
+
+            this.itemHandler.setStackInSlot(OUTPUT_SLOT, new ItemStack(result.getItem(),
+                    this.itemHandler.getStackInSlot(OUTPUT_SLOT).getCount() + result.getCount()));
+        } else {
+            throw new IllegalArgumentException("Custom Error Message: craftItem() says no crafting items other than those already specified.");
+        }
     }
 
     private boolean progressFinished() {
