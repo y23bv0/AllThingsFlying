@@ -41,6 +41,10 @@ public class ModCreativeModTabs {
                                 // CreationTypes-Large
                                 pOutput.accept(ModBlocks.OPEN_FURNACE.get());
                                 pOutput.accept(ModBlocks.METAL_WORKSTATION.get());
+                                pOutput.accept(ModBlocks.GEM_ETCHING_TABLE.get());
+                                pOutput.accept(ModBlocks.AMETHYST_STRIP.get());
+                                pOutput.accept(ModBlocks.AMETHYST_FLAT_PLATE.get());
+                                pOutput.accept(ModBlocks.AMETHYST_PLATE.get());
 
                                 // TreeTypes
 

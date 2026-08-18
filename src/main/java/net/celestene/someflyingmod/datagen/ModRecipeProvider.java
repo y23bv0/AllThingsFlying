@@ -202,7 +202,13 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                         has(ModBlocks.FAIR_PLANKS.get()))
                 .save(pWriter);
 
-
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.AMETHYST_STRIP.get())
+                .pattern("###")
+                .pattern("###")
+                .define('#', Items.AMETHYST_SHARD)
+                .unlockedBy(getHasName(Items.AMETHYST_SHARD),
+                        has(Items.AMETHYST_SHARD))
+                .save(pWriter);
 
     }
 

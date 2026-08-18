@@ -30,13 +30,15 @@ import org.jetbrains.annotations.Nullable;
 public class MortarBlock extends BaseEntityBlock {
     public MortarBlock(Properties pProperties) { super(pProperties); }
 
-    //    @Override
-//    public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
-//        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
-//    }
-//
-//    @Override
-//    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) { pBuilder.add(FACING); }
+    @Override
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext pContext) {
+        return this.defaultBlockState().setValue(HorizontalDirectionalBlock.FACING, pContext.getHorizontalDirection().getOpposite());
+    }
+
+    @Override
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
+        pBuilder.add(HorizontalDirectionalBlock.FACING);
+    }
 
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {

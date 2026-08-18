@@ -1,0 +1,19 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "someflyingmod:block/gem_etching_table"
+		},
+		"facing=south": {
+			"model": "someflyingmod:block/gem_etching_table",
+			"y": 180
+		},
+		"facing=east": {
+			"model": "someflyingmod:block/gem_etching_table",
+			"y": 90
+		},
+		"facing=west": {
+			"model": "someflyingmod:block/gem_etching_table",
+			"y": 270
+		}
+	}
+}

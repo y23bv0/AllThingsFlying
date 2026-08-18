@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "someflyingmod:block/amethyst_strip"
+    },
+    "facing=south": {
+      "model": "someflyingmod:block/amethyst_strip",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "someflyingmod:block/amethyst_strip",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "someflyingmod:block/amethyst_strip",
+      "y": 270
+    }
+  }
+}

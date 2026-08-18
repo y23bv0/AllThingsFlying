@@ -161,7 +161,18 @@ public class ModBlocks {
             () -> new OpenFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(litBlockEmission(13)).noOcclusion()));
 
     public static final RegistryObject<Block> METAL_WORKSTATION = registerBlock("metal_workstation",
-            () -> new BenchBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).noOcclusion()));
+                () -> new HorizontalFacingBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).noOcclusion()));
+//    public static final RegistryObject<Block> GEM_ETCHING_TABLE = registerBlock("gem_etching_table",
+//            () -> new HorizontalFacingBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).sound(SoundType.WOOD).noOcclusion()));
+public static final RegistryObject<Block> GEM_ETCHING_TABLE = registerBlock("gem_etching_table",
+        () -> new HorizontalFacingBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.WOOD).noOcclusion()));
+
+    public static final RegistryObject<Block> AMETHYST_FLAT_PLATE = registerBlock("amethyst_flat_plate",
+            () -> new WorkstationPlateBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).sound(SoundType.AMETHYST).noOcclusion()));
+    public static final RegistryObject<Block> AMETHYST_PLATE = registerBlock("amethyst_plate",
+            () -> new WorkstationPlateBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).sound(SoundType.AMETHYST).noOcclusion()));
+    public static final RegistryObject<Block> AMETHYST_STRIP = registerBlock("amethyst_strip",
+            () -> new WorkstationPlateBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).sound(SoundType.AMETHYST).noOcclusion()));
 
     // OTHER:
 

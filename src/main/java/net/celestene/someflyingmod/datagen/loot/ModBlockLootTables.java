@@ -95,6 +95,10 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.dropSelf(ModBlocks.OPEN_FURNACE.get());
 
         this.dropSelf(ModBlocks.METAL_WORKSTATION.get());
+        this.dropSelf(ModBlocks.GEM_ETCHING_TABLE.get());
+        this.dropSelf(ModBlocks.AMETHYST_PLATE.get());
+        this.dropSelf(ModBlocks.AMETHYST_FLAT_PLATE.get());
+        this.dropSelf(ModBlocks.AMETHYST_STRIP.get());
     }
 
 
