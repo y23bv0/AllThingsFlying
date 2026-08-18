@@ -128,26 +128,6 @@ public class MortarBlockEntity extends BlockEntity implements MenuProvider {
         progress = pTag.getInt("mortar.progress");
     }
 
-    //    public ItemStack getTopItem(){
-//        return topItem.getStackInSlot(0);
-//    }
-
-    public boolean isInputHandlerEmpty(){
-        for(int i = 0; i < itemHandler.getSlots(); i++){
-            if(!itemHandler.getStackInSlot(i).isEmpty()){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public void clearInputs(){
-        for(int i = 0; i < itemHandler.getSlots(); i++){
-            itemHandler.setStackInSlot(i, ItemStack.EMPTY);
-        }
-    }
-
-
     public void tick(Level pLevel, BlockPos pPos, BlockState pState) {
         if(hasRecipe()){
             progressRecipe();

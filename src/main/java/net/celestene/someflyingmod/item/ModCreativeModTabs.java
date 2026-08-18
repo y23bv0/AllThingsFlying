@@ -33,13 +33,14 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.RUBY_HOE.get());
                                 pOutput.accept(ModItems.RUBY_POWDER.get());
 
-                                // Pre-CreationTypes
-                                pOutput.accept(ModBlocks.OPEN_FURNACE.get());
-
-                                // CreationTypes
+                                // CreationTypes-Small
                                 pOutput.accept(ModItems.MORTAR_ITEM.get());
                                 pOutput.accept(ModItems.DRY_CLAY.get());
                                 pOutput.accept(ModItems.PESTLE.get());
+
+                                // CreationTypes-Large
+                                pOutput.accept(ModBlocks.OPEN_FURNACE.get());
+                                pOutput.accept(ModBlocks.METAL_WORKSTATION.get());
 
                                 // TreeTypes
 

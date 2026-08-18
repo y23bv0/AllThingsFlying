@@ -59,6 +59,8 @@ public class ModBlockStateProvider extends BlockStateProvider {
         blockWithItem(ModBlocks.RUBY_BLOCK);
         blockWithItem(ModBlocks.FANCY_BLOCK);
 
+//        blockItem(ModBlocks.METAL_WORKSTATION);
+
         blockWithItem(ModBlocks.REFINED_ESSENCE);
 //        simpleBlockWithItem(ModBlocks.MORTAR.get(), new ModelFile.UncheckedModelFile(modLoc("block/mortar")));
 

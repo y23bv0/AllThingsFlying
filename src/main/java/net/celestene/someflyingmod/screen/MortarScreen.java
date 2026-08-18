@@ -33,8 +33,8 @@ public class MortarScreen extends AbstractContainerScreen<MortarMenu> {
 
         int topLeftCornerX = (width - imageWidth) / 2;
         int topLeftCornerY = (height - imageHeight) / 2;
-        final int topLeftCornerXCoordinate = 0;
-        final int topLeftCornerYCoordinate = 0;
+        int topLeftCornerXCoordinate = 0;
+        int topLeftCornerYCoordinate = 0;
 
         // Blit copies image file and puts it on screen
         pGuiGraphics.blit(TEXTURE, topLeftCornerX, topLeftCornerY, topLeftCornerXCoordinate, topLeftCornerYCoordinate, imageWidth, imageHeight);
@@ -46,15 +46,18 @@ public class MortarScreen extends AbstractContainerScreen<MortarMenu> {
     private void renderProgressArrow(GuiGraphics pGuiGraphics, int topLeftCornerX, int topLeftCornerY) {
         int x = topLeftCornerX;
         int y = topLeftCornerY;
-        int xOffset = 1;
-        int yOffset = 133;
-        int pUOffset = 132;
-        int pVOffset = 26;
+        int xOffset = 132; //1
+        int yOffset = 26; //133
+        int pUOffset = 1; //132
+        int pVOffset = 133; //26
         int pVHeight = 7; // maximum height of arrow once complete
 
-        if(menu.isCrafting()){
-            pGuiGraphics.blit(TEXTURE, x + xOffset, y + yOffset, pUOffset, pVOffset, menu.getScaledProgress(), pVHeight);
-        }
+        // replace 15 with menu.getScaledProgress()
+
+//        if(menu.isCrafting()){
+//            pGuiGraphics.blit(TEXTURE, x + xOffset, y + yOffset, pUOffset, pVOffset, 15, pVHeight, 256, 256);
+        pGuiGraphics.blit(TEXTURE, x + xOffset, y + yOffset, pUOffset, pVOffset, menu.getScaledProgress(), pVHeight, 256, 256);
+//        }
     }
 
     @Override

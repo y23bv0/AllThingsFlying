@@ -1,0 +1,19 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "someflyingmod:block/metal_workstation"
+		},
+		"facing=south": {
+			"model": "someflyingmod:block/metal_workstation",
+			"y": 180
+		},
+		"facing=east": {
+			"model": "someflyingmod:block/metal_workstation",
+			"y": 90
+		},
+		"facing=west": {
+			"model": "someflyingmod:block/metal_workstation",
+			"y": 270
+		}
+	}
+}

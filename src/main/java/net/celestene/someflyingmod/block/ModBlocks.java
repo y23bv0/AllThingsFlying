@@ -160,6 +160,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> OPEN_FURNACE = registerBlock("open_furnace",
             () -> new OpenFurnaceBlock(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).instrument(NoteBlockInstrument.BASEDRUM).requiresCorrectToolForDrops().strength(3.5F).lightLevel(litBlockEmission(13)).noOcclusion()));
 
+    public static final RegistryObject<Block> METAL_WORKSTATION = registerBlock("metal_workstation",
+            () -> new BenchBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.STONE).noOcclusion()));
 
     // OTHER:
 

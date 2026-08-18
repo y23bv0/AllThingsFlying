@@ -93,6 +93,8 @@ public class ModBlockLootTables extends BlockLootSubProvider {
         this.add(ModBlocks.ALCHEMIST_BENCH.get(), createSingleItemTable(ModItems.ALCHEMIST_BENCH_ITEM.get()));
         this.add(ModBlocks.MORTAR.get(), createSingleItemTable(ModItems.MORTAR_ITEM.get()));
         this.dropSelf(ModBlocks.OPEN_FURNACE.get());
+
+        this.dropSelf(ModBlocks.METAL_WORKSTATION.get());
     }
 
 
