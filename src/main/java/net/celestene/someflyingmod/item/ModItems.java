@@ -4,11 +4,18 @@ import net.celestene.someflyingmod.FlyingMod;
 import net.celestene.someflyingmod.block.ModBlocks;
 import net.celestene.someflyingmod.item.custom.*;
 import net.celestene.someflyingmod.item.custom.CompassItem;
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.List;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
@@ -30,7 +37,12 @@ public class ModItems {
     public static final RegistryObject<Item> RUBY = ITEMS.register("ruby",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> RUBY_POWDER = ITEMS.register("ruby_powder",
-            () -> new Item(new Item.Properties()));
+            () -> new ToolTipItem(new Item.Properties(), List.of(
+                    Component.translatable("tooltip.someflyingmod.properties_entry.tooltip"),
+                    Component.translatable("tooltip.someflyingmod.protection_property_entry.tooltip").withStyle(ChatFormatting.LIGHT_PURPLE).withStyle(ChatFormatting.ITALIC),
+                    Component.translatable("tooltip.someflyingmod.strength_property_entry.tooltip").withStyle(ChatFormatting.RED).withStyle(ChatFormatting.ITALIC),
+                    Component.translatable("tooltip.someflyingmod.prosperity_property_entry.tooltip").withStyle(ChatFormatting.WHITE).withStyle(ChatFormatting.ITALIC)
+            )));
 
     // Food-related
 
@@ -84,6 +96,11 @@ public class ModItems {
 
     public static final RegistryObject<Item> PESTLE = ITEMS.register("pestle",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RED_SHARDED_FLUTE = ITEMS.register("red_sharded_flute",
+            () -> new ToolTipItem(new Item.Properties(), List.of(
+                    Component.translatable("tooltip.someflyingmod.properties_entry.tooltip"),
+                    Component.translatable("tooltip.someflyingmod.destruction_property_entry.tooltip").withStyle(ChatFormatting.DARK_PURPLE).withStyle(ChatFormatting.ITALIC)
+            )));
 
     // ARMOR
 
@@ -98,7 +115,10 @@ public class ModItems {
 
     // SHARDS
     public static final RegistryObject<Item> RED_SHARD = ITEMS.register("red_shard",
-            () -> new Item(new Item.Properties()));
+            () -> new ToolTipItem(new Item.Properties(), List.of(
+                    Component.translatable("tooltip.someflyingmod.properties_entry.tooltip"),
+                    Component.translatable("tooltip.someflyingmod.destruction_property_entry.tooltip").withStyle(ChatFormatting.DARK_PURPLE).withStyle(ChatFormatting.ITALIC)
+            )));
     public static final RegistryObject<Item> ESSENTIAL_SHARD = ITEMS.register("essential_shard",
             () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> POSEIDONS_SHARD = ITEMS.register("poseidons_shard",

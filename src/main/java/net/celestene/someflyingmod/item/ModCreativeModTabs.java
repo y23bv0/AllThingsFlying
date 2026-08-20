@@ -37,6 +37,7 @@ public class ModCreativeModTabs {
                                 pOutput.accept(ModItems.MORTAR_ITEM.get());
                                 pOutput.accept(ModItems.DRY_CLAY.get());
                                 pOutput.accept(ModItems.PESTLE.get());
+                                pOutput.accept(ModItems.RED_SHARDED_FLUTE.get());
 
                                 // CreationTypes-Large
                                 pOutput.accept(ModBlocks.OPEN_FURNACE.get());

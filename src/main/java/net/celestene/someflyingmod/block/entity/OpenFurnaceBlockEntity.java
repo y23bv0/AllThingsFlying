@@ -43,7 +43,7 @@ public class OpenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implement
     };
 //    private ItemStack topItem = ItemStack.EMPTY;
     private int COOK_PROGRESS = 0;
-    private final int COOK_TIME = 200;
+    private final int COOK_TIME = 100;
 
     public OpenFurnaceBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.OPEN_FURANCE_BE.get(), pPos, pBlockState, RecipeType.SMELTING);
@@ -71,7 +71,7 @@ public class OpenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implement
             if (pBlockEntity.COOK_PROGRESS < pBlockEntity.COOK_TIME) {
                 // Cookable items:
                 if (pBlockEntity.getTopItem().is(Items.CLAY_BALL)) {
-                    pBlockEntity.COOK_PROGRESS += 20;
+                    pBlockEntity.COOK_PROGRESS += 1;
                 }
             } else {
                 if (pBlockEntity.getTopItem().is(Items.CLAY_BALL)) {
@@ -132,5 +132,19 @@ public class OpenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implement
     @Override
     public CompoundTag getUpdateTag() {
         return saveWithoutMetadata();
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag pTag) {
+        pTag.put("topItem", topItem.serializeNBT());
+        super.saveAdditional(pTag);
+    }
+
+    @Override
+    public void load(CompoundTag pTag) {
+        super.load(pTag);
+        if(pTag.contains("topItem")){
+            topItem.deserializeNBT(pTag.getCompound("topItem"));
+        }
     }
 }

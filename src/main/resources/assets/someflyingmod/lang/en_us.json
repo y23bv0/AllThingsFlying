@@ -25,6 +25,7 @@
   "block.someflyingmod.amethyst_strip": "Amethyst Strip",
   "block.someflyingmod.amethyst_flat_plate": "Amethyst Flat Plate",
   "block.someflyingmod.amethyst_plate": "Amethyst Plate",
+  "item.someflyingmod.red_sharded_flute": "Red Sharded Flute",
   "item.someflyingmod.dry_clay": "Dry Clay",
   "item.someflyingmod.mortar_item": "Mortar",
   "block.someflyingmod.mortar": "Mortar",
@@ -84,6 +85,11 @@
   "hotbarmessage_split_2.someflyingmod.hammer_cooldown": " second cooldown!",
   "hotbarmessage.someflyingmod.hammer_avoid_moving": "Moving will break your power up sequence!",
 
+  "tooltip.someflyingmod.properties_entry.tooltip": "Properties: ",
+  "tooltip.someflyingmod.protection_property_entry.tooltip": "- Protection",
+  "tooltip.someflyingmod.strength_property_entry.tooltip": "- Strength",
+  "tooltip.someflyingmod.prosperity_property_entry.tooltip": "- Prosperity",
+  "tooltip.someflyingmod.destruction_property_entry.tooltip": "- Destruction",
   "tooltip.someflyingmod.metal_detector.tooltip": "Woah, there's metal under me!",
   "tooltip.someflyingmod.refined_essence.tooltip": "Makes an interesting sound when you click it! Try it out?",
 

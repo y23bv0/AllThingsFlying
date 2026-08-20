@@ -144,7 +144,7 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .requires(Blocks.STONE)
                 .requires(ModBlocks.OPEN_FURNACE.get())
                 .unlockedBy(getHasName(Blocks.FURNACE), has(ModBlocks.OPEN_FURNACE.get()))
-                .save(pWriter);
+                .save(pWriter, new ResourceLocation(FlyingMod.MODID, "furnace_from_open_furnace"));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.REDSTONE, ModBlocks.OPEN_FURNACE.get(), 1)
                 .requires(Blocks.FURNACE)
@@ -208,6 +208,16 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
                 .define('#', Items.AMETHYST_SHARD)
                 .unlockedBy(getHasName(Items.AMETHYST_SHARD),
                         has(Items.AMETHYST_SHARD))
+                .save(pWriter);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.RED_SHARDED_FLUTE.get())
+                .pattern("#  ")
+                .pattern(" # ")
+                .pattern("  @")
+                .define('#', ModItems.STONE_ROD.get())
+                .define('@', ModItems.RED_SHARD.get())
+                .unlockedBy(getHasName(ModItems.RED_SHARD.get()),
+                        has(ModItems.RED_SHARD.get()))
                 .save(pWriter);
 
     }

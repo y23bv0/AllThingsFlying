@@ -19,7 +19,7 @@ public class ModToolTiers {
     );
 
     public static final Tier RUBY = TierSortingRegistry.registerTier(
-            new ForgeTier(4, 1500, 4f, 4f, 15,
+            new ForgeTier(4, 1500, 4f, 3f, 15,
                     ModTags.Blocks.NEEDS_RUBY_TOOL, () -> Ingredient.of(ModItems.RUBY.get())),
             new ResourceLocation(FlyingMod.MODID, "ruby"), List.of(Tiers.DIAMOND), List.of()
     );

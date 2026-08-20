@@ -28,8 +28,8 @@ public class OpenFurnaceRenderer implements BlockEntityRenderer<OpenFurnaceBlock
         ItemStack itemstack = pBlockEntity.getTopItem();
 
         pPoseStack.pushPose(); // tells the game you are changing/manipulating pose stack
-        pPoseStack.translate(0.5f, 1.125f, 0.5f);
-        pPoseStack.scale(0.35f, 0.35f, 0.35f);
+        pPoseStack.translate(0.5f, 1.0f, 0.5f);
+        pPoseStack.scale(0.5f, 0.5f, 0.5f);
         pPoseStack.mulPose(Axis.XP.rotationDegrees(270)); // rotating the object
 
         //pBlock.FACING --> rotate icon according to rotation of block

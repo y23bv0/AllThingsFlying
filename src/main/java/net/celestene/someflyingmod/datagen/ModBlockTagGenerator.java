@@ -50,6 +50,11 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.STRIPPED_FAIR_LOG.get());
         this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.STRIPPED_FAIR_WOOD.get());
 
+        this.tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.METAL_WORKSTATION.get());
+        this.tag(BlockTags.MINEABLE_WITH_AXE).add(ModBlocks.GEM_ETCHING_TABLE.get());
+        this.tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.METAL_WORKSTATION.get());
+        this.tag(BlockTags.NEEDS_IRON_TOOL).add(ModBlocks.GEM_ETCHING_TABLE.get());
+
         // this.tag(BlockTags.NEEDS_DIAMOND_TOOL).add(ModBlocks.FLYING_ESSENCE.get(), ModBlocks.ESSENCE_ORE.get());
 
         this.tag(ModTags.Blocks.NEEDS_SILK_TOOL).add(ModBlocks.ESSENCE_ORE.get(), ModBlocks.REFINED_ESSENCE.get(),
