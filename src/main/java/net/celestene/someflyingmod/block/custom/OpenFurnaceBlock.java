@@ -64,7 +64,18 @@ public class OpenFurnaceBlock extends AbstractFurnaceBlock {
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
 
+    @Override
+    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
 
+        if(pState.getBlock() != pNewState.getBlock()){
+            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+            if(blockEntity instanceof OpenFurnaceBlockEntity){
+                ((OpenFurnaceBlockEntity) blockEntity).limitedDrops();
+            }
+        }
+
+        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+    }
 
     @Override
     public RenderShape getRenderShape(BlockState pState) {

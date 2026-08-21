@@ -22,6 +22,11 @@ public class ModBlockEntities {
                     BlockEntityType.Builder.of(MortarBlockEntity::new,
                             ModBlocks.MORTAR.get()).build(null));
 
+    public static final RegistryObject<BlockEntityType<GemEtchingTableEntity>> GEM_ETCHING_TABLE_BE =
+            BLOCK_ENTITIES.register("gem_etching_table_be", () ->
+                    BlockEntityType.Builder.of(GemEtchingTableEntity::new,
+                            ModBlocks.GEM_ETCHING_TABLE.get()).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

@@ -9,8 +9,10 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -114,6 +116,15 @@ public class OpenFurnaceBlockEntity extends AbstractFurnaceBlockEntity implement
         int z = (int)((hitVec.z - pPos.getZ()) * 15);
 
         return ((3 <= x) && (x <= 12) && (3 <= z) && (z <= 12) && (y == 15));
+    }
+
+    public void limitedDrops() {
+        SimpleContainer inventory = new SimpleContainer(topItem.getSlots());
+        for (int i = 0; i < topItem.getSlots(); i++) {
+            inventory.setItem(i, topItem.getStackInSlot(i));
+        }
+
+        Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
     protected Component getDefaultName() {

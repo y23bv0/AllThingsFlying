@@ -9,6 +9,7 @@ import net.celestene.someflyingmod.item.ModCreativeModTabs;
 import net.celestene.someflyingmod.item.ModItems;
 import net.celestene.someflyingmod.loot.ModLootModifiers;
 import net.celestene.someflyingmod.particle.ModParticles;
+import net.celestene.someflyingmod.screen.GemEtchingTableScreen;
 import net.celestene.someflyingmod.screen.ModMenuTypes;
 import net.celestene.someflyingmod.screen.MortarScreen;
 import net.celestene.someflyingmod.util.ModItemProperties;
@@ -101,6 +102,7 @@ public class FlyingMod
             EntityRenderers.register(ModEntities.BENCH_PROJECTILE.get(), ThrownItemRenderer::new);
 
             MenuScreens.register(ModMenuTypes.MORTAR_MENU.get(), MortarScreen::new);
+            MenuScreens.register(ModMenuTypes.GEM_ETCHING_TABLE_MENU.get(), GemEtchingTableScreen::new);
         }
     }
 }

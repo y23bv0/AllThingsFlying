@@ -17,6 +17,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<MortarMenu>> MORTAR_MENU =
             registerMenuType("mortar_menu", MortarMenu::new);
 
+    public static final RegistryObject<MenuType<GemEtchingTableMenu>> GEM_ETCHING_TABLE_MENU =
+            registerMenuType("gem_etching_table_menu", GemEtchingTableMenu::new);
+
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(String name, IContainerFactory factory) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
     }

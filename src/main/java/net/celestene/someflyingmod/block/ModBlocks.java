@@ -165,7 +165,7 @@ public class ModBlocks {
 //    public static final RegistryObject<Block> GEM_ETCHING_TABLE = registerBlock("gem_etching_table",
 //            () -> new HorizontalFacingBlock(BlockBehaviour.Properties.copy(Blocks.OAK_LOG).sound(SoundType.WOOD).noOcclusion()));
 public static final RegistryObject<Block> GEM_ETCHING_TABLE = registerBlock("gem_etching_table",
-        () -> new HorizontalFacingBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.WOOD).noOcclusion()));
+        () -> new GemEtchingTableBlock(BlockBehaviour.Properties.copy(Blocks.STONE).sound(SoundType.WOOD).noOcclusion()));
 
     public static final RegistryObject<Block> AMETHYST_FLAT_PLATE = registerBlock("amethyst_flat_plate",
             () -> new WorkstationPlateBlock(BlockBehaviour.Properties.copy(Blocks.AMETHYST_BLOCK).sound(SoundType.AMETHYST).noOcclusion()));
