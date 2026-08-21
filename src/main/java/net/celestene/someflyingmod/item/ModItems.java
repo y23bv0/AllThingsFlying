@@ -95,11 +95,12 @@ public class ModItems {
     // CreationTypes
 
     public static final RegistryObject<Item> PESTLE = ITEMS.register("pestle",
-            () -> new Item(new Item.Properties()));
+            () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> RED_SHARDED_FLUTE = ITEMS.register("red_sharded_flute",
-            () -> new ToolTipItem(new Item.Properties(), List.of(
+            () -> new ToolTipItem(new Item.Properties().stacksTo(1), List.of(
                     Component.translatable("tooltip.someflyingmod.properties_entry.tooltip"),
-                    Component.translatable("tooltip.someflyingmod.destruction_property_entry.tooltip").withStyle(ChatFormatting.DARK_PURPLE).withStyle(ChatFormatting.ITALIC)
+                    Component.translatable("tooltip.someflyingmod.destruction_property_entry.tooltip")
+                            .withStyle(ChatFormatting.DARK_PURPLE).withStyle(ChatFormatting.ITALIC)
             )));
 
     // ARMOR

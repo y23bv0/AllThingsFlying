@@ -35,6 +35,7 @@ public class GemEtchingTableEntity extends BlockEntity implements MenuProvider {
     private ItemStackHandler itemHandler = new ItemStackHandler(2);
     public static final int INPUT_SLOT = 0;
     public static final int PLATE_SLOT = 1;
+    public int timeReferenceNumber = 0; // for rotation in block GUI
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
     protected final ContainerData data;
