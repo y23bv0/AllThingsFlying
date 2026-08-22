@@ -8,6 +8,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.Containers;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -17,10 +18,13 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -32,7 +36,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class GemEtchingTableEntity extends BlockEntity implements MenuProvider {
-    private ItemStackHandler itemHandler = new ItemStackHandler(2);
+    public ItemStackHandler itemHandler = new ItemStackHandler(2);
     public static final int INPUT_SLOT = 0;
     public static final int PLATE_SLOT = 1;
     public int timeReferenceNumber = 0; // for rotation in block GUI
@@ -73,6 +77,46 @@ public class GemEtchingTableEntity extends BlockEntity implements MenuProvider {
                 return 2;
             }
         };
+    }
+
+    public ItemStackHandler getItemHandler(){
+        return itemHandler;
+    }
+
+    public void attemptPlacePlateInteraction(Player pPlayer){
+        if(itemHandler.getStackInSlot(PLATE_SLOT).getItem() == Items.AIR){
+            pPlayer.sendSystemMessage(Component.literal("is able to add"));
+
+            ItemStack playerStack = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
+            for(ItemStack itemStack : validPlates){
+                if(itemStack.getItem() == playerStack.getItem()){
+                    Item playerInputItem = playerStack.getItem();
+                    playerStack.shrink(1);
+
+                    itemHandler.setStackInSlot(PLATE_SLOT, new ItemStack(playerInputItem, 1));
+//                    pPlayer.containerMenu.broadcastChanges();
+//                    setChanged();
+//                    if (level != null) {
+//                        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+//                    }
+//                    pPlayer.sendSystemMessage(Component.literal("item in plate slot: " + itemHandler.getStackInSlot(1).getDescriptionId()));
+                }
+            }
+        } else {
+            pPlayer.sendSystemMessage(Component.literal("unable to add" + itemHandler.getStackInSlot(PLATE_SLOT).getItem().getDescriptionId()));
+            SimpleContainer plateItem = new SimpleContainer(itemHandler.getStackInSlot(PLATE_SLOT));
+            Containers.dropContents(this.level, this.worldPosition, plateItem);
+        }
+
+    }
+
+    public static boolean clickedTop(BlockPos pPos, BlockHitResult pHit) {
+        Vec3 hitVec = pHit.getLocation();
+        int x = (int)((hitVec.x - pPos.getX()) * 15);
+        int y = (int)((hitVec.y - pPos.getY()) * 15);
+        int z = (int)((hitVec.z - pPos.getZ()) * 15);
+
+        return ((2 <= x) && (x <= 13) && (2 <= z) && (z <= 13) && (14 <= y) && (y <= 16));
     }
 
     @Override

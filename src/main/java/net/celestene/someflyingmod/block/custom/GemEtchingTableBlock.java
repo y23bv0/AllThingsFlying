@@ -24,6 +24,8 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
+import static net.celestene.someflyingmod.block.entity.GemEtchingTableEntity.clickedTop;
+
 public class GemEtchingTableBlock extends BaseEntityBlock {
     public GemEtchingTableBlock(Properties pProperties) {
         super(pProperties);
@@ -46,16 +48,26 @@ public class GemEtchingTableBlock extends BaseEntityBlock {
     @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if(!pLevel.isClientSide()){
-            BlockEntity be = pLevel.getBlockEntity(pPos);
-            if(be instanceof GemEtchingTableEntity){
-                NetworkHooks.openScreen((ServerPlayer) pPlayer, (GemEtchingTableEntity) be, pPos);
+            if(!clickedTop(pPos, pHit)){
+                BlockEntity be = pLevel.getBlockEntity(pPos);
+                if(be instanceof GemEtchingTableEntity){
+                    NetworkHooks.openScreen((ServerPlayer) pPlayer, (GemEtchingTableEntity) be, pPos);
+                } else {
+                    throw new IllegalStateException("My Custom Exception Note: Container provider missing");
+                }
             } else {
-                throw new IllegalStateException("My Custom Exception Note: Container provider missing");
+                BlockEntity be = pLevel.getBlockEntity(pPos);
+                if(be instanceof GemEtchingTableEntity){
+                    ((GemEtchingTableEntity) be).attemptPlacePlateInteraction(pPlayer);
+                }
+
             }
+
         }
 
         return super.use(pState, pLevel, pPos, pPlayer, pHand, pHit);
     }
+
 
     @Override
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {

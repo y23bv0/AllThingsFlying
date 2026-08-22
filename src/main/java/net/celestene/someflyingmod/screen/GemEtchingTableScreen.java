@@ -8,11 +8,16 @@ import net.celestene.someflyingmod.block.ModBlocks;
 import net.celestene.someflyingmod.block.entity.GemEtchingTableEntity;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+
+import static net.celestene.someflyingmod.block.entity.GemEtchingTableEntity.INPUT_SLOT;
+import static net.celestene.someflyingmod.block.entity.GemEtchingTableEntity.PLATE_SLOT;
 
 public class GemEtchingTableScreen extends AbstractContainerScreen<GemEtchingTableMenu> {
     GemEtchingTableMenu referenceMenu;
@@ -63,15 +68,25 @@ public class GemEtchingTableScreen extends AbstractContainerScreen<GemEtchingTab
         GemEtchingTableEntity referenceBE = referenceMenu.blockEntity;
         float timeMultiplier = (float)360 / (animationSpeed * 20);
 
-        PoseStack poseStack = pGuiGraphics.pose();
-        poseStack.pushPose();
-        poseStack.translate(x + 26.0f, y + 32.0f, 0.0f);
-        poseStack.mulPose(Axis.ZN.rotationDegrees(referenceBE.timeReferenceNumber * timeMultiplier));
-        poseStack.translate(-26.0f, -32.0f, 0.0f);
-        poseStack.translate(10.0f, 11.0f, 0.0f);
-        poseStack.scale(2.0f, 2.0f, 1.0f);
-        pGuiGraphics.renderItem(new ItemStack(ModBlocks.AMETHYST_FLAT_PLATE.get()), 0, 0);
-        poseStack.popPose();
+//        if(referenceBE.getItemHandler().getStackInSlot(PLATE_SLOT).getItem() != Items.AIR){
+            ItemStack displayStack = referenceBE.getItemHandler().getStackInSlot(PLATE_SLOT);
+
+            pGuiGraphics.drawString(this.font, displayStack.getDescriptionId(), 50, 50, 0x404040);
+
+            PoseStack poseStack = pGuiGraphics.pose();
+            poseStack.pushPose();
+            poseStack.translate(x + 26.0f, y + 32.0f, 0.0f);
+            poseStack.mulPose(Axis.ZP.rotationDegrees(referenceBE.timeReferenceNumber * timeMultiplier));
+            poseStack.translate(-26.0f, -32.0f, 0.0f);
+            poseStack.translate(10.0f, 11.0f, 0.0f);
+//        poseStack.translate(8.0f, 8.0f, 0.0f);
+            poseStack.scale(2.0f, 2.0f, 1.0f);
+            pGuiGraphics.renderItem(displayStack, 0, 0);
+            poseStack.popPose();
+//        }
+
+
+//       USE:  InventoryScreen.renderEntityInInventoryFollowsAngle(pGuiGraphics, );
 
         if (referenceBE.timeReferenceNumber <= animationSpeed * 20){
             referenceBE.timeReferenceNumber ++;
