@@ -91,7 +91,10 @@ public class GemEtchingTableEntity extends BlockEntity implements MenuProvider {
             for(ItemStack itemStack : validPlates){
                 if(itemStack.getItem() == playerStack.getItem()){
                     Item playerInputItem = playerStack.getItem();
-                    playerStack.shrink(1);
+
+                    if(!pPlayer.getAbilities().instabuild){
+                        playerStack.shrink(1);
+                    }
 
                     itemHandler.setStackInSlot(PLATE_SLOT, new ItemStack(playerInputItem, 1));
 //                    pPlayer.containerMenu.broadcastChanges();
