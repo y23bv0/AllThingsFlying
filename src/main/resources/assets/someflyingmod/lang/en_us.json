@@ -93,6 +93,7 @@
   "tooltip.someflyingmod.metal_detector.tooltip": "Woah, there's metal under me!",
   "tooltip.someflyingmod.refined_essence.tooltip": "Makes an interesting sound when you click it! Try it out?",
   "base_word.someflyingmod.item": "Item",
+  "interface_word.someflyingmod.no_item": "No Item",
 
 
   "block.someflyingmod.fancy_block": "Fancy Block",

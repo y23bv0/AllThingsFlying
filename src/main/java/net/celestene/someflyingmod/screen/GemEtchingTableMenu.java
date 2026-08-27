@@ -11,6 +11,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class GemEtchingTableMenu extends AbstractContainerMenu {
     public final GemEtchingTableEntity blockEntity;
@@ -33,6 +34,17 @@ public class GemEtchingTableMenu extends AbstractContainerMenu {
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(iItemHandler -> {
             this.addSlot(new SlotItemHandler(iItemHandler, 0, 110, 46));
+            this.addSlot(new SlotItemHandler(iItemHandler, 1, -1000, -1000){
+                @Override
+                public boolean isActive() {
+                    return false;
+                }
+
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) {
+                    return false;
+                }
+            });
         });
 
         addDataSlots(data); // adds additional data to the given slots

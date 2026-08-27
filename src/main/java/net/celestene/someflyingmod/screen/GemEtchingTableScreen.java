@@ -26,17 +26,22 @@ import net.minecraft.world.entity.decoration.ArmorStand;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 
 import javax.annotation.Nullable;
 
+import java.util.List;
+
 import static net.celestene.someflyingmod.block.entity.GemEtchingTableEntity.INPUT_SLOT;
 import static net.celestene.someflyingmod.block.entity.GemEtchingTableEntity.PLATE_SLOT;
+import static net.minecraft.commands.arguments.blocks.BlockStateArgument.getBlock;
 
 public class GemEtchingTableScreen extends AbstractContainerScreen<GemEtchingTableMenu> {
     GemEtchingTableMenu referenceMenu;
@@ -44,6 +49,8 @@ public class GemEtchingTableScreen extends AbstractContainerScreen<GemEtchingTab
 
     private static final ResourceLocation TEXTURE =
             new ResourceLocation(FlyingMod.MODID, "textures/gui/gem_etching_table_gui.png");
+    private static final ResourceLocation NO_ITEM_TEXTURE =
+            new ResourceLocation(FlyingMod.MODID, "textures/symbols/no_item.png");
 
     public GemEtchingTableScreen(GemEtchingTableMenu pMenu, Inventory pPlayerInventory, Component pTitle) {
         super(pMenu, pPlayerInventory, pTitle);
@@ -89,45 +96,70 @@ public class GemEtchingTableScreen extends AbstractContainerScreen<GemEtchingTab
         GemEtchingTableEntity referenceBE = referenceMenu.blockEntity;
         float timeMultiplier = (float)360 / (animationSlowness * 20);
 
-//        if(referenceBE.getItemHandler().getStackInSlot(PLATE_SLOT).getItem() != Items.AIR){
-            ItemStack displayStack = referenceBE.getItemHandler().getStackInSlot(PLATE_SLOT);
+        int topLeftCornerX = (width - imageWidth) / 2;
+        int topLeftCornerY = (height - imageHeight) / 2;
 
-            pGuiGraphics.drawString(this.font, displayStack.getDescriptionId(), 50, 50, 0x404040);
+        if(referenceBE.getItemHandler().getStackInSlot(PLATE_SLOT).getItem() != Items.AIR){
+            ItemStack displayStack = referenceBE.getItemHandler().getStackInSlot(PLATE_SLOT);
+            List<ItemStack> validPlates = referenceBE.getValidPlates();
+
+//            pGuiGraphics.drawString(this.font, displayStack.getDescriptionId(), 50, 50, 0x404040);
 
             PoseStack poseStack = pGuiGraphics.pose();
             poseStack.pushPose();
-            poseStack.translate(x + 27.5f, y + 92.5f, 0.0f);
-//            poseStack.scale(5, 5, 0);
 
             assert getMinecraft().player != null;
             assert Minecraft.getInstance().level != null;
 
             LivingEntity placeholderBlock = new ArmorStand(EntityType.ARMOR_STAND, this.level);
             placeholderBlock.setInvisible(true);
-            placeholderBlock.setItemSlot(EquipmentSlot.HEAD, ModBlocks.AMETHYST_FLAT_PLATE.get().getCloneItemStack(this.level, new BlockPos(0, 0, 0), ModBlocks.AMETHYST_FLAT_PLATE.get().defaultBlockState()));
 
-            renderEntityInInventoryFollowsAngle(pGuiGraphics, 0, 0, 35, 29.1f + ((referenceBE.timeReferenceNumber * timeMultiplier) / 360), -1.2f, placeholderBlock);
-//        renderEntityInInventoryFollowsAngle(pGuiGraphics, 0, 0, 35 / 5, 29.1f + ((referenceBE.timeReferenceNumber * timeMultiplier) / 360), -1.2f, placeholderBlock);
+            if(isValidInput(displayStack, validPlates)){
+                Block displayBlock = ((BlockItem) displayStack.getItem()).getBlock();
+                String displayStackGivenName = displayStack.getDisplayName().getString();
+
+                if (displayStackGivenName.length() >= 2){
+                    displayStackGivenName = displayStackGivenName.substring(1, displayStackGivenName.length() - 1);
+                }
+
+                pGuiGraphics.drawString(this.font, displayStackGivenName, topLeftCornerX + 44, topLeftCornerY + 26, 0x404040, false);
+
+                placeholderBlock.setItemSlot(EquipmentSlot.HEAD, displayBlock.getCloneItemStack(this.level, new BlockPos(0, 0, 0), displayBlock.defaultBlockState()));
+
+                poseStack.translate(x + 27.5f, y + 92.5f, 0.0f);
+                renderEntityInInventoryFollowsAngle(pGuiGraphics, 0, 0, 35, 29.1f + ((referenceBE.timeReferenceNumber * timeMultiplier) / 360), -1.2f, placeholderBlock);
+
+            } else {
+                pGuiGraphics.drawString(this.font, Component.translatable("interface_word.someflyingmod.no_item"), topLeftCornerX + 44, topLeftCornerY + 26, 0x404040, false);
+            }
+
+            // To be worked on:
+//            pGuiGraphics.blit(NO_ITEM_TEXTURE, topLeftCornerX + 44, topLeftCornerY + 26, 0, 0, 100, 100, 16, 16);
 
         poseStack.popPose();
 
-//        }
-
-
-//       USE:  InventoryScreen.renderEntityInInventoryFollowsAngle(pGuiGraphics, );
+        } else {
+            pGuiGraphics.drawString(this.font, Component.translatable("interface_word.someflyingmod.no_item"), topLeftCornerX + 44, topLeftCornerY + 26, 0x404040, false);
+        }
 
         if (referenceBE.timeReferenceNumber <= animationSlowness * 20 * 360){
             referenceBE.timeReferenceNumber ++;
         } else {
-            // do something
             referenceBE.timeReferenceNumber = 0;
         }
 
         // Debug code:
         // pGuiGraphics.drawString(this.font, Component.literal(((Integer) referenceBE.timeReferenceNumber).toString()), x + 50, y + 50, 0x404040);
         // pGuiGraphics.drawString(this.font, Component.literal(String.valueOf(timeMultiplier)), x + 80, y + 50, 0x404040);
+    }
 
-        // want to achieve 360 degrees in [blank time]
+    private boolean isValidInput(ItemStack displayStack, List<ItemStack> itemStackList){
+        for(ItemStack itemStack : itemStackList){
+            if(displayStack.getItem() == itemStack.getItem()){
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -175,6 +207,5 @@ public class GemEtchingTableScreen extends AbstractContainerScreen<GemEtchingTab
         entityrenderdispatcher.setRenderShadow(true);
         pGuiGraphics.pose().popPose();
         Lighting.setupFor3DItems();
-//        Lighting.setupForFlatItems();
     }
 }

@@ -79,13 +79,16 @@ public class GemEtchingTableEntity extends BlockEntity implements MenuProvider {
         };
     }
 
+    public List<ItemStack> getValidPlates(){
+        return validPlates;
+    }
+
     public ItemStackHandler getItemHandler(){
         return itemHandler;
     }
 
     public void attemptPlacePlateInteraction(Player pPlayer){
-        if(itemHandler.getStackInSlot(PLATE_SLOT).getItem() == Items.AIR){
-            pPlayer.sendSystemMessage(Component.literal("is able to add"));
+        if(itemHandler.getStackInSlot(PLATE_SLOT).isEmpty()){
 
             ItemStack playerStack = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
             for(ItemStack itemStack : validPlates){
@@ -97,16 +100,13 @@ public class GemEtchingTableEntity extends BlockEntity implements MenuProvider {
                     }
 
                     itemHandler.setStackInSlot(PLATE_SLOT, new ItemStack(playerInputItem, 1));
-//                    pPlayer.containerMenu.broadcastChanges();
-//                    setChanged();
-//                    if (level != null) {
-//                        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
-//                    }
-//                    pPlayer.sendSystemMessage(Component.literal("item in plate slot: " + itemHandler.getStackInSlot(1).getDescriptionId()));
+                    setChanged();
+                    if (level != null) {
+                        level.sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
+                    }
                 }
             }
         } else {
-            pPlayer.sendSystemMessage(Component.literal("unable to add" + itemHandler.getStackInSlot(PLATE_SLOT).getItem().getDescriptionId()));
             SimpleContainer plateItem = new SimpleContainer(itemHandler.getStackInSlot(PLATE_SLOT));
             Containers.dropContents(this.level, this.worldPosition, plateItem);
         }
